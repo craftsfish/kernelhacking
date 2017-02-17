@@ -1,0 +1,27 @@
+From 4e2fa2f97603a89a966f776d146bf257648ccfb9 Mon Sep 17 00:00:00 2001
+From: Canjiang Lu <craftsfish@163.com>
+Date: Fri, 17 Feb 2017 17:09:39 +0800
+Subject: [PATCH 2/2] Use mmc as default sd card interface.
+
+---
+ arch/arm/boot/dts/bcm2709-rpi-2-b.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+index e58bcdf..5f8f018 100644
+--- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
++++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+@@ -48,6 +48,10 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdhost_pins>;
+ 	bus-width = <4>;
++	status = "disabled";
++};
++
++&mmc {
+ 	status = "okay";
+ };
+ 
+-- 
+1.9.1
+
