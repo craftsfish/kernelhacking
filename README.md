@@ -33,8 +33,8 @@ echo 'export PATH' >> $HOME/.bashrc
 source $HOME/.bashrc
 
 git clone https://github.com/raspberrypi/linux
-git checkout rpi-4.4.y
 cd linux
+git checkout rpi-4.4.y
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ```
