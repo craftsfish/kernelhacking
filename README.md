@@ -62,7 +62,16 @@ User : pi
 Password : raspberry
 
 ## 7. Known Issue
-### Hardware RNG probe issue
+
+### Patches for Known Issues.
+Get patches from [here](https://github.com/craftsfish/kernelhacking/tree/master/patch) and applying them with following command.
+```
+git am *.patch
+```
+
+###Issue List:
+
+- Hardware RNG Probe Issue
 ```
 [   27.442391] INFO: rcu_sched detected stalls on CPUs/tasks:
 [   27.444260] 	1-O..: (11 GPs behind) idle=001/140000000000000/0 softirq=0/0 fqs=1 
@@ -76,38 +85,9 @@ Password : raspberry
 [   27.453244] Task dump for CPU 3:
 [   27.453684] swapper/3       R running      0     0      1 0x00000000
 [   27.454986] rcu_sched kthread starved for 2101 jiffies! g4294967007 c4294967006 f0x0 s3 ->state=0x0
-
 ```
 
-Use following patch to disable hardware random number generator.
-```
-From fc10e9120ba7d8f38ca2a7f73afb004d5f858dab Mon Sep 17 00:00:00 2001
-From: Canjiang Lu <craftsfish@163.com>
-Date: Fri, 17 Feb 2017 16:49:40 +0800
-Subject: [PATCH] Disable random number generator to fix kthread starved issue.
-
----
- arch/arm/boot/dts/bcm2709-rpi-2-b.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
-index eca72bd..e58bcdf 100644
---- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
-+++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
-@@ -104,7 +104,7 @@
- };
- 
- &random {
--	status = "okay";
-+	status = "disabled";
- };
- 
- &leds {
--- 
-1.9.1
-```
-
-### root device unrecognize issue
+- Root Device Unrecognize Issue
 ```
 [    7.247893] VFS: Cannot open root device "mmcblk0p2" or unknown-block(0,0): error -6
 [    7.248815] Please append a correct "root=" boot option; here are the available partitions:
@@ -140,36 +120,6 @@ index eca72bd..e58bcdf 100644
 [    7.275396] [<807d7fb8>] (kernel_init_freeable) from [<805a2f78>] (kernel_init+0x18/0xfc)
 [    7.276534] [<805a2f78>] (kernel_init) from [<8000f968>] (ret_from_fork+0x14/0x2c)
 [    7.279193] ---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
-```
-
-Use following patch to enable mmc as default sd card interface.
-```
-From 60373b088a961fb12ce1dc2873448ec4331647c4 Mon Sep 17 00:00:00 2001
-From: Canjiang Lu <craftsfish@163.com>
-Date: Fri, 17 Feb 2017 17:09:39 +0800
-Subject: [PATCH 2/2] Use mmc as default sd card interface.
-
----
- arch/arm/boot/dts/bcm2709-rpi-2-b.dts | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
-index e58bcdf..5f8f018 100644
---- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
-+++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
-@@ -48,6 +48,10 @@
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdhost_pins>;
- 	bus-width = <4>;
-+	status = "disabled";
-+};
-+
-+&mmc {
- 	status = "okay";
- };
- 
--- 
-1.9.1
 ```
 
 # References
