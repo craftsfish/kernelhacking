@@ -12,7 +12,8 @@ QEMU 2.8.0 is required to support Raspberry Pi 2.
 wget http://download.qemu-project.org/qemu-2.8.0.tar.xz
 tar xvJf qemu-2.8.0.tar.xz
 cd qemu-2.8.0
-./configure
+apt-get install libgtk-3-dev
+./configure --target-list=arm-softmmu
 make
 echo 'PATH="$PATH:$HOME/work/hacking/qemu-2.8.0/arm-softmmu"' >> $HOME/.bashrc
 echo 'export PATH' >> $HOME/.bashrc
