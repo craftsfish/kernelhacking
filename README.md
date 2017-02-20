@@ -17,6 +17,7 @@ apt-get install libgtk-3-dev
 make
 echo 'PATH="$PATH:$HOME/work/hacking/qemu-2.8.0/arm-softmmu"' >> $HOME/.bashrc
 echo 'export PATH' >> $HOME/.bashrc
+source $HOME/.bashrc
 ```
 PS: make sure GTK support is opened before running `make`. You can check it by filter the result of configure.
 ```
@@ -29,6 +30,7 @@ GTK support       yes (3.10.8)
 git clone https://github.com/raspberrypi/tools
 echo 'PATH="$PATH:$HOME/work/hacking/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin"' >> $HOME/.bashrc
 echo 'export PATH' >> $HOME/.bashrc
+source $HOME/.bashrc
 
 git clone https://github.com/raspberrypi/linux
 git checkout rpi-4.4.y
