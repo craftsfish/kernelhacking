@@ -4,7 +4,8 @@ This project uses QEMU to emulate Raspberry Pi 2 on Ubuntu 14.04 and hacking the
 
 # Setup Environment
 ## 1. Prerequisite
-    Working Directory : $HOME/work/hacking
+- Working Directory : $HOME/work/hacking
+- Remove pre-installed QEMU package with `sudo apt-get purge qemu`.
 
 ## 2. QEMU
 QEMU 2.8.0 is required to support Raspberry Pi 2.
