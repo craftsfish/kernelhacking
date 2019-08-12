@@ -40,3 +40,6 @@ An involuntarily relinquish of CPU because of a higher priority process becomes 
 
 ## IPC
  - IPC identifiers of sem, msg and shm are distributed in different spectrums other than a single 32bits range.
+
+## PSI
+ - task尝试获取内存的计算部分，判定为memstall?
