@@ -1,0 +1,119 @@
+<h1 id="psi-pressure-stall-information-for-cpu-memory-and-io">PSI (Pressure Stall Information for CPU, memory and IO)</h1>
+<p>在多任务操作系统中，为了完成自己的工作，任务之间互相竞争系统资源(CPU, Memory, I/O)。当系统中资源紧张时，任务因等待资源而产生延迟，甚至导致CPU空闲，浪费计算资源。Linux内核中的PSI模块为实时衡量系统的资源压力提供了量化指标。</p>
+<h2 id="查看指标">1. 查看指标</h2>
+<p>系统的各项压力指标可以通过读取/proc/pressure目录下的cpu, memory, io三个文件来获得。 cpu文件的读取结果如下：</p>
+<pre><code>some avg10=0.00 avg60=0.00 avg300=0.00 total=0</code></pre>
+<p>对于memory和io：</p>
+<pre><code>some avg10=0.00 avg60=0.00 avg300=0.00 total=0
+full avg10=0.00 avg60=0.00 avg300=0.00 total=0</code></pre>
+<p>memory和io有两组指标，some和full，下面会有详细的解释。对于cpu则只有一个some指标。对于每个指标分别显示了最近10s，1分钟，５分钟的平均值。total表示累计延迟时间？</p>
+<h2 id="关于some和full">2. 关于some和full</h2>
+<p>some表示系统中有任务因为等待资源而产生的延时占系统运行时间的比例。以下图为例，任务Ｂ等待了30s，占据了总运行时间60s的一半，所以some的值为(30/60) * 100%。</p>
+<div class="figure">
+<img src="./someCrop.png" title="some" />
+
+</div>
+<p>full表示系统中所有任务都因为等待某资源而被延时的时间占总时间的比例。下图中，有10s时间，整个系统没法进行任何计算，所以full的值为(10/60) * 100 %</p>
+<div class="figure">
+<img src="./FullCrop.png" title="full" />
+
+</div>
+<p>在一个计算周期内，some和full的时间是累加的。参考下图的例子。</p>
+<div class="figure">
+<img src="./DiscontinuousCrop.png" title="accumulated" />
+
+</div>
+<h2 id="代码实现">3. 代码实现</h2>
+<p>具体实现包括两个组成部分，数据收集和汇总计算。</p>
+<div class="figure">
+<img src="./psi.flow.chart.jpg?raw=true" title="模块架构图" />
+
+</div>
+<h3 id="数据收集">1. 数据收集</h3>
+<p>收集数据针对每个CPU独立进行。psi_group结构中有一个struct psi_group_cpu的per-cpu变量。每个特定的CPU上面收集的数据就存储在这里。</p>
+<pre><code>struct psi_group {
+        ...
+        /* Per-cpu task state &amp; time tracking */
+        struct psi_group_cpu __percpu *pcpu;
+        ...
+};
+
+struct psi_group_cpu {
+        /* 1st cacheline updated by the scheduler */
+
+        /* Aggregator needs to know of concurrent changes */
+        seqcount_t seq ____cacheline_aligned_in_smp;
+
+        /* States of the tasks belonging to this group */
+        unsigned int tasks[NR_PSI_TASK_COUNTS];
+
+        /* Aggregate pressure state derived from the tasks */
+        u32 state_mask;
+
+        /* Period time sampling buckets for each state of interest (ns) */
+        u32 times[NR_PSI_STATES];
+
+        /* Time of last task change in this group (rq_clock) */
+        u64 state_start;
+
+        /* 2nd cacheline updated by the aggregator */
+
+        /* Delta detection against the sampling buckets */
+        u32 times_prev[NR_PSI_AGGREGATORS][NR_PSI_STATES]
+                        ____cacheline_aligned_in_smp;
+};</code></pre>
+<p>这里面首先要关注的就是tasks变量，这个数组记录了分配到该CPU的各种状态的task的数量，具体的状态有三种，定义如下:</p>
+<pre><code>/* Tracked task states */
+enum psi_task_count {
+        NR_IOWAIT,
+        NR_MEMSTALL,
+        NR_RUNNING,
+        NR_PSI_TASK_COUNTS = 3,
+};</code></pre>
+<p>该CPU上面运行的task，只要有状态发生，就会调用psi_task_change来更新各种数据。</p>
+<pre><code>void psi_task_change(struct task_struct *task, int clear, int set)</code></pre>
+<p>通过函数定义，我们可以看到，该函数负责通知PSI模块，task的那些状态被设置了，哪些状态被清除了。这样数据收集部分就可以准确的维护CPU上各状态下的CPU数量。</p>
+<pre><code>/*
+ * Pressure states for each resource:
+ *
+ * SOME: Stalled tasks &amp; working tasks
+ * FULL: Stalled tasks &amp; no working tasks
+ */
+enum psi_states {
+        PSI_IO_SOME,
+        PSI_IO_FULL,
+        PSI_MEM_SOME,
+        PSI_MEM_FULL,
+        PSI_CPU_SOME,
+        /* Only per-CPU, to weigh the CPU in the global average: */
+        PSI_NONIDLE,
+        NR_PSI_STATES = 6,
+};
+</code></pre>
+<h3 id="cpu对应的psi状态判定">2. CPU对应的PSI状态判定</h3>
+<p>PSI状态的判定由下面的test_state函数负责。将各状态的持续时间储存到struct psi_group_cpu结构中的times数组中。</p>
+<pre><code>static bool test_state(unsigned int *tasks, enum psi_states state)
+{
+        switch (state) {
+        case PSI_IO_SOME:
+                return tasks[NR_IOWAIT];
+        case PSI_IO_FULL:
+                return tasks[NR_IOWAIT] &amp;&amp; !tasks[NR_RUNNING];
+        case PSI_MEM_SOME:
+                return tasks[NR_MEMSTALL];
+        case PSI_MEM_FULL:
+                return tasks[NR_MEMSTALL] &amp;&amp; !tasks[NR_RUNNING];
+        case PSI_CPU_SOME:
+                return tasks[NR_RUNNING] &gt; 1; 
+        case PSI_NONIDLE:
+                return tasks[NR_IOWAIT] || tasks[NR_MEMSTALL] ||
+                        tasks[NR_RUNNING];
+        default:
+                return false;
+        }
+}</code></pre>
+<h3 id="汇总计算">3. 汇总计算</h3>
+<h1 id="参考文献">参考文献</h1>
+<ul>
+<li><a href="https://facebookmicrosites.github.io/psi/docs/overview">Getting Started with PSI</a>.</li>
+</ul>
