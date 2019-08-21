@@ -2,8 +2,10 @@ ftrace, kunit, kselftest, UML
 PSI investigation
 Professional Linux Kernel Architecture
 Leetcode
-2019.08.19)
+2019.08.21)
 ================================================================================
+2019.08.21)https://www.youtube.com/watch?v=4XpnKHJAok8 ; https://google.github.io/kunit-docs/third_party/kernel/docs/api/test.html# ; Leetcode, 218. The Skyline Problem
+2019.08.20)Leetcode, 214. Shortest Palindrome; 面试2人; https://www.youtube.com/watch?v=4XpnKHJAok8 44:39
 2019.08.19)Leetcode, 212. Word Search II; Samsung U: Coaching for Growth, Samsung Brand Strategy, Must-know of Samsung Marketing(who, what&how), Must-know of Samsung Sales, All about Insight at Samsung, Must-Know of Samsung B2B; kunit: https://google.github.io/kunit-docs/third_party/kernel/docs/ ; https://martinfowler.com/bliki/UnitTest.html ; https://www.youtube.com/watch?v=4XpnKHJAok8 16:59
 2019.08.18)Leetcode, 164. Maximum Gap; Leetcode, 174. Dungeon Game; Leetcode, 188. Best Time to Buy and Sell Stock IV
 2019.08.16)Leetcode, 154. Find Minimum in Rotated Sorted Array II; Professional Linux Kernel Architecture, P220
@@ -14,3 +16,6 @@ Leetcode
 2017.10.17)Post another errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
 2017.10.13)Post an errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
 2017.06.17)Post my first kernel patch titled as: "mm/slab: trivial change to replace round-up code with ALIGN". https://marc.info/?l=linux-kernel&m=149759816912173
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[Solutions to Introduction to Algorithms Third Edition] https://walkccc.github.io/CLRS/
+http://www.brendangregg.com/overview.html
