@@ -1,9 +1,14 @@
-ftrace, kunit, kselftest, UML
+ptrace, ftrace, kunit, kselftest, UML
 PSI investigation
 Professional Linux Kernel Architecture
+Understanding.the.Linux.Virtual.Memory.Manager
 Leetcode
-2019.08.21)
+2019.08.27)
 ================================================================================
+2019.08.27)Leetcode, 233. Number of Digit One ; 面试1人 ; Understanding.the.Linux.Virtual.Memory.Manager, P95
+2019.08.26)Understanding.the.Linux.Virtual.Memory.Manager, P69 ; Leetcode, 224. Basic Calculator
+2019.08.23)面试3人 ; Understanding.the.Linux.Virtual.Memory.Manager P27
+2019.08.22)ptrace: https://www.linuxjournal.com/article/6100, https://www.linuxjournal.com/article/6210 ; 面试2人
 2019.08.21)https://www.youtube.com/watch?v=4XpnKHJAok8 ; https://google.github.io/kunit-docs/third_party/kernel/docs/api/test.html# ; Leetcode, 218. The Skyline Problem
 2019.08.20)Leetcode, 214. Shortest Palindrome; 面试2人; https://www.youtube.com/watch?v=4XpnKHJAok8 44:39
 2019.08.19)Leetcode, 212. Word Search II; Samsung U: Coaching for Growth, Samsung Brand Strategy, Must-know of Samsung Marketing(who, what&how), Must-know of Samsung Sales, All about Insight at Samsung, Must-Know of Samsung B2B; kunit: https://google.github.io/kunit-docs/third_party/kernel/docs/ ; https://martinfowler.com/bliki/UnitTest.html ; https://www.youtube.com/watch?v=4XpnKHJAok8 16:59

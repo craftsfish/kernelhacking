@@ -1,0 +1,25 @@
+空间划分 {
+	vmalloc是为了将不连续的page组合成连续的虚拟地址空间?
+	persist map
+	fixed_addresses保留虚拟地址尾部的一段空间作为固定用途{
+		FIX_KMAP_BEGIN,	/* reserved pte's for temporary kernel mappings */
+		FIX_KMAP_END = FIX_KMAP_BEGIN+(KM_TYPE_NR*NR_CPUS)-1,
+	}
+}
+
+Permanent kernel mappings, kmap, 将high memory映射到persist map空间,might_sleep
+Temporary kernel mappings, kmap_atomic, 将high memory映射到fixed_addresses空间,固定用途，比如user_1，可用于中断环境
+3e4d3af501cccdc8a8cca41bdbe57d54ad7e7e73将原来的固定用途改为栈，不再区分具体用途
+
+PAGE_SHIFT在一个page table entry内寻址需要的比特数
+PAGE_SIZE一个page table entry表示的地址空间大小
+PMD_SHIFT在一个pmd entry内寻址需要的比特数
+PMD_SIZE一个pmd entry表示的地址空间大小
+PTRS PER PGD is the number of pointers in the PGD
+
+pte, pmd有可能存在于high memory，对应的pte_alloc_kernel/pte_alloc_map决定是否可以从high memory分配
+
+thread是通过共享mm_struct实现的
+kernel thread的task_struct→mm是NULL,调用switch_mm的时候从previous task偷一个过来存储在task_struct→active_mm
+
+Major page faults occur when data has to be read from disk, which is an expensive operation, or the fault is referred to as a minor, or soft, page fault.

@@ -1,0 +1,2 @@
+Current Program Status Register (CPSR)
+In User mode, a restricted form of the CPSR called the Application Program Status Register (APSR) is accessed instead.
