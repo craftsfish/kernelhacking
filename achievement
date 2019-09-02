@@ -1,10 +1,15 @@
-ptrace, ftrace, kunit, kselftest, UML
+ptrace, ftrace, kunit, kselftest, UML, qemu usage, raspberry pi 2, 
 PSI investigation
 Professional Linux Kernel Architecture
 Understanding.the.Linux.Virtual.Memory.Manager
+ARM.Cortex.A.Series.Programming.Guide
 Leetcode
-2019.08.27)
+2019.09.02)
 ================================================================================
+2019.09.02)Leetcode, 282. Expression Add Operators ; ARM.Cortex.A.Series.Programming.Guide, P157 ; linux/Documentation/memory-barriers.txt, L525
+2019.08.30)ARM.Cortex.A.Series.Programming.Guide, P152 ; 面试1人 ;
+2019.08.29)Leetcode, 239. Sliding Window Maximum ; ARM.Cortex.A.Series.Programming.Guide, P117
+2019.08.28)ARM.Cortex.A.Series.Programming.Guide, P82
 2019.08.27)Leetcode, 233. Number of Digit One ; 面试1人 ; Understanding.the.Linux.Virtual.Memory.Manager, P95
 2019.08.26)Understanding.the.Linux.Virtual.Memory.Manager, P69 ; Leetcode, 224. Basic Calculator
 2019.08.23)面试3人 ; Understanding.the.Linux.Virtual.Memory.Manager P27

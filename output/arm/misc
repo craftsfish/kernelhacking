@@ -1,2 +1,7 @@
 Current Program Status Register (CPSR)
 In User mode, a restricted form of the CPSR called the Application Program Status Register (APSR) is accessed instead.
+
+A line refers to the smallest loadable unit of a cache, a block of contiguous words from main memory.
+The index is the part of a memory address that determines in which line(s) of the cache the address can be found.
+A way is a subdivision of a cache, each way being of equal size and indexed in the same fashion. The line associated with a particular index value from each cache way grouped together forms a set.
+The tag is the part of a memory address stored within the cache that identifies the main memory address associated with a line of data.

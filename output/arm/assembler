@@ -1,0 +1,8 @@
+.text
+.data
+.rodata
+.bss (The Block Started by Symbol (bss) segment defines the space for uninitialized static data.)
+--------------------------------------------------------------------------------
+label: instruction @ comment
+MESSAGE DCB “Hello World!”,0
+
