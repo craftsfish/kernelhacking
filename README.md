@@ -49,6 +49,14 @@ Download Raspbian Jessie lite from [here](https://www.raspberrypi.org/downloads/
 ```
 wget https://downloads.raspberrypi.org/raspbian_lite_latest
 unzip raspbian_lite_latest
+
+sudo fdisk -l 2019-07-10-raspbian-buster-lite.img
+offset = start2 x 512
+
+sudo mount -v -o offset=276824064 -t ext4 2019-07-10-raspbian-buster-lite.img {mount_point}
+sudo vim {mount_point}/etc/ld.so.preload {
+#/usr/lib/arm-linux-gnueabihf/libarmmem-${PLATFORM}.so
+}
 ```
 
 ## 5. Emulating Raspi2

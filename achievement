@@ -1,12 +1,20 @@
 ptrace, ftrace, kunit, kselftest, UML, qemu usage, raspberry pi 2, 
 PSI investigation
-Professional Linux Kernel Architecture
+Professional.Linux.Kernel.Architecture
 Understanding.the.Linux.Virtual.Memory.Manager
-ARM.Cortex.A.Series.Programming.Guide
+Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan
 Leetcode
-2019.09.05)
+2019.09.17)
 ================================================================================
-2019.09.05)Leetcode, 301. Remove Invalid Parentheses
+2019.09.17)Leetcode, 330. Patching Array ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P103
+2019.09.16)Leetcode, 329. Longest Increasing Path in a Matrix ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P95 ; 面试2人
+2019.09.12)Leetcode, 327. Count of Range Sum ; Leetcode, 321. Create Maximum Number
+2019.09.11)面试2人
+2019.09.10)Leetcode, 316. Remove Duplicate Letters ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P60
+2019.09.09)Professional Linux Kernel Architecture, P240
+2019.09.07)Leetcode, 315. Count of Smaller Numbers After Self ; Professional Linux Kernel Architecture, P229 ; https://medium.com/netflix-techblog/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
+2019.09.06)Leetcode, 312. Burst Balloons ; ARM.Cortex.A.Series.Programming.Guide, P421
+2019.09.05)Leetcode, 301. Remove Invalid Parentheses ; ARM.Cortex.A.Series.Programming.Guide, P312
 2019.09.04)ARM.Cortex.A.Series.Programming.Guide, P274 ; Leetcode, 297. Serialize and Deserialize Binary Tree
 2019.09.03)Leetcode, 295. Find Median from Data Stream ; ARM.Cortex.A.Series.Programming.Guide P240
 2019.09.02)Leetcode, 282. Expression Add Operators ; ARM.Cortex.A.Series.Programming.Guide, P157 ; linux/Documentation/memory-barriers.txt, L525
@@ -32,3 +40,8 @@ Leetcode
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 [Solutions to Introduction to Algorithms Third Edition] https://walkccc.github.io/CLRS/
 http://www.brendangregg.com/overview.html
+The Art of Capacity Planning
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ARM Cortex -A Series Programmer’s Guide Version: 4.0
+================================================================================
+资源不足的时候，阻止新的资源请求(task创建)
