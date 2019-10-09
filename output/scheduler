@@ -1,0 +1,15 @@
+The RT class supports the SCHED_RR and SCHED_FIFO policies, and the CFS class supports SCHED_NORMAL and SCHED_BATCH.
+
+一个task隶属于一个特定的scheduler class
+一个scheduler class可以同时支持多种scheduling policy，所以在task结构中存储了具体的scheduling policy
+
+每个CPU有一个rq, DECLARE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
+一个rq里面包含了rt, cfs, dl三个特定的rq
+scheduler_tick函数只负责更新状态，并检查当前task是否需要被抢占, 实际的切换在schedule中执行
+schedule函数调用pick_next_task，依次执行各scheduler class，选出下一个需要执行的task
+
+一个rq如何管理多个scheduler class
+
+vruntime = 具体的执行时间 / 优先级权重
+
+cfs调度要在一个sysctl_sched_latency周期内确保每个active task至少被调度到一次

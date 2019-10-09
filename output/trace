@@ -1,0 +1,8 @@
+cd /sys/kernel/debug/tracing
+cat available_events | grep do_sys_open
+cat per_cpu/cpu0/trace
+================================================================================
+echo "xt_check_match" > set_ftrace_filter
+echo function > current_tracer
+echo "1" > options/func_stack_trace
+echo "1" > tracing_on ; iptables -A INPUT -m owner --uid-owner 10266 -m state --state ESTABLISHED -p all -m hashlimit --hashlimit-name BRADYBOUND --hashlimit-above 300kb/s -j DROP ; cat trace ; echo "0" > tracing_on
