@@ -23,3 +23,6 @@ thread是通过共享mm_struct实现的
 kernel thread的task_struct→mm是NULL,调用switch_mm的时候从previous task偷一个过来存储在task_struct→active_mm
 
 Major page faults occur when data has to be read from disk, which is an expensive operation, or the fault is referred to as a minor, or soft, page fault.
+
+node
+zone

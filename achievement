@@ -1,10 +1,17 @@
-kunit, kselftest, UML, qemu usage, raspberry pi 2, system tap
 Professional.Linux.Kernel.Architecture
 Understanding.the.Linux.Virtual.Memory.Manager
-Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan
 Leetcode
-2019.10.08)
+2019.10.23)
 ================================================================================
+2019.10.23)Leetcode, 352. Data Stream as Disjoint Intervals
+2019.10.22)scheduler
+2019.10.21)Leetcode, 336. Palindrome Pairs ; Professional.Linux.Kernel.Architecture, P136, Documentation/scheduler/sched-design-CFS.txt
+2019.10.18)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, Done
+2019.10.17)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P592
+2019.10.16)ebpf, Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P522
+2019.10.11)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P461
+2019.10.10)Professional.Linux.Kernel.Architecture, P133
+2019.10.09)Professional.Linux.Kernel.Architecture, P119
 2019.10.08)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P376
 2019.09.28)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P343
 2019.09.25)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P278
@@ -44,13 +51,14 @@ Leetcode
 2017.10.17)Post another errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
 2017.10.13)Post an errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
 2017.06.17)Post my first kernel patch titled as: "mm/slab: trivial change to replace round-up code with ALIGN". https://marc.info/?l=linux-kernel&m=149759816912173
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<Todo<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 [Solutions to Introduction to Algorithms Third Edition] https://walkccc.github.io/CLRS/
 http://www.brendangregg.com/overview.html
 The Art of Capacity Planning
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>Done>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ARM Cortex -A Series Programmer’s Guide Version: 4.0
-================================================================================
+Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan
+====Contemplation===============================================================
 资源不足的时候，阻止新的资源请求(task创建)
 构建标准workload作为评估标准
 Priority inheritance, 优先级继承
