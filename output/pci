@@ -1,0 +1,1 @@
+PCI总线可以级联，每个PCI总线本身可以作为一个pci_dev连接到父级PCI总线，这个设备也就是通常所说的bridge device。
