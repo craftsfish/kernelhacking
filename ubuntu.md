@@ -21,4 +21,4 @@ sudo dpkg -i linux-headers-2.6.24-rc5-custom_2.6.24-rc5-custom-10.00.Custom_i386
 
 sudo reboot
 
-[ref](https://wiki.ubuntu.com/KernelTeam/GitKernelBuild)
+[link](https://wiki.ubuntu.com/KernelTeam/GitKernelBuild)
