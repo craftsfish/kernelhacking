@@ -1,23 +1,19 @@
 #TODO
-Understanding.the.Linux.Virtual.Memory.Manager
-Leetcode
-perf and flame graph with firefox
-capture sys call time of a particular app 
-crash, https://people.redhat.com/anderson/
-perf, cgroup, bpf, flame grpah
-redhat, microsoft, alibaba, opensuse, amazon
-ubuntu kernel development
-[Solutions to Introduction to Algorithms Third Edition] https://walkccc.github.io/CLRS/
-http://www.brendangregg.com/overview.html
-The Art of Capacity Planning
->>>>Done>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-ARM Cortex -A Series Programmer’s Guide Version: 4.0
-Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan
-====Contemplation===============================================================
-资源不足的时候，阻止新的资源请求(task创建)
-构建标准workload作为评估标准
-Priority inheritance, 优先级继承
-recycled fork
+- [Computer Architecture, Sixth Edition: A Quantitative Approach (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design)](https://www.amazon.com/-/zh/Computer-Architecture-Sixth-Quantitative-Approach/dp/0128119055/ref=dp_ob_title_bk)
+- [Computer Organization and Design, Fifth Edition: The Hardware/Software Interface (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design](https://www.amazon.com/Computer-Organization-Design-Fifth-Edition/dp/0124077269)
+- [Available instruction-level parallelism for superscalar and superpipelined machines](https://dl.acm.org/citation.cfm?id=68207)
+- [crash](https://people.redhat.com/anderson/)
+- [Solutions to Introduction to Algorithms Third Edition](https://walkccc.github.io/CLRS/)
+- Leetcode
+- modify comment of propagate_mnt, attach_recursive_mnt
+- Understanding.the.Linux.Virtual.Memory.Manager
+- perf and flame graph with firefox
+- capture sys call time of a particular app 
+- perf, cgroup, bpf, flame grpah
+- redhat, microsoft, alibaba, opensuse, amazon
+- ubuntu kernel development
+- http://www.brendangregg.com/overview.html
+- The Art of Capacity Planning
 
 #LOG
 - 2019.12.19)Modern Microprocessors A 90-Minute Guide, http://www.lighterra.com/papers/modernmicroprocessors/
@@ -70,3 +66,7 @@ recycled fork
 - 2017.10.17)Post another errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
 - 2017.10.13)Post an errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
 - 2017.06.17)Post my first kernel patch titled as: "mm/slab: trivial change to replace round-up code with ALIGN". https://marc.info/?l=linux-kernel&m=149759816912173
+
+#DONE
+- ARM Cortex -A Series Programmer’s Guide Version: 4.0
+- Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan
