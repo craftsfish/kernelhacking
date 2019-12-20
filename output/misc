@@ -1,1 +1,56 @@
 why a task waiting for a condition can be considered as interruptible or not?
+
+一个vm_area中的所有page都属于同一个anon_vma? 
+好像是的，但是anon_vma里面的vm_area不一定都有同样的page，anon_vma是包含page的vm_area的超集。
+vm_area在分裂，unmap等操作的时候，Page里面的anon_vma指针就不需要修改，把新分裂出来的vm_area加到anon_vma里面就可以了。
+这也就是为什么当判断一个page是否在anon_vma维护的链表里面的时候，要对每一个vm_area进行更细的检查。
+
+一个page是否可以多次存在于某个vm_area
+
+copy on write不适用于文件mapping?只适用于anon page
+
+GDT (segment descriptor table)
+vector -> IDT (interrupt descriptor table) -> segment DPL
+interrupt->segment->dpl < cpl (a lift of permission)
+for programmed exectpion (CPL < IDT.gate descriptor.DPL)
+
+
+change of privilege level {
+	load ss+esp with information retrieved from tr register
+	ss+esp(original)
+}
+push eflags+cs+eip
+error code
+load cs+eip with handler information
+pop error code
+pop eflags+cs+eip
+change of privilege level {
+	pop ss+esp(original)
+}
+clear ds, es, fs, gs if necessary
+
+IDT {
+	interrupt gate
+	trap gate (do not modify the IF flag)
+}
+
+#define PAGE_SHIFT	12
+#define PAGE_SIZE	(1UL << PAGE_SHIFT)
+#define PAGE_MASK	(~(PAGE_SIZE-1))
+
+
+cache {
+	node {
+		kmem_cache_node * N {
+			alien {
+				array_cache * N
+			}
+			shared
+		}
+	}
+	array {
+		array_cache * N
+	}
+}
+
+block & char设备只是所有设备中的一部分
