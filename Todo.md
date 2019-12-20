@@ -3,3 +3,7 @@
 [Computer Organization and Design, Fifth Edition: The Hardware/Software Interface (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design](https://www.amazon.com/Computer-Organization-Design-Fifth-Edition/dp/0124077269)
 
 [Available instruction-level parallelism for superscalar and superpipelined machines](https://dl.acm.org/citation.cfm?id=68207)
+
+propagate_mnt
+
+attach_recursive_mnt
