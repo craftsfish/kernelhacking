@@ -67,6 +67,4 @@
 - 2017.10.13)Post an errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
 - 2017.06.17)Post my first kernel patch titled as: "mm/slab: trivial change to replace round-up code with ALIGN". https://marc.info/?l=linux-kernel&m=149759816912173
 
-#DONE
-- ARM Cortex -A Series Programmer’s Guide Version: 4.0
-- Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan
+#QA
