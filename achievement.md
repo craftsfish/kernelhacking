@@ -16,6 +16,8 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2019.12.24)kernel/Documentation/trace/kprobetrace.rst
+- 2019.12.23)kernel/Documentation/trace/events-kmem.rst, kernel/Documentation/trace/events-msr.rst
 - 2019.12.19)Modern Microprocessors A 90-Minute Guide, http://www.lighterra.com/papers/modernmicroprocessors/
 - 2019.12.18)Professional Linux Kernel Architecture, P556
 - 2019.12.17)Professional Linux Kernel Architecture, P541
