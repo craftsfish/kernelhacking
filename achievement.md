@@ -4,6 +4,7 @@
 - [Available instruction-level parallelism for superscalar and superpipelined machines](https://dl.acm.org/citation.cfm?id=68207)
 - [crash](https://people.redhat.com/anderson/)
 - [Solutions to Introduction to Algorithms Third Edition](https://walkccc.github.io/CLRS/)
+- [System Performance Tuning, 2nd Edition, by Mike Loukides, Gian-Paolo D. Musumeci](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/)
 - Leetcode
 - modify comment of propagate_mnt, attach_recursive_mnt
 - Understanding.the.Linux.Virtual.Memory.Manager
