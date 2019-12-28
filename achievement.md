@@ -17,6 +17,8 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2019.12.28)ftrace.sched脚本开发
+- 2019.12.27)kernel/Documentation/filesystems/sharedsubtree.txt
 - 2019.12.24)kernel/Documentation/trace/kprobetrace.rst
 - 2019.12.23)kernel/Documentation/trace/events-kmem.rst, kernel/Documentation/trace/events-msr.rst
 - 2019.12.19)Modern Microprocessors A 90-Minute Guide, http://www.lighterra.com/papers/modernmicroprocessors/
