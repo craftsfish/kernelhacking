@@ -18,6 +18,7 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2019.12.30)ftrace.sched脚本开发(参数检查), ftrace.sched.event日志分析(firefox启动)
 - 2019.12.28)ftrace.sched脚本开发
 - 2019.12.27)kernel/Documentation/filesystems/sharedsubtree.txt
 - 2019.12.24)kernel/Documentation/trace/kprobetrace.rst
