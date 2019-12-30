@@ -30,3 +30,10 @@ struct task_group通过 {
 	list_head children;
 }维护了一个树状结构，为了支持CONFIG_FAIR_GROUP_SCHED，每个task_group在每个CPU上面维护了一个sched_entity和cfs_rq，sched_entity负责管理对应的cfs_rq并将其保存在自身的my_q里面
 当cfs_rq里面有具体的task的时候，cfs_rq会被加入到对应rq的leaf_cfs_rq_list里面，并一直存在，直到对应的task_group被unregister
+
+sched_stat_sleep: interruptible -> 入队
+sched_stat_blocked: uninterruptible -> 入队 {
+	sched_stat_iowait: 其中的io等待时间
+}
+sched_stat_wait: 入队 -> 执行的等待时间
+sched_stat_runtime: 执行 -> switch的时间

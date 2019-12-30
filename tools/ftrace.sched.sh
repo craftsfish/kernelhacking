@@ -1,4 +1,6 @@
 #!/bin/bash
+if (($(id -u) != 0)) ; then echo "please run as root"; exit ; fi
+
 target="firefox"
 event=""
 filter=""
@@ -30,8 +32,11 @@ parameters=(
 if [[ "$1" == "enable" ]]; then
 	echo > trace
 	echo 1 > tracing_on
-else
+elif [[ "$1" == "disable" ]]; then
 	echo 0 > tracing_on
+	cat trace > /tmp/trace
+else
+	echo "usage: enable/disable"
 fi
 
 #enable
