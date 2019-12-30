@@ -2,9 +2,10 @@
 - [Computer Architecture, Sixth Edition: A Quantitative Approach (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design)](https://www.amazon.com/-/zh/Computer-Architecture-Sixth-Quantitative-Approach/dp/0128119055/ref=dp_ob_title_bk)
 - [Computer Organization and Design, Fifth Edition: The Hardware/Software Interface (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design](https://www.amazon.com/Computer-Organization-Design-Fifth-Edition/dp/0124077269)
 - [Available instruction-level parallelism for superscalar and superpipelined machines](https://dl.acm.org/citation.cfm?id=68207)
-- [crash](https://people.redhat.com/anderson/)
 - [Solutions to Introduction to Algorithms Third Edition](https://walkccc.github.io/CLRS/)
 - [System Performance Tuning, 2nd Edition, by Mike Loukides, Gian-Paolo D. Musumeci](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/)
+- [crash](https://people.redhat.com/anderson/)
+- [ubuntu kernel](https://wiki.ubuntu.com/Kernel)
 - Leetcode
 - modify comment of propagate_mnt, attach_recursive_mnt
 - Understanding.the.Linux.Virtual.Memory.Manager

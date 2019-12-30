@@ -29,14 +29,14 @@ parameters=(
 	"0 sched_waking comm"
 )
 
-if [[ "$1" == "enable" ]]; then
+if [[ "$1" == "1" ]]; then
 	echo > trace
 	echo 1 > tracing_on
-elif [[ "$1" == "disable" ]]; then
+elif [[ "$1" == "0" ]]; then
 	echo 0 > tracing_on
 	cat trace > /tmp/trace
 else
-	echo "usage: enable/disable"
+	echo "usage: 1/0"
 fi
 
 #enable
@@ -59,7 +59,7 @@ for ps in "${parameters[@]}"; do
 		((i++))
 	done
 
-	if [[ "$1" == "enable" ]]; then
+	if [[ "$1" == "1" ]]; then
 		echo 1 > events/sched/$event/enable
 		if [[ "$filter" != "" ]] ; then
 			echo "$filter" > events/sched/$event/filter
