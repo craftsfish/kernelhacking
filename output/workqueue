@@ -1,0 +1,41 @@
+workqueue_struct和具体的worker_pool的关联是通过pool_workqueue来实现的，是一种多对多的关系，pool_workqueue就是连接表
+workqueue_struct可以创建任意多个，根据具体的属性与worker_pool关联
+所有的unbound_pool都存放在unbound_pool_hash，pool->attrs(nice+cpumask)作为hash key
+每个cpu有NR_STD_WORKER_POOLS(2)个worker_pool分别对应不同的优先级
+ordered_unbound_pool的唯一性约束是通过构造pwq的时候，所有的node都指向default pwq来确保的
+
+lock {
+	wq->mutex
+	pwq->pool->lock
+}
+
+workqueue建立以后可以通过sysfs接口动态的调整nice
+
+pool的并发控制 {
+	pool内控制并发，目标是有work要做的时候，一个worker在跑就行了
+	worker中的work如果suspend的时候，会勾住sched_core的接口，判断是否有其他work并且没有worker在跑，如果满足该条件，启动新的worker
+	并发的worker执行完成后，会判断当前的running worker是否超过1个，如果是的话，会进入idle状态
+}
+
+flush机制 {
+	增加一个barrier work链接到target work后面
+	worker遇到linked work的时候，会依次把linked work以及之后的一个work移到scheduled队列里面
+	如果target work本身已经在worker上面，那么直接把barrier work插入scheduled队列
+}
+
+修改queue_work的最大延迟 {
+	queue_work只能append到pool->worklist
+	要等到当前worker处理完成才能被pick
+	如果worker上面有scheduled work，也要等待这些work处理完成
+}
+
+修改queue_work直接append到worker上 {
+	busy_hash上面可能是suspend的，不知道哪个是active的
+}
+
+扩展priority，增加ux类型的pool {
+	workqueue机制本身支持nice，扩展ux属性即可
+	原有的工作机制没有破坏，对使用者的影响最小
+	work可以立即被调度，响应时间短
+	增加了一些内存消耗(task)，对于目前kgsl的unbound wq，仅增加一个pool+一个默认worker
+}

@@ -1,0 +1,6 @@
+rcu对链表操作的时候并不能保证链表的顺序访问和逆序访问看到的内容一致，可能顺序看到3个节点，逆序看到4个节点?
+rcu reader不允许block,switch to user-mode或者进入idle loop，对于preemptible如何处理？srcu_read_lock?CONFIG_PREEMPT_RCU
+
+list_rcu {
+	不操作节点内容，纯添加和删除节点，增删必须synchronized
+}

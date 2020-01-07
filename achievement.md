@@ -6,6 +6,7 @@
 - [System Performance Tuning, 2nd Edition, by Mike Loukides, Gian-Paolo D. Musumeci](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/)
 - [crash](https://people.redhat.com/anderson/)
 - [ubuntu kernel](https://wiki.ubuntu.com/Kernel)
+- [RCU](http://www.rdrop.com/users/paulmck/RCU/)
 - Leetcode
 - modify comment of propagate_mnt, attach_recursive_mnt
 - Understanding.the.Linux.Virtual.Memory.Manager
@@ -18,6 +19,10 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2020.01.04)https://www.kernel.org/doc/html/latest/RCU/rcu.html, https://www.kernel.org/doc/html/latest/RCU/listRCU.html
+- 2020.01.03)https://en.wikipedia.org/wiki/Read-copy-update
+- 2020.01.02)http://kernel.meizu.com/linux-workqueue.html
+- 2019.12.31)Documentation/core-api/workqueue.rst
 - 2019.12.30)ftrace.sched脚本开发(参数检查), ftrace.sched.event日志分析(firefox启动)
 - 2019.12.28)ftrace.sched脚本开发
 - 2019.12.27)kernel/Documentation/filesystems/sharedsubtree.txt
