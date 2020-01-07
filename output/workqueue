@@ -39,3 +39,6 @@ flush机制 {
 	work可以立即被调度，响应时间短
 	增加了一些内存消耗(task)，对于目前kgsl的unbound wq，仅增加一个pool+一个默认worker
 }
+
+cpu hotplug {
+}
