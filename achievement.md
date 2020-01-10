@@ -19,6 +19,7 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2020.01.09)https://www.kernel.org/doc/html/latest/locking/spinlocks.html
 - 2020.01.04)https://www.kernel.org/doc/html/latest/RCU/rcu.html, https://www.kernel.org/doc/html/latest/RCU/listRCU.html
 - 2020.01.03)https://en.wikipedia.org/wiki/Read-copy-update
 - 2020.01.02)http://kernel.meizu.com/linux-workqueue.html

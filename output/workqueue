@@ -42,3 +42,31 @@ flush机制 {
 
 cpu hotplug {
 }
+
+unbound_pool_hash管理所有的unbound pool，通过wq_pool_mutex同步，如果有重复的可以利用，直接pool->refcnt++
+
+wq->numa_pwq_tbl为什么要wq_pool_mutex和wq->mutex同时保护? {
+	原始的方案只需要wq->mutex
+	下面的patches引入了wq_pool_mutex {
+		commit 899a94fe15a8e928277ff0d0402c086fa67fe16f
+		commit da7f91b2e2c6176f95ca7b538d74dc70c5d11ded
+		commit d4d3e2579756e3a5f4fbf8eac211f0696e253bcd
+		commit a0111cf6710bd1b4145ef313d3f4772602af051b
+		commit f7142ed483f49f9108bea1be0c1afcd5d9098e05
+		commit 5b95e1af8d17d85a17728f6de7dbff538e6e3c49
+	}
+	虽然后续的提交没有指出，但是原始的方案应该是有问题的，从代码分析来看，wq的unbound相关属性是由pool和wq同时决定的，所以在修改的时候必须同时获取两把锁。
+	cpu online/offline会影响pool，并进一步影响wq的unbound属性
+
+	wq_cpumask_store的效果被cpu online完全覆盖了，具体CPU如何影响unbound属性需要继续调查
+	cpu online                           |          wq_cpumask_store
+	mutex_lock(&wq_pool_mutex);          |
+	update pool                          |
+	                                     |          mutex_lock(&wq->mutex);
+	                                     |          numa_pwq_tbl_install
+	                                     |          mutex_unlock(&wq->mutex);
+	mutex_lock(&wq->mutex);              |
+	numa_pwq_tbl_install                 |
+	mutex_unlock(&wq->mutex);            |
+	mutex_unlock(&wq_pool_mutex)         |
+}

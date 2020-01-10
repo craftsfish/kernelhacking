@@ -4,3 +4,10 @@ rcu reader不允许block,switch to user-mode或者进入idle loop，对于preemp
 list_rcu {
 	不操作节点内容，纯添加和删除节点，增删必须synchronized
 }
+
+RCU最原始的保护就是对一块内存区域的原子读写，synchronize_rcu接口用于确保rcu_assign_pointer的内容在该接口之后的读取都已经看到更新后的内容
+随后RCU可以扩展到指针指向的内存区域，对指针本身的读写是RCU操作，不直接修改指针指向的内存区域内容
+
+RCU变量如果需要被多个writer操作，必须在writer操作之前用其他同步机制锁住，这种情况下如果reader需要非stale的内容，也可以用额外的同步机制锁住
+RCU读的情况只适用于对stale内容不敏感
+RCU指向的内容的并发保护需要额外的同步机制
