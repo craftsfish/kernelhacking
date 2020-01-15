@@ -19,6 +19,7 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2020.01.15)https://www.kernel.org/doc/html/latest/admin-guide/security-bugs.html, https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures, http://kroah.com/log/blog/2018/02/05/linux-kernel-release-model/, https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
 - 2020.01.09)https://www.kernel.org/doc/html/latest/locking/spinlocks.html
 - 2020.01.04)https://www.kernel.org/doc/html/latest/RCU/rcu.html, https://www.kernel.org/doc/html/latest/RCU/listRCU.html
 - 2020.01.03)https://en.wikipedia.org/wiki/Read-copy-update
