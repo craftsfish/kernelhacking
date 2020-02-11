@@ -19,6 +19,8 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2020.02.11)Professional Linux Kernel Architecture, P605
+- 2020.02.10)Professional Linux Kernel Architecture, P571
 - 2020.02.07)Professional Linux Kernel Architecture, P565
 - 2020.01.15)https://www.kernel.org/doc/html/latest/admin-guide/security-bugs.html, https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures, http://kroah.com/log/blog/2018/02/05/linux-kernel-release-model/, https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html, https://lwn.net/Articles/771974/
 - 2020.01.09)https://www.kernel.org/doc/html/latest/locking/spinlocks.html
