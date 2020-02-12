@@ -1,8 +1,12 @@
+[00.misc]
 [00.misc]https://www.chiark.greenend.org.uk/~sgtatham/bugs.html
 [00.misc]http://www.catb.org/esr/faqs/smart-questions.html
+[01.linux]
 [01.linux]https://www.kernel.org/doc/html/latest/admin-guide/bug-hunting.html
+[01.linux]https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html
 [01.linux]https://www.kernel.org/doc/html/latest/admin-guide/reporting-bugs.html
 [01.linux]https://www.kernel.org/doc/html/latest/admin-guide/security-bugs.html#securitybugs
+[02.ubuntu]
 [02.ubuntu]http://packaging.ubuntu.com/html/communication.html
 [02.ubuntu]http://packaging.ubuntu.com/html/introduction-to-ubuntu-development.html
 [02.ubuntu]https://help.ubuntu.com/community/InternetRelayChat
@@ -20,3 +24,5 @@
 [02.ubuntu]https://wiki.ubuntu.com/UbuntuArchitecture
 [02.ubuntu]https://wiki.ubuntu.com/UbuntuBugDay
 [02.ubuntu]https://wiki.ubuntu.com/UbuntuDevelopers
+[03.android]
+[03.android]https://source.android.com/security/selinux/concepts
