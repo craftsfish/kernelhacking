@@ -1,0 +1,14 @@
+label
+	user:role:type:mls_level
+rule
+	allow domains types:classes permissions;
+	allow appdomain app_data_file:file rw_file_perms;
+	RULE_VARIANT SOURCE_TYPES TARGET_TYPES : CLASSES PERMISSIONS
+
+mac_permissions.xml -> seinfo -> seapp_contexts
+
+https://android.googlesource.com/platform/system/sepolicy/
+
+CONFIG_SECURITY_SELINUX=y
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
+adb shell su -c dmesg | grep denied | audit2allow -p out/target/product/BOARD/root/sepolicy
