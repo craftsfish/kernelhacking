@@ -1,7 +1,7 @@
 #!/bin/bash
 if (($(id -u) != 0)) ; then echo "please run as root"; exit ; fi
 
-target="firefox"
+target="tac"
 event=""
 filter=""
 
@@ -21,7 +21,7 @@ parameters=(
 	"0 sched_stat_runtime comm"
 	"0 sched_stat_sleep comm"
 	"0 sched_stat_wait comm"
-	"0 sched_switch prev_comm next_comm"
+	"1 sched_switch prev_comm next_comm"
 	"0 sched_wait_task comm"
 	"0 sched_wake_idle_without_ipi"
 	"0 sched_wakeup comm"
