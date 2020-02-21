@@ -1,0 +1,10 @@
+css, cgroup sussystem state
+
+cgroup_root，通过mount命令挂载对应的目录，可以有多个存在，但是subsystem只能同时属于某个cgroup_root
+cgroup表示一个目录，包括根目录
+一个process在每个cgroup_root内只能出现有且仅有一次。有一个css_set, 用于描述task的资源组合
+
+Version2 {
+	2 types of cgroup: domain cgroup, threaded group
+	threaded domain or thread root, 下面只能存放threaded group?
+}
