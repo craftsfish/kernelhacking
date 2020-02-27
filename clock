@@ -1,0 +1,6 @@
+clock source device
+clock event device: periodic or/and oneshot, trigger a event when hit
+tick device: a wrapper of clock event device, provide periodic tick event
+
+clock source device and clock event device can be one particular hardware
+tick device和HZ的关系?
