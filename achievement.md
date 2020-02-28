@@ -19,6 +19,8 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2020.02.28)Professional Linux Kernel Architecture, P984
+- 2020.02.27)Professional Linux Kernel Architecture, P952
 - 2020.02.26)Professional Linux Kernel Architecture, P937
 - 2020.02.25)Professional Linux Kernel Architecture, P893
 - 2020.02.24)Professional Linux Kernel Architecture, P893

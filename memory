@@ -26,3 +26,5 @@ Major page faults occur when data has to be read from disk, which is an expensiv
 
 node
 zone
+
+page cache同时存在于address space和lru list中？address space通过index查找指针，lru中通过list_head链接
