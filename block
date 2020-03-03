@@ -1,1 +1,3 @@
-bio和buffer的关系?
+bio和buffer的关系?目前看buffer read底层也是调用的bio，bio可以连续读多个block?并且可以合并？
+
+per_cpu buffer_head lru array
