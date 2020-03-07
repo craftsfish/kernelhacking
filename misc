@@ -54,3 +54,7 @@ cache {
 }
 
 block & char设备只是所有设备中的一部分
+
+
+#define EXP_1       1884        /* 1/exp(5sec/1min) as fixed-point */
+(1/math.exp(5/60.0)) * (2**11)
