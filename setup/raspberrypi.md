@@ -1,36 +1,18 @@
 # Kernel Hacking
 
-This project uses QEMU to emulate Raspberry Pi 2 on Ubuntu 14.04 and hacking the corresponding linux kernel.
+This project uses QEMU to emulate Raspberry Pi 2 on Ubuntu 18.04 and hacking the corresponding linux kernel.
 
 # Setup Environment
 ## 1. Prerequisite
-- Working Directory : $HOME/work/hacking
-- Remove pre-installed QEMU package with `sudo apt-get purge qemu`.
+- Working Directory : $HOME/work/pi
 
 ## 2. QEMU
-QEMU 2.8.0 is required to support Raspberry Pi 2.
-```
-wget http://download.qemu-project.org/qemu-2.8.0.tar.xz
-tar xvJf qemu-2.8.0.tar.xz
-cd qemu-2.8.0
-apt-get install libgtk-3-dev
-./configure --target-list=arm-softmmu
-make
-echo 'PATH="$PATH:$HOME/work/hacking/qemu-2.8.0/arm-softmmu"' >> $HOME/.bashrc
-echo 'export PATH' >> $HOME/.bashrc
-source $HOME/.bashrc
-```
-PS: make sure GTK support is opened before running `make`. You can check it by filter the result of configure.
-```
-./configure | grep GTK
-GTK support       yes (3.10.8)
-```
+sudo apt install qemu
 
 ## 3. Kernel Building
 ```
 git clone https://github.com/raspberrypi/tools
-echo 'PATH="$PATH:$HOME/work/hacking/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin"' >> $HOME/.bashrc
-echo 'export PATH' >> $HOME/.bashrc
+echo 'export PATH="$PATH:$HOME/work/pi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"' >> $HOME/.bashrc
 source $HOME/.bashrc
 
 git clone https://github.com/raspberrypi/linux
@@ -39,9 +21,9 @@ git checkout rpi-4.4.y
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
 ```
-PS: in case of 64 bit OS, use following command instead:
+PS: in case of 32 bit OS, use following command instead:
 ```
-echo 'PATH="$PATH:$HOME/work/hacking/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"' >> $HOME/.bashrc
+echo 'export PATH="$PATH:$HOME/work/pi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin"' >> $HOME/.bashrc
 ```
 
 ## 4. Raspbian

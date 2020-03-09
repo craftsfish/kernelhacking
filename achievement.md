@@ -19,7 +19,8 @@
 - The Art of Capacity Planning
 
 #LOG
-- 2020.03.06)Professional Linux Kernel Architecture, P1175
+- 2020.03.09)Professional Linux Kernel Architecture, P1223
+- 2020.03.06)Professional Linux Kernel Architecture, P1223
 - 2020.03.05)Professional Linux Kernel Architecture, P1175
 - 2020.03.04)Professional Linux Kernel Architecture, P1048
 - 2020.03.03)Professional Linux Kernel Architecture, P1034
