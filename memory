@@ -28,3 +28,8 @@ node
 zone
 
 page cache同时存在于address space和lru list中？address space通过index查找指针，lru中通过list_head链接
+
+MAP_PRIVATE: 映射文件，但是可以独立修改，不能被写回
+MAP_ANONYMOUS: 不与任何文件关联
+
+所有的可被回收的page(file mapped, annonymous)都被维护在zone->active/inactive list里面，需要回收的时候对他们进行扫描。也就是说可回收内存是可以被存储到block设备的？

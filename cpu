@@ -1,0 +1,3 @@
+struct pt_regs
+struct thread_struct
+struct thread_info

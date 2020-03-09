@@ -1,2 +1,6 @@
 ACL: access control lists
 DAC: discretionary access control
+swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
+AVC: Access Vector Cache
+MAC: mandatory access control
+MLS: multilevel security
