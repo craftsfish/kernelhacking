@@ -18,8 +18,8 @@ source $HOME/.bashrc
 git clone https://github.com/raspberrypi/linux
 cd linux
 git checkout rpi-4.4.y
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j $(getconf _NPROCESSORS_ONLN) bcm2709_defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j $(getconf _NPROCESSORS_ONLN) zImage modules dtbs
 ```
 PS: in case of 32 bit OS, use following command instead:
 ```

@@ -15,7 +15,7 @@ Load existing .config and update it as following:
 * Symbol: KERNEL_MODE_NEON [=n]
 
 ```
-make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j $(getconf _NPROCESSORS_ONLN) zImage modules dtbs
 ```
 
 ## Emulating Kernel with Debug Option
