@@ -1,5 +1,6 @@
 qemu-img create root.img 32G
 qemu-system-x86_64 -m 2G -smp $(getconf _NPROCESSORS_ONLN) -hda root.img -boot d -cdrom ./ubuntu-18.04.4-server-amd64.iso
+qemu-system-x86_64 -m 2G -smp $(getconf _NPROCESSORS_ONLN) -net user,hostfwd=tcp::2222-:22 -net nic -hda root.img
 qemu-system-x86_64 -m 4G -smp $(getconf _NPROCESSORS_ONLN) -vga virtio -show-cursor -usb -device usb-tablet -hda root.img -boot d -cdrom ./linuxmint-19.3-xfce-64bit.iso
 qemu-system-x86_64 -m 2G -smp $(getconf _NPROCESSORS_ONLN) -vga virtio -show-cursor -usb -device usb-tablet -enable-kvm -accel hvf -cpu host -hda root.img -boot d -cdrom ./linuxmint-19.3-xfce-64bit.iso
 
