@@ -19,6 +19,7 @@
 - The Art of Capacity Planning
 
 #LOG
+- 2020.03.12)linux/Documentation/trace/ftrace.rst, 2997
 - 2020.03.09)Professional Linux Kernel Architecture, P1223
 - 2020.03.06)Professional Linux Kernel Architecture, P1223
 - 2020.03.05)Professional Linux Kernel Architecture, P1175

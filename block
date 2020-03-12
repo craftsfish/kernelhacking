@@ -1,3 +1,4 @@
 bio和buffer的关系?目前看buffer read底层也是调用的bio，bio可以连续读多个block?并且可以合并？
+bio负责读取物理上面连续的block，将内容存储到bio_vec，每个bio_vec元素是物理上连续的内存
 
 per_cpu buffer_head lru array
