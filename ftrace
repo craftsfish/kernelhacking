@@ -1,0 +1,28 @@
+cd /sys/kernel/debug/tracing
+cat available_events | grep do_sys_open
+cat per_cpu/cpu0/trace
+================================================================================
+echo "xt_check_match" > set_ftrace_filter
+echo function > current_tracer
+echo "1" > options/func_stack_trace
+echo "1" > tracing_on ; iptables -A INPUT -m owner --uid-owner 10266 -m state --state ESTABLISHED -p all -m hashlimit --hashlimit-name BRADYBOUND --hashlimit-above 300kb/s -j DROP ; cat trace ; echo "0" > tracing_on
+
+同时查看调用栈和调用关系
+root@vMint:/sys/kernel/debug/tracing# cat set_ftrace_filter 
+#### all functions enabled ####
+ext4_readpages:stacktrace:unlimited
+root@vMint:/sys/kernel/debug/tracing# cat set_graph_function 
+ext4_readpages
+root@vMint:/sys/kernel/debug/tracing# cat current_tracer 
+function_graph
+
+单独查看调用栈
+root@vMint:/sys/kernel/debug/tracing# cat set_ftrace_filter 
+ext4_readpages
+ext4_readpages:stacktrace:unlimited
+root@vMint:/sys/kernel/debug/tracing# cat current_tracer 
+function
+或者
+echo "xt_check_match" > set_ftrace_filter
+echo function > current_tracer
+echo "1" > options/func_stack_trace
