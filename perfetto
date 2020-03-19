@@ -1,0 +1,8 @@
+git clone https://android.googlesource.com/platform/external/perfetto/
+tools/install-build-deps --ui
+tools/gn args out/host
+```
+	is_debug = false
+	cc_wrapper = "ccache"                 # Optionally speed repeated builds with ccache
+```
+tools/ninja -C out/host ui

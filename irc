@@ -1,0 +1,6 @@
+sudo apt install weechat weechat-doc
+/usr/share/doc/weechat-doc/html/weechat_quickstart.en.html
+
+weechat
+/server add freenode chat.freenode.net
+/set irc.server.freenode.nicks "lcj,lcj2,lcj3,lcj4,lcj5"
