@@ -54,7 +54,7 @@ for ps in "${parameters[@]}"; do
 			if ((i>2)) ; then
 				filter="${filter} || "
 			fi
-			filter="${filter}$p == $target"
+			filter="${filter}$p == '$target'"
 		fi
 		((i++))
 	done
