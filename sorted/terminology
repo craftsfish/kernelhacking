@@ -5,3 +5,11 @@ MAC: mandatory access control
 MLS: multilevel security
 swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
 PCL: Performance Counters for Linux
+Android.GPSU: Google Play system updates. End-user facing name for Mainline updates (i.e., as seen in customer UX). GPSUs use modular system components (modules) to update Android devices outside of the normal Android release cycle via an over-the-air (OTA) mechanism.
+Android.Modules: OS components (e.g., Documents UI, media).
+Android.Trains: Set of modules that are updated at the same time (atomically).
+Android.Release stages: Steps a train goes through before it lands on all devices.
+Android.Module qualification: When developer teams “nominate” their modules to join a train, each module is tested on its own. When a module passes those tests, they advance to train qualification.
+Android.Train qualification: Where multiple modules are tested together, which includes more extensive testing, such as integration tests and OEM-device testing.
+Android.Google testing: Google tests train in the Google GPSU Testing Lab, on Pixel devices and partner-provided devices
+Android.Partner testing: Google shares the release candidate train with OEMs, who can perform their own internal testing.

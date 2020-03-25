@@ -26,3 +26,10 @@ function
 echo "xt_check_match" > set_ftrace_filter
 echo function > current_tracer
 echo "1" > options/func_stack_trace
+
+
+kprobe
+cat /sys/kernel/debug/kprobes/list
+sudo cat /boot/System.map-5.0.0-32-generic | grep iput
+echo 'p:myprobe iput' > /sys/kernel/debug/tracing/kprobe_events
+echo > /sys/kernel/debug/tracing/kprobe_events
