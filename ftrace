@@ -31,5 +31,9 @@ echo "1" > options/func_stack_trace
 kprobe
 cat /sys/kernel/debug/kprobes/list
 sudo cat /boot/System.map-5.0.0-32-generic | grep iput
-echo 'p:myprobe iput' > /sys/kernel/debug/tracing/kprobe_events
-echo > /sys/kernel/debug/tracing/kprobe_events
+
+echo 'p:myprobe process_one_work' > /sys/kernel/debug/tracing/kprobe_events
+echo 'r:myretprobe process_one_work' >> /sys/kernel/debug/tracing/kprobe_events
+echo 'enable_event:kmem:kfree' > /sys/kernel/debug/tracing/events/kprobes/myprobe/trigger
+echo 'disable_event:kmem:kfree' > /sys/kernel/debug/tracing/events/kprobes/myretprobe/trigger
+echo 'stacktrace' > /sys/kernel/debug/tracing/events/kmem/kfree/trigger

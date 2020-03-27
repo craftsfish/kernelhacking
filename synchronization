@@ -1,1 +1,4 @@
 [Understanding.the.Linux.Kernel.3rd.Edition]Assembly language instructions that make zero or one aligned memory access are atomic.
+
+softirq is serialized on a CPU so as tasklet, softirq can run concurrently on multiple CPUs.
+tasklet cannot run concurrently on multiple CPUs.
