@@ -1,15 +1,19 @@
 ACL: access control lists
+Android.Google testing: Google tests train in the Google GPSU Testing Lab, on Pixel devices and partner-provided devices
+Android.GPSU: Google Play system updates. End-user facing name for Mainline updates (i.e., as seen in customer UX). GPSUs use modular system components (modules) to update Android devices outside of the normal Android release cycle via an over-the-air (OTA) mechanism.
+Android.Module qualification: When developer teams “nominate” their modules to join a train, each module is tested on its own. When a module passes those tests, they advance to train qualification.
+Android.Modules: OS components (e.g., Documents UI, media).
+Android.Partner testing: Google shares the release candidate train with OEMs, who can perform their own internal testing.
+Android.Release stages: Steps a train goes through before it lands on all devices.
+Android.Train qualification: Where multiple modules are tested together, which includes more extensive testing, such as integration tests and OEM-device testing.
+Android.Trains: Set of modules that are updated at the same time (atomically).
 AVC: Access Vector Cache
 DAC: discretionary access control
 MAC: mandatory access control
 MLS: multilevel security
-swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
 PCL: Performance Counters for Linux
-Android.GPSU: Google Play system updates. End-user facing name for Mainline updates (i.e., as seen in customer UX). GPSUs use modular system components (modules) to update Android devices outside of the normal Android release cycle via an over-the-air (OTA) mechanism.
-Android.Modules: OS components (e.g., Documents UI, media).
-Android.Trains: Set of modules that are updated at the same time (atomically).
-Android.Release stages: Steps a train goes through before it lands on all devices.
-Android.Module qualification: When developer teams “nominate” their modules to join a train, each module is tested on its own. When a module passes those tests, they advance to train qualification.
-Android.Train qualification: Where multiple modules are tested together, which includes more extensive testing, such as integration tests and OEM-device testing.
-Android.Google testing: Google tests train in the Google GPSU Testing Lab, on Pixel devices and partner-provided devices
-Android.Partner testing: Google shares the release candidate train with OEMs, who can perform their own internal testing.
+Qualcomm.aDSP: is the Application DSP, which allows the device to process simple sets of data on low power, without having to wake up the Application processor (AP). The aDSP can run custom applications to perform simple tasks, like hotword detection for voice recognition, sensor data aggregation from accelerometer, gyroscope etc. and is also utilized for low power music playback nowadays.
+Qualcomm.cDSP: compute
+Qualcomm.mDSP: is the Modem DSP, which allows the modem to outsource processing.
+Qualcomm.sDSP: sensor
+swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.

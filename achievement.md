@@ -4,7 +4,6 @@
 - [Available instruction-level parallelism for superscalar and superpipelined machines](https://dl.acm.org/citation.cfm?id=68207)
 - [Solutions to Introduction to Algorithms Third Edition](https://walkccc.github.io/CLRS/)
 - [System Performance Tuning, 2nd Edition, by Mike Loukides, Gian-Paolo D. Musumeci](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/)
-- [crash](https://people.redhat.com/anderson/)
 - [ubuntu kernel](https://wiki.ubuntu.com/Kernel)
 - [RCU](http://www.rdrop.com/users/paulmck/RCU/)
 - Leetcode
@@ -17,6 +16,10 @@
 - ubuntu kernel development
 - http://www.brendangregg.com/overview.html
 - The Art of Capacity Planning
+- cgroup
+- ftrace
+- [crash](https://people.redhat.com/anderson/)
+- Perfetto
 
 #LOG
 - 2020.03.12)linux/Documentation/trace/ftrace.rst, linux/Documentation/trace/kprobetrace.rst

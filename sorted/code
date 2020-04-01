@@ -1,5 +1,5 @@
-follow_page_mask: 通过vma查找user virtual address对应的page descriptor 
 (atomic, acquire barrier)test_and_set_bit_lock: Set a bit and return its old value, for lock
+follow_page_mask: 通过vma查找user virtual address对应的page descriptor 
+pmd_lockptr: 通过一个pmd_t entry找到所在page的page table lock
 pmd_populate: 装配一个page table到pmd_t entry(item)
 pmd_to_page: 通过一个pmd_t entry找到其所在的page的descriptor，先通过pmd_t的地址，找到pmd第一个entry的地址，通过该虚拟地址转换成page descriptor
-pmd_lockptr: 通过一个pmd_t entry找到所在page的page table lock
