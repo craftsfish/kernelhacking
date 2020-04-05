@@ -22,6 +22,7 @@
 - Perfetto
 
 #LOG
+- 2020.04.05)Operating Systems, Internals and Design Principles, P57
 - 2020.03.12)linux/Documentation/trace/ftrace.rst, linux/Documentation/trace/kprobetrace.rst
 - 2020.03.09)Professional Linux Kernel Architecture, P1223
 - 2020.03.06)Professional Linux Kernel Architecture, P1223
