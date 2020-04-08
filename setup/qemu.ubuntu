@@ -17,3 +17,5 @@ https://www.ubuntubuzz.com/2016/05/how-to-install-kvm-with-gui-virt-manager-in-u
 https://graspingtech.com/ubuntu-desktop-18.04-virtual-machine-macos-qemu/
 https://askubuntu.com/questions/884534/how-to-run-ubuntu-desktop-on-qemu
 https://smdaudhilbe.wordpress.com/2013/04/11/how-to-install-ubuntu-inside-qemu-emulator-and-make-a-virtual-machine/
+
+cd $HOME/work/ubuntu/linux ; qemu-system-x86_64 -m 1G -smp 6 -net nic -net user,hostfwd=tcp:127.0.0.1:2222-:22 -kernel /boot/vmlinuz-5.6.0-rc6-custom -append "earlyprintk loglevel=10 console=ttyS0,115200 root=/dev/sda1" -initrd /boot/initrd.img-5.6.0-rc6-custom -serial stdio -hda ../root.img -hdb ../extend.img
