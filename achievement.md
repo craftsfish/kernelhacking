@@ -13,10 +13,10 @@
 - http://www.brendangregg.com/overview.html
 - The Art of Capacity Planning
 - [crash](https://people.redhat.com/anderson/)
-- Operating System Concepts; Operating Systems, Internals and Design Principles
+- Operating System Concepts, 10th Edition; Operating Systems, Internals and Design Principles
 
 #LOG
-- 2020.04.13)Operating System Concepts, P27
+- 2020.04.13)Operating System Concepts, 10th Edition, P27
 - 2020.04.09)Operating System Concepts, P24
 - 2020.04.08)Operating System Concepts, P11
 - 2020.04.05)Operating Systems, Internals and Design Principles, P57
