@@ -8,18 +8,12 @@
 - [RCU](http://www.rdrop.com/users/paulmck/RCU/)
 - Leetcode
 - modify comment of propagate_mnt, attach_recursive_mnt
-- Understanding.the.Linux.Virtual.Memory.Manager
-- perf and flame graph with firefox
-- capture sys call time of a particular app 
-- perf, cgroup, bpf, flame grpah
+- perf, cgroup, bpf, flame grpah, Perfetto
 - redhat, microsoft, alibaba, opensuse, amazon
-- ubuntu kernel development
 - http://www.brendangregg.com/overview.html
 - The Art of Capacity Planning
-- cgroup
-- ftrace
 - [crash](https://people.redhat.com/anderson/)
-- Perfetto
+- Operating System Concepts; Operating Systems, Internals and Design Principles
 
 #LOG
 - 2020.04.13)Operating System Concepts, P27
