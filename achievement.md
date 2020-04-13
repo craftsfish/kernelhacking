@@ -22,6 +22,8 @@
 - Perfetto
 
 #LOG
+- 2020.04.13)Operating System Concepts, P27
+- 2020.04.09)Operating System Concepts, P24
 - 2020.04.08)Operating System Concepts, P11
 - 2020.04.05)Operating Systems, Internals and Design Principles, P57
 - 2020.03.09)Operating System Concepts, Pvii
