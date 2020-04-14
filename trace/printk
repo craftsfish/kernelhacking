@@ -1,0 +1,22 @@
+#0  univ8250_console_write (co=0xffffffff828367c0 <univ8250_console>, 
+    s=0xffffffff838cbbc0 <text> "[  133.007451] systemd-journald[430]: Failed to send stream file descriptor to service manager: Connection refused\n\n +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD "..., count=115) at drivers/tty/serial/8250/8250_core.c:583
+#1  0xffffffff81126876 in call_console_drivers (ext_text=<optimized out>, text=<optimized out>, len=<optimized out>, ext_len=<optimized out>) at kernel/printk/printk.c:1791
+#2  console_unlock () at kernel/printk/printk.c:2473
+#3  0xffffffff811287cd in vprintk_emit (facility=<optimized out>, level=<optimized out>, dict=<optimized out>, dictlen=<optimized out>, fmt=<optimized out>, args=0x1 <fixed_percpu_data+1>)
+    at kernel/printk/printk.c:1996
+#4  0xffffffff811290ee in devkmsg_emit (facility=<optimized out>, level=<optimized out>, fmt=<optimized out>, fmt=<optimized out>) at kernel/printk/printk.c:799
+#5  0xffffffff81128b95 in devkmsg_write (iocb=<optimized out>, from=0xffffc90000207de8) at kernel/printk/printk.c:863
+#6  0xffffffff8132c65f in call_write_iter (file=<optimized out>, iter=<optimized out>, kio=<optimized out>) at ./include/linux/fs.h:1903
+#7  do_iter_readv_writev (filp=<optimized out>, iter=<optimized out>, ppos=0xffffc90000207ee0, type=<optimized out>, flags=<optimized out>) at fs/read_write.c:693
+#8  0xffffffff8132e65d in do_iter_write (file=0xffff88807eb61200, iter=0xffffc90000207de8, pos=0xffffc90000207ee0, flags=0) at fs/read_write.c:998
+#9  0xffffffff8132e842 in vfs_writev (file=0xffff88807eb61200, vec=<optimized out>, vlen=<optimized out>, pos=0xffffc90000207ee0, flags=0) at fs/read_write.c:1071
+#10 0xffffffff8132e9b4 in do_writev (fd=<optimized out>, vec=0x7ffc47708010, vlen=5, flags=0) at fs/read_write.c:1114
+#11 0xffffffff8132ea1c in __do_sys_writev (vlen=<optimized out>, vec=<optimized out>, fd=<optimized out>) at fs/read_write.c:1187
+#12 __se_sys_writev (vlen=<optimized out>, vec=<optimized out>, fd=<optimized out>) at fs/read_write.c:1184
+#13 __x64_sys_writev (regs=<optimized out>) at fs/read_write.c:1184
+#14 0xffffffff810048bf in do_syscall_64 (nr=<optimized out>, regs=0xffffc90000207f58) at arch/x86/entry/common.c:294
+#15 0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+#16 0x000000000000002b in fixed_percpu_data ()
+#17 0x00007ffc47708050 in ?? ()
+#18 0x00007ffc47707fd0 in ?? ()
+#19 0x0000000000000005 in fixed_percpu_data ()
