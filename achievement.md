@@ -16,6 +16,7 @@
 - Operating System Concepts, 10th Edition; Operating Systems, Internals and Design Principles
 
 #LOG
+- 2020.04.15)Operating System Concepts, 10th Edition, P55
 - 2020.04.13)Operating System Concepts, 10th Edition, P27
 - 2020.04.09)Operating System Concepts, P24
 - 2020.04.08)Operating System Concepts, P11
