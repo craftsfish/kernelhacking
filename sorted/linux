@@ -2,5 +2,5 @@ https://www.kernel.org/doc/html/latest/admin-guide/bug-hunting.html
 https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html
 https://www.kernel.org/doc/html/latest/admin-guide/reporting-bugs.html
 https://www.kernel.org/doc/html/latest/admin-guide/security-bugs.html#securitybugs
-linux/Documentation/trace/ftrace.rst
-linux/Documentation/trace/kprobetrace.rst
+Documentation/trace/ftrace.rst
+Documentation/trace/kprobetrace.rst

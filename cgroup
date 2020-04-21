@@ -1,10 +1,33 @@
+多个subsystem构成一个hierarchy，每个节点都是一个cgroup。
+系统内可以存在多个hierarchy，一个subsystem只能隶属于一个hierarchy。
+
 css, cgroup sussystem state
 
 cgroup_root，通过mount命令挂载对应的目录，可以有多个存在，但是subsystem只能同时属于某个cgroup_root
 cgroup表示一个目录，包括根目录
-一个process在每个cgroup_root内只能出现有且仅有一次。有一个css_set, 用于描述task的资源组合
 
-Version2 {
-	2 types of cgroup: domain cgroup, threaded group
-	threaded domain or thread root, 下面只能存放threaded group?
+
+一个process在每个cgroup_root内只能出现有且仅有一次。有一个css_set, 用于描述task的资源组合，那么一个process应该可以关联多个cgroup？代码结构是如何实现的？ {
+	Ref: At any one time there may be multiple active hierarchies of task cgroups. Each hierarchy is a partition of all tasks in the system.
+}
+
+struct css_set {
+	由于fork的时候，新的task会继承parent的cgroup属性，parent和task都引用该结构，可以减少空间的使用并加快fork速度
+}
+
+struct cgroup {
+	struct cgroup_root *root;
+}
+
+struct cgrp_cset_link {
+	/* the cgroup and css_set this link associates */
+	struct cgroup		*cgrp;
+	struct css_set		*cset;
+
+	/* list of cgrp_cset_links anchored at cgrp->cset_links */
+	struct list_head	cset_link;
+
+	/* list of cgrp_cset_links anchored at css_set->cgrp_links */
+	struct list_head	cgrp_link;
+	维护cgroup和cset的多对多(M:N)关系
 }
