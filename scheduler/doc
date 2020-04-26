@@ -40,7 +40,11 @@ sched_stat_runtime: 执行 -> switch的时间
 
 NICE_0_LOAD默认task的load值,标准为1024,在64位机器上为了提高精度扩展了10位,通过scale_load和scale_load_down实现转换,struct load_weight结构中存储的weight都是scale之后的值
 load = time * scale_frequency * weight
-util = time * scale_frequency * scale_cpu
 runnable_load
+util = time * scale_frequency * scale_cpu (util不考虑权重，但是考虑CPU之间的差异)
 LOAD_AVG_MAX计算平均值的时间长度ns，由于该时间无法完整的分割成n个取样周期，因此计算平均值的时候，除以(LOAD_AVG_MAX - 1024 + sa->period_contrib)
 只要进入rq就计算为load，计算util的时候要看是否running
+
+不同CPU在不同的frequency下的capacity如何校准？
+
+struct sched_cluster用来描述一组具有相同能效的CPU
