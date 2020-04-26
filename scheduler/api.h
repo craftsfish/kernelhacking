@@ -68,16 +68,14 @@ int __update_load_avg_cfs_rq(u64 now, struct cfs_rq *cfs_rq)
 }
 
 /* 更新se，se所隶属的cfs_rq，cfs_rq所隶属的task_group的负载信息 */
-static inline void update_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se, int flags)
+void update_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se, int flags)
 
 /* 	1: 计算se所管理的cfs_rq在其所隶属的task_group中的load, runnable信息
 	2: 以此作为se本身的weight和runnable_weight信息
-	3: 更新se所隶属的cfs_rq的负载信息
-*/
-static void update_cfs_group(struct sched_entity *se)
+	3: 更新se所隶属的cfs_rq的负载信息 */
+void update_cfs_group(struct sched_entity *se)
 
-static void
-entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued) {
+void entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued) {
 	update_load_avg(cfs_rq, curr, UPDATE_TG);
 	update_cfs_group(curr);
 }
