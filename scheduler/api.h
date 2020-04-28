@@ -10,9 +10,16 @@ struct sched_avg {
 }
 
 struct cfs_rq {
-	struct load_weight	load;
-	unsigned long		runnable_weight;
-	struct sched_avg	avg;
+	struct load_weight	load; /* 1: 汇集se->load, 随enqueue/dequeue变化, account_entity_dequeue */
+	unsigned long		runnable_weight; /* 2: 同1, dequeue_runnable_load_avg */
+	struct sched_avg	avg; {
+		u64				load_sum; /* 5: 汇集了runnable & blocked的se_weight(se) * se->avg.load_sum */
+		u64				runnable_load_sum; /* 3: 同2 */
+		u32				util_sum;
+		unsigned long			load_avg; /* 6: 同5, se->avg.load_avg */
+		unsigned long			runnable_load_avg; /* 4: 同2 */
+		unsigned long			util_avg;
+	}
 }
 
 struct sched_entity {
@@ -79,3 +86,5 @@ void entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued) {
 	update_load_avg(cfs_rq, curr, UPDATE_TG);
 	update_cfs_group(curr);
 }
+
+一般来说cfs_rq及其管理的sched_entity是相对稳定的，所以只需要在enqueue_entity/dequeue_entity把sched_entity的weight和runnable_weight分别通过account_entity_enqueue/dequeue和enqueue/dequeue_runnable_load_avg继承到所隶属的cfs_rq上即可。entity_tick时只需要直接调用update_load_avg来更新相关负载信息。
