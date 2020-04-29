@@ -74,7 +74,12 @@ int __update_load_avg_cfs_rq(u64 now, struct cfs_rq *cfs_rq)
 	}
 }
 
-/* 更新se，se所隶属的cfs_rq，cfs_rq所隶属的task_group的负载信息 */
+/* 更新se，se所隶属的cfs_rq，cfs_rq所隶属的task_group的负载信息
+	为什么要这么做？不能将se的负载直接累加到cfs_rq上面吗？
+	cfs_rq管理了大量的se，如果采用累加的方式，每次需要对所有的se更新负载，然后汇总
+	现在的做法是只更新running的se负载或者在se状态发生状态的时候更新负载，这就导致了具体的se的负载更新并不及时，也就无法汇总
+	cfs_rq本身的负载状况并不会因为running的se变化而变化，除非se被enqueue/dequeue到cfs_rq上面
+	这就为直接更新cfs_rq的负载提供了快捷的计算方式 */
 void update_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se, int flags)
 
 /* 	1: 计算se所管理的cfs_rq在其所隶属的task_group中的load, runnable信息
