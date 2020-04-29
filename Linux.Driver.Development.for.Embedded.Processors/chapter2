@@ -20,3 +20,123 @@ Linux设备和驱动模型
 
 总线驱动：
 	每个内核支持的总线都有一个对应的通用总线驱动。设备和处理器之间通过总线连接。为了统一设备驱动模型，对于例外情况，系统提供了抽象的"platform"总线。
+	总线驱动分配一个bus_type结构，然后把这个结构注册到内核的相应列表中。bus_type结构体定义在include/linux/device.h中，用来表示一个具体类型(USB，PCI，I2C等)的总线。通过调用bus_register就可以把一个具体的bus_type注册到系统中。bus_type的定义如下：
+	struct bus_type {
+		const char *name;
+		const char *dev_name;
+		struct device *dev_root;
+		struct device_attribute *dev_attrs;
+		const struct attribute_group **bus_groups;
+		const struct attribute_group **dev_groups;
+		const struct attribute_group **drv_groups;
+		int (*match)(struct device *dev, struct device_driver *drv);
+		int (*uevent)(struct device *dev, struct kobj_uevent_env *env);
+		int (*probe)(struct device *dev);
+		int (*remove)(struct device *dev);
+		void (*shutdown)(struct device *dev);
+		int (*online)(struct device *dev);
+		int (*offline)(struct device *dev);
+		int (*suspend)(struct device *dev, pm_message_t state);
+		int (*resume)(struct device *dev);
+		const struct dev_pm_ops *pm;
+		struct iommu_ops *iommu_ops;
+		struct subsys_private *p;
+		struct lock_class_key lock_key;
+	};
+
+	下面的代码截取自platform驱动(drivers/base/platform.c)，可以作为bus_type结构初始化和注册的一个例子：
+struct bus_type platform_bus_type = {
+.name = "platform",
+.dev_groups = platform_dev_groups,
+.match = platform_match,
+.uevent = platform_uevent,
+.pm = &platform_dev_pm_ops,
+};
+EXPORT_SYMBOL_GPL(platform_bus_type);
+int __init platform_bus_init(void)
+{
+int error;
+early_platform_cleanup();
+error = device_register(&platform_bus);
+if (error)
+return error;
+error = bus_register(&platform_bus_type);
+if (error)
+device_unregister(&platform_bus);
+return error;
+}
+	bus_type结构中的成员变量p指向subsys_private结构，该结构定义在drivers/base/base.h：
+struct subsys_private {
+struct kset subsys;
+struct kset *devices_kset;
+struct list_head interfaces;
+struct mutex mutex;
+struct kset *drivers_kset;
+struct klist klist_devices;
+struct klist klist_drivers;
+struct blocking_notifier_head bus_notifier;
+unsigned int drivers_autoprobe:1;
+struct bus_type *bus;
+struct kset glue_dirs;
+struct class *class;
+};
+	subsys_private结构中的klist_devices维护了所有关联到这一类型的总线上的设备。系统初始化或者设备热插拔的时候总线控制器驱动会扫描总线并进一步调用device_register函数来更新该列表。
+	subsys_private结构中的klist_drivers则包含了所有能够处理该总线设备的驱动程序。当驱动初始化的时候通过调用driver_register来更新该列表。
+	当新设备插入系统时，总线控制器驱动会侦测到设备并调用device_register。被注册的设备的父设备指向总线控制器。总线上的驱动会被依次遍历，查找是否有合适的驱动来支持该设备。bus_type结构中的match函数就是用来检查一个特定的驱动是否支持给定的设备。当一个合适的驱动被找到后，device结构的driver成员变量就会被设置为相应的驱动。
+
+	当一个内核模块被插入内核并通过driver_register注册了新的驱动后，系统会遍历对应总线类型上的所有设备，通过match函数来确定设备是否能被该驱动所支持。如果查找到这样的匹配，设备就会和该驱动关联并调用驱动的probe函数，这就是我们俗称的绑定。
+	
+	什么时候驱动会尝试去绑定一个设备呢？
+	1：驱动注册的时候(如果设备已经存在)
+	2: 新设备创建的时候(如果驱动已经注册到系统中)
+
+	总的来说，总线驱动负责在系统中注册总线类型，然后：
+	1：允许总线控制器驱动的注册，该驱动的主要职责包括发现设备，配置资源
+	2：允许设备驱动的注册
+	3：负责设备与驱动的匹配
+
+	总线控制器驱动
+	对于一个特定的总线类型，系统中可能存在来自不同供应商提供的多个控制器。这些不同的控制器需要各自对应的总线控制器驱动。和其他驱动一样，总线控制器驱动通过driver_register函数将自己注册到对应的总线上并负载管理和维护子设备。大多数时候，在系统初始化阶段，通过of_platform_populate函数，总线控制器设备会自动被发现。of_platform_populate通过遍历设备树发现并注册这些设备到platform总线上。
+
+	设备驱动
+	设备驱动通过调用driver_register和总线关联。然后系统会尝试将新注册的驱动与设备绑定。当一个与驱动相匹配的设备被发现后，驱动的proble函数会被调用，设备相关的配置信息可以通过设备树获取。
+	设备驱动负责初始化和注册device_driver(定义在include/linux/device.h)到设备子系统。device_driver的定义如下：
+	struct device_driver {
+const char *name;
+struct bus_type *bus;
+struct module *owner;
+const char *mod_name;
+bool suppress_bind_attrs;
+const struct of_device_id *of_match_table;
+const struct acpi_device_id *acpi_match_table;
+int (*probe) (struct device *dev);
+int (*remove) (struct device *dev);
+void (*shutdown) (struct device *dev);
+int (*suspend) (struct device *dev, pm_message_t state);
+int (*resume) (struct device *dev);
+const struct attribute_group **groups;
+const struct dev_pm_ops *pm;
+struct driver_private *p;
+};
+	bus指向bus_type结构，用来标记驱动注册到哪个总线上面。
+	probe是一个回调函数，驱动支持的设备被发现的时候会调用该函数。驱动负责初始化自身以及具体的设备。
+	remove函数用来将设备和驱动解绑。在设备移除，驱动卸载或者系统关闭的时候会被调用。
+
+
+	设备树
+	开放固件设备树，简称设备树，是一种用于描述硬件的语言。操作系统通过对设备树的读取可以避免在代码层面引入过多的硬件细节。
+	
+	从结构上看，设备树是由带名字的节点组成的，节点可以包含任意多个属性，属性拥有名字并且可以包含任何数据。除了树形结构之外，设备树还提供了为任意两个节点创建链接的机制。
+
+	Binding定义了具体的硬件特性的描述规范，包括数据总线，中断，GPIO，外设。对于硬件的描述应该尽可能的通过binding来实现以实现代码重用。属性和名字都是纯文本，可以通过扩展现有的binding来穿件或定义新的节点和属性。
+
+	设备树在内核代码中通过一组文本文件描述。在arch/arm/boot/dts/中可以找到两种文件类型:
+	*.dtsi文件是设备树的头文件。用来描述多个平台共用的硬件结构并被包含在相应平台的dts文件中。
+	*.dts文件是设备树源文件。他们描述了一个具体平台的硬件信息。
+
+	Linux中使用设备树主要有3个目的：
+	1：平台区分：内核会通过设备树中的信息来识别机器类型。理想情况下，内核代码应该与具体的平台无关，平台的具体细节统一通过设备树描述。现实情况并没有那么完美，内核必须在启动早期识别出具体的机型，并执行相应机型的特有的代码。大多数时候，机型并不重要，内核根据机型的CPU或者Soc来选择执行相应的代码。拿ARM为例，arch/arm/kernel/setup.c中的setup_arch函数会调用setup_machine_fdt()(位于arch/arm/kernel/devtree.c)。该函数会查找machine_desc表并选择与设备树最为匹配的machine_des。通过比较设备树根节点的compatible属性和machine_desc(定义在arch/arm/include/asm/mach/arch.h)的dt_compat列表来选择最佳匹配。
+
+	compatible属性包含了以机器名开始的一组有序字符串。arch/arm/boot/dts目录下的sama5d2.dtsi包含了如下的compatible属性:
+	compatible = "atmel,sama5d2";
+	
