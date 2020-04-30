@@ -17,7 +17,7 @@
 - Linux Driver Development for Embedded Processors
 
 #LOG
-- 2020.04.29)Linux Driver Development for Embedded Processors, P43
+- 2020.04.29)Linux Driver Development for Embedded Processors, P80
 - 2020.04.15)Operating System Concepts, 10th Edition, P55
 - 2020.04.13)Operating System Concepts, 10th Edition, P27
 - 2020.04.09)Operating System Concepts, P24

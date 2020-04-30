@@ -140,3 +140,60 @@ struct driver_private *p;
 	compatible属性包含了以机器名开始的一组有序字符串。arch/arm/boot/dts目录下的sama5d2.dtsi包含了如下的compatible属性:
 	compatible = "atmel,sama5d2";
 	
+	在ARM机型上，对于每一个machine_des，内核会检查其dt_compat列表中的条目是否包含了compatible属性。如果有的话，对应的machine_desc就会作为决定目标机型的一个候选。以arch/arm/mach-at91/sama5.c文件中的sama5_alt_dt_board_compat[]和DT_MACHINE_START为例。他们被用来组装成一个machine_desc结构.
+	static const char *const sama5_alt_dt_board_compat[] __initconst = {
+"atmel,sama5d2",
+"atmel,sama5d4",
+NULL
+};
+DT_MACHINE_START(sama5_alt_dt, "Atmel SAMA5")
+/* Maintainer: Atmel */
+.init_machine = sama5_dt_device_init,
+.dt_compat = sama5_alt_dt_board_compat,
+.l2c_aux_mask = ~0UL,
+MACHINE_END
+
+	当完整的machine_descs表被检索完成之后，setup_machine_fdt()函数返回一个最佳匹配的machine_desc。比较的依据在于machine_desc与compatible属性的哪一个entry相匹配。如果没有匹配的machine_desc，那么该函数返回NULL。在选择了machine_desc之后，setup_machine_fdt()还负责早期的设备树扫描。
+
+	运行时配置: 大多数情况下，设备树将作为固件和内核传递数据的唯一方法。所以内核参数，initrd镜像的位置等运行时配置项也可以通过设备树传递。这些数据一般存放在/chosen节点，下面的代码是启动Linux内核时候的一个例子：
+chosen {
+bootargs = "console=ttyS0,115200 loglevel=8";
+initrd-start = <0xc8000000>;
+initrd-end = <0xc8200000>;
+};
+
+	bootargs属性包含了内核参数，initrd开头的属性则定义了initrd数据的起始地址和大小。在启动阶段的早期，分页机制还没有还没有开启，setup_machine_fd借助不同的辅助函数来调用of_scan_flat_dt对设备树的数据进行扫描。of_scan_flat_dt扫描整个设备树，利用传入的辅助函数来提取启动阶段早期所需要的信息。回调函数early_init_dt_scan_chosen主要用来解析包含内核启动参数的chosen节点，early_init_dt_scan_root则负责初始化设备树的地址空间模型，early_init_dt_scan_memory的调用决定了可用内存的位置和大小。
+
+	设备填充：在机型识别完成并且早期的配置信息被解析之后，内核的通用初始化代码就可以开始执行了。在这个初始化的过程中，unflatten_device_tree函数负责将设备树的数据转化为更为有效的运行时描述方式。在ARM平台，这里也是机型特有的初始化钩子函数被调用的地方，比如.init_early(), .init_irq()和.init_machine()。函数的目的可以从名字看出来，.init_early负责启动早期特定机型需要执行的代码。.init_irq()则负责中断相关的设置。
+
+	在设备树上下文中最有趣的钩子函数当属.init_machine()，负责根据platform相关的信息填充Linux设备模型。解析设备树获取设备列表，然后动态的为这些设备分配device结构。对于SAMA5D2处理器，.init_machine会调用sama5_dt_device_init()，sama5_dt_device_init又会接着调用of_platform_populate()函数。arch/arm/mach-at91/sama5.c可以查看sama5_dt_device_init()函数:
+	static void __init sama5_dt_device_init(void)
+{
+struct soc_device *soc;
+struct device *soc_dev = NULL;
+soc = at91_soc_init(sama5_socs);
+if (soc != NULL)
+soc_dev = soc_device_to_device(soc);
+of_platform_default_populate(NULL, NULL, soc_dev);
+sama5_pm_init();
+}
+int of_platform_default_populate(struct device_node *root,
+const struct of_dev_auxdata *lookup,
+struct device *parent)
+{
+return of_platform_populate(root, of_default_bus_match_table, lookup,
+parent);
+}
+EXPORT_SYMBOL_GPL(of_platform_default_populate);
+	of_platform_populate函数位于drivers/of/platform.c遍历设备树的节点并创建相应的platform设备。of_platform_populate函数的第二个参数是一个of_device_id类型的表，任何一个节点只要和该表中的某一个条目匹配的话，该节点的子节点也会被注册。
+	const struct of_device_id of_default_bus_match_table[] = {
+{ .compatible = "simple-bus", },
+{ .compatible = "simple-mfd", },
+{ .compatible = "isa", },
+#ifdef CONFIG_ARM_AMBA
+{ .compatible = "arm,amba-bus", },
+#endif /* CONFIG_ARM_AMBA */
+{} /* Empty terminated list */
+};
+
+	"simple-bus"定义在ePAPR 1.0规范中，这个属性用来标识一个简易的内存映射总线。of_platform_populate的实现可以假定simple-bus节点一定会被遍历到。实际上，通过传参，机型相关的代码可以改变这一默认行为。

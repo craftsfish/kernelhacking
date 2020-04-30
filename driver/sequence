@@ -1,0 +1,4 @@
+device_add platform
+bus_register platform
+bus_register cpu
+
