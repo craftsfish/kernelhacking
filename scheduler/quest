@@ -1,0 +1,1 @@
+为什么se计算load_sum的时候不考虑se的weight，而计算load_avg的时候考虑se的weight?为什么计算cfs_rq的时候又恰恰相反?
