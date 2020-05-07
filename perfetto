@@ -6,3 +6,23 @@ tools/gn args out/host
 	cc_wrapper = "ccache"                 # Optionally speed repeated builds with ccache
 ```
 tools/ninja -C out/host ui
+cd out/host
+./traced
+sudo cat /sys/kernel/debug/tracing/tracing_on # in case of value 1 returned, Optionally set it to 0 
+sudo ./traced_probes
+./perfetto \
+  -c - --txt \
+  -o /data/misc/perfetto-traces/trace \
+<<EOF
+
+buffers: {
+    size_kb: 8960
+    fill_policy: DISCARD
+}
+buffers: {
+    size_kb: 1280
+    fill_policy: DISCARD
+}
+duration_ms: 10000
+
+EOF
