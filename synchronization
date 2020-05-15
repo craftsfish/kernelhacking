@@ -2,3 +2,5 @@
 
 softirq is serialized on a CPU so as tasklet, softirq can run concurrently on multiple CPUs.
 tasklet cannot run concurrently on multiple CPUs.
+
+raw_spinlock_t真正的spin lock，有RT的时候spin lock可能会变成mutex?
