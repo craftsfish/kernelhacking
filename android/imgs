@@ -1,0 +1,13 @@
+boot.img {
+	kernel
+	ramdisk.img
+}
+recovery.img {
+	kernel
+	ramdisk.img
+}
+system.img
+vendor.img
+product.img
+system.ext.img?
+odm.img?

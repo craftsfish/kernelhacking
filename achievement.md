@@ -17,6 +17,7 @@
 - Linux Driver Development for Embedded Processors
 
 #LOG
+- 2020.05.14)https://mirrors.edge.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/
 - 2020.04.30)Linux Driver Development for Embedded Processors, P83
 - 2020.04.29)Linux Driver Development for Embedded Processors, P80
 - 2020.04.15)Operating System Concepts, 10th Edition, P55
