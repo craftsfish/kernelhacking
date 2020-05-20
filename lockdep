@@ -1,0 +1,2 @@
+lock_class_key分为static和dynamic两种
+lock_keys_hash用来管理dynamic类型的lock_class_key
