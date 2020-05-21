@@ -22,3 +22,11 @@ gdb {
 	hbreak
 	watch *(int*)0xffffffff826763a0
 }
+
+make EXTRA_CFLAGS="-Werror -Wframe-larger-than=2048 -Wno-unused-parameter -Wno-missing-field-initializers" -j $(getconf _NPROCESSORS_ONLN) LOCALVERSION=-custom
+
+
+0) cd $HOME/work/ubuntu/linux ; qemu-system-x86_64 -m 4G -smp 6 -net nic -net user,hostfwd=tcp:127.0.0.1:2222-:22 -kernel /boot/vmlinuz-5.6.0-rc6-custom -append "loglevel=10 nokaslr earlyprintk console=ttyS0,115200 root=/dev/sda1" -initrd /boot/initrd.img-5.6.0-rc6-custom -serial stdio -hda ../root.img -hdb ../extend.img
+    ;;  
+1) cd $HOME/work/ubuntu/linux.debug ; qemu-system-x86_64 -m 4G -smp 6 -net nic -net user,hostfwd=tcp:127.0.0.1:2222-:22 -kernel /boot/vmlinuz-5.6.0-rc6-custom -append "loglevel=10 nokaslr earlyprintk console=ttyS0,115200 root=/dev/sda1" -initrd /boot/initrd.img-5.6.0-rc6-custom -serial stdio -hda ../root.img -hdb ../extend.img -S -s
+    ;; 
