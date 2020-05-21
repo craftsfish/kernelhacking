@@ -2,13 +2,13 @@
 - [Computer Architecture, Sixth Edition: A Quantitative Approach (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design)](https://www.amazon.com/-/zh/Computer-Architecture-Sixth-Quantitative-Approach/dp/0128119055/ref=dp_ob_title_bk)
 - [Computer Organization and Design, Fifth Edition: The Hardware/Software Interface (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design](https://www.amazon.com/Computer-Organization-Design-Fifth-Edition/dp/0124077269)
 - [EmbeddedLinuxPrimer](http://www.embeddedlinux.org.cn/EmbeddedLinuxPrimer/)
-- [https://mirrors.edge.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/]
-- (https://www.agner.org/?e=0#0)
+- [](https://mirrors.edge.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/)
+- [](https://www.agner.org/?e=0#0)
 - [Kernel Documentation](https://www.kernel.org/doc/html/latest/)
 - [RCU](http://www.rdrop.com/users/paulmck/RCU/)
-- [Real-Time Rendering, Fourth Edition]
+- [Real-Time Rendering, Fourth Edition]()
 - [Solutions to Introduction to Algorithms Third Edition](https://walkccc.github.io/CLRS/)
 - [System Performance Tuning, 2nd Edition, by Mike Loukides, Gian-Paolo D. Musumeci](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/)
 - [ubuntu kernel](https://wiki.ubuntu.com/Kernel)
-- [UNIX Systems for Modern Architectures: Symmetric Multiprocessing and Caching for Kernel Programmers]
+- [UNIX Systems for Modern Architectures: Symmetric Multiprocessing and Caching for Kernel Programmers]()
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
