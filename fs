@@ -8,3 +8,11 @@ task->fsuid：task用于文件系统访问的uid?有没有task->uid?
 
 alloc_inode
 destroy_inode
+
+
+file->f_path.dentry
+file->f_path.dentry.d_iname
+file->f_path.dentry.d_name
+dentry->d_parent
+f_inode->i_sb->s_id
+dentry->d_sb
