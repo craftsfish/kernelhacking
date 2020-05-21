@@ -1,11 +1,4 @@
 #TODO
-- [Computer Architecture, Sixth Edition: A Quantitative Approach (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design)](https://www.amazon.com/-/zh/Computer-Architecture-Sixth-Quantitative-Approach/dp/0128119055/ref=dp_ob_title_bk)
-- [Computer Organization and Design, Fifth Edition: The Hardware/Software Interface (The Morgan Kaufmann Series in Computer Architecture and Design) (The Morgan Kaufmann Computer Architecture and Design](https://www.amazon.com/Computer-Organization-Design-Fifth-Edition/dp/0124077269)
-- [Available instruction-level parallelism for superscalar and superpipelined machines](https://dl.acm.org/citation.cfm?id=68207)
-- [Solutions to Introduction to Algorithms Third Edition](https://walkccc.github.io/CLRS/)
-- [System Performance Tuning, 2nd Edition, by Mike Loukides, Gian-Paolo D. Musumeci](https://www.oreilly.com/library/view/system-performance-tuning/059600284X/)
-- [ubuntu kernel](https://wiki.ubuntu.com/Kernel)
-- [RCU](http://www.rdrop.com/users/paulmck/RCU/)
 - Leetcode
 - modify comment of propagate_mnt, attach_recursive_mnt
 - perf, cgroup, bpf, flame grpah, Perfetto
@@ -15,6 +8,9 @@
 - [crash](https://people.redhat.com/anderson/)
 - Operating System Concepts, 10th Edition; Operating Systems, Internals and Design Principles
 - Linux Driver Development for Embedded Processors
+- H: Operating System Concepts, 10th Edition
+- M: Operating Systems, Internals and Design Principles
+- O: Linux Driver Development for Embedded Processors
 
 #LOG
 - 2020.05.14)https://mirrors.edge.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/
