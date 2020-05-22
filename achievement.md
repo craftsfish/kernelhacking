@@ -1,4 +1,5 @@
 #TODO
+- workqueue, psi, scheduler, ftrace
 - Leetcode
 - modify comment of propagate_mnt, attach_recursive_mnt
 - perf, cgroup, bpf, flame grpah, Perfetto
