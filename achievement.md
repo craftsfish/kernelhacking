@@ -1,4 +1,5 @@
 #TODO
+- man perf_event_open
 - workqueue, psi, scheduler, ftrace, debug object
 - Leetcode
 - modify comment of propagate_mnt, attach_recursive_mnt
@@ -14,6 +15,9 @@
 - O: Linux Driver Development for Embedded Processors
 
 #LOG
+- 2020.05.28)http://www.brendangregg.com/ebpf.html
+- 2020.05.27)http://www.brendangregg.com/perf.html, https://software.intel.com/content/www/us/en/develop/blogs/pipeline-speak-learning-more-about-intel-microarchitecture-codename-sandy-bridge.html, https://software.intel.com/content/www/us/en/develop/blogs/pipeline-speak-part-2-the-second-part-of-the-sandy-bridge-pipeline.html, https://software.intel.com/content/www/us/en/develop/documentation/vtune-cookbook/top/methodologies/top-down-microarchitecture-analysis-method.html
+- 2020.05.26)https://perf.wiki.kernel.org/index.php/Tutorial
 - 2020.05.23)Operating System Concepts, 10th Edition, P121
 - 2020.05.14)https://mirrors.edge.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/
 - 2020.04.30)Linux Driver Development for Embedded Processors, P83
