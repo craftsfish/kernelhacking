@@ -1,0 +1,3 @@
+bufferqueue: 从GPU分配的一块内存，用于存储图像信息
+surface: 连接producer和consumer
+SurfaceView: 连接view和SurfaceFlinger，包含SurfaceHolder
