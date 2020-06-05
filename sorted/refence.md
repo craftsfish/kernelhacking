@@ -16,3 +16,5 @@
 - [UNIX Systems for Modern Architectures: Symmetric Multiprocessing and Caching for Kernel Programmers]()
 - [Vlukan-Tutorial](https://vulkan-tutorial.com/)
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
+- [C++](http://www.cplusplus.com/)
+- [Programming languages and systems at massachusetts](https://plasma-umass.org/)

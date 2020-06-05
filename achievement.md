@@ -15,6 +15,7 @@
 - O: Linux Driver Development for Embedded Processors
 
 #LOG
+- 2020.06.02)https://easyperf.net/blog/2019/10/05/Performance-Analysis-Of-MT-apps#profiling-multithreaded-apps
 - 2020.05.28)Operating System Concepts, 10th Edition, P132, http://www.brendangregg.com/ebpf.html, https://android.googlesource.com/platform/system/extras/+/master/simpleperf/doc/README.md
 - 2020.05.27)http://www.brendangregg.com/perf.html, https://software.intel.com/content/www/us/en/develop/blogs/pipeline-speak-learning-more-about-intel-microarchitecture-codename-sandy-bridge.html, https://software.intel.com/content/www/us/en/develop/blogs/pipeline-speak-part-2-the-second-part-of-the-sandy-bridge-pipeline.html, https://software.intel.com/content/www/us/en/develop/documentation/vtune-cookbook/top/methodologies/top-down-microarchitecture-analysis-method.html
 - 2020.05.26)https://perf.wiki.kernel.org/index.php/Tutorial
