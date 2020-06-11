@@ -1,0 +1,2 @@
+echo 'r:getnameproberet getname +0(+0($retval)):string' > /sys/kernel/debug/tracing/kprobe_events
+echo 'r:do_sys_openproberet do_sys_open $retval' > /sys/kernel/debug/tracing/kprobe_events

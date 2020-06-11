@@ -1,3 +1,4 @@
+critical game file loader
 https://medium.com/@copyconstruct/best-of-2019-in-tech-talks-bac697c3ee13
 aosp工具梳理
 aosp工具参与
@@ -9,3 +10,9 @@ useless work detection
 coz在非CPU资源优化上的应用
 如何评估一个工具的overhead
 memcached
+并发火焰图
+
+{
+	cache命中率，到具体的文件
+	关键文件识别
+}
