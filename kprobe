@@ -1,2 +1,9 @@
 echo 'r:getnameproberet getname +0(+0($retval)):string' > /sys/kernel/debug/tracing/kprobe_events
+echo 'r:getnameproberet getname +0(+0(%ax)):string' > /sys/kernel/debug/tracing/kprobe_events
 echo 'r:do_sys_openproberet do_sys_open $retval' > /sys/kernel/debug/tracing/kprobe_events
+
+echo 'p:do_sys_open do_sys_open dfd=%ax filename=%dx flags=%cx mode=+4($stack)' > /sys/kernel/debug/tracing/kprobe_events
+echo 'p:do_filp_open do_filp_open dfd=%di pathname=+0(+0(%si)):string ' > /sys/kernel/debug/tracing/kprobe_events
+arm
+echo 'p:do_sys_openproberet do_sys_open %x0' > /sys/kernel/debug/tracing/kprobe_events
+echo 'p:myprobe do_filp_open %x0 +0(%x1)' > /sys/kernel/debug/tracing/kprobe_events
