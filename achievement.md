@@ -15,6 +15,7 @@
 - O: Linux Driver Development for Embedded Processors
 
 #LOG
+- 2020.06.16)https://www.linaro.org/blog/kprobes-event-tracing-armv8/
 - 2020.06.13)Operating System Concepts, 10th Edition, P148
 - 2020.06.02)https://easyperf.net/blog/2019/10/05/Performance-Analysis-Of-MT-apps#profiling-multithreaded-apps
 - 2020.05.28)Operating System Concepts, 10th Edition, P132, http://www.brendangregg.com/ebpf.html, https://android.googlesource.com/platform/system/extras/+/master/simpleperf/doc/README.md
