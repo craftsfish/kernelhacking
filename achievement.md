@@ -13,6 +13,7 @@
 - H: Operating System Concepts, 10th Edition
 - M: Operating Systems, Internals and Design Principles
 - O: Linux Driver Development for Embedded Processors
+- tools for kernel stack and function graph
 
 #LOG
 - 2020.06.16)https://www.linaro.org/blog/kprobes-event-tracing-armv8/
