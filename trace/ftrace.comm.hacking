@@ -1,0 +1,146 @@
+[Switching to Thread 5]
+
+Thread 5 hit Breakpoint 32, trace_buffer_unlock_commit_regs (tr=0xffffffff8275e3e0 <global_trace>, buffer=0xffff888139c16c00, event=0xffff88812327bb70, flags=582, pc=0, regs=0x0 <fixed_percpu_data>) at kernel/trace/trace.c:2725
+2725	{
+#0  trace_buffer_unlock_commit_regs (tr=0xffffffff8275e3e0 <global_trace>, buffer=0xffff888139c16c00, event=0xffff88812327bb70, flags=582, pc=0, regs=0x0 <fixed_percpu_data>) at kernel/trace/trace.c:2725
+#1  0xffffffff811da2a2 in event_trigger_unlock_commit_regs (regs=<optimized out>, pc=<optimized out>, irq_flags=<optimized out>, entry=<optimized out>, event=<optimized out>, buffer=<optimized out>, file=<optimized out>) at kernel/trace/trace.h:1530
+#2  trace_event_buffer_commit (fbuffer=<optimized out>) at kernel/trace/trace.c:2705
+#3  0xffffffff8109834b in trace_event_raw_event_task_newtask (__data=0xffffffff8275e3e0 <global_trace>, task=0xffff888139c16c00, clone_flags=18446612686954806128) at ./include/trace/events/task.h:9
+#4  0xffffffff8109ad7e in trace_task_newtask (clone_flags=<optimized out>, task=<optimized out>) at ./include/trace/events/task.h:9
+#5  copy_process (pid=<optimized out>, trace=<optimized out>, node=<optimized out>, args=0xffff88807fb2c800) at kernel/fork.c:2296
+#6  0xffffffff8109b3c9 in _do_fork (args=0xffffffff8275e3e0 <global_trace>) at kernel/fork.c:2431
+#7  0xffffffff8109bd57 in __do_sys_clone (tls=<optimized out>, child_tidptr=<optimized out>, parent_tidptr=<optimized out>, newsp=<optimized out>, clone_flags=<optimized out>) at kernel/fork.c:2586
+#8  __se_sys_clone (tls=<optimized out>, child_tidptr=<optimized out>, parent_tidptr=<optimized out>, newsp=<optimized out>, clone_flags=<optimized out>) at kernel/fork.c:2567
+#9  __x64_sys_clone (regs=<optimized out>) at kernel/fork.c:2567
+#10 0xffffffff8100499f in do_syscall_64 (nr=<optimized out>, regs=0xffffc9000063bf58) at arch/x86/entry/common.c:294
+#11 0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+#12 0x0000000000000000 in ?? ()
+
+Thread 5 hit Breakpoint 33, trace_save_cmdline (tsk=0xffff888139600000) at kernel/trace/trace.c:2239
+2239		if (!tsk->pid)
+$2176 = 571
+$2177 = "bash\000)\000\000\000\000\000\000\000\000\000"
+#0  trace_save_cmdline (tsk=0xffff888139600000) at kernel/trace/trace.c:2239
+#1  0xffffffff811d94d1 in tracing_record_taskinfo (task=0xffff888139600000, flags=1) at kernel/trace/trace.c:2368
+#2  0xffffffff811e3885 in probe_sched_wakeup (ignore=<optimized out>, wakee=<optimized out>) at kernel/trace/trace_sched_switch.c:47
+#3  0xffffffff810e050c in trace_sched_wakeup_new (p=<optimized out>) at ./include/trace/events/sched.h:103
+#4  wake_up_new_task (p=0xffff8881396a2300) at kernel/sched/core.c:2963
+#5  0xffffffff8109b445 in _do_fork (args=0xffff888139600000) at kernel/fork.c:2455
+#6  0xffffffff8109bd57 in __do_sys_clone (tls=<optimized out>, child_tidptr=<optimized out>, parent_tidptr=<optimized out>, newsp=<optimized out>, clone_flags=<optimized out>) at kernel/fork.c:2586
+#7  __se_sys_clone (tls=<optimized out>, child_tidptr=<optimized out>, parent_tidptr=<optimized out>, newsp=<optimized out>, clone_flags=<optimized out>) at kernel/fork.c:2567
+#8  __x64_sys_clone (regs=<optimized out>) at kernel/fork.c:2567
+#9  0xffffffff8100499f in do_syscall_64 (nr=<optimized out>, regs=0xffffc9000063bf58) at arch/x86/entry/common.c:294
+#10 0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+#11 0x0000000000000000 in ?? ()
+
+Thread 5 hit Breakpoint 29, tracing_record_taskinfo (task=0xffff888139600000, flags=1) at kernel/trace/trace.c:2375
+2375		__this_cpu_write(trace_taskinfo_save, false);
+#0  tracing_record_taskinfo (task=0xffff888139600000, flags=1) at kernel/trace/trace.c:2375
+#1  0xffffffff811e3885 in probe_sched_wakeup (ignore=<optimized out>, wakee=<optimized out>) at kernel/trace/trace_sched_switch.c:47
+#2  0xffffffff810e050c in trace_sched_wakeup_new (p=<optimized out>) at ./include/trace/events/sched.h:103
+#3  wake_up_new_task (p=0xffff8881396a2300) at kernel/sched/core.c:2963
+#4  0xffffffff8109b445 in _do_fork (args=0xffffffff839e24d8 <trace_cmdline_lock>) at kernel/fork.c:2455
+#5  0xffffffff8109bd57 in __do_sys_clone (tls=<optimized out>, child_tidptr=<optimized out>, parent_tidptr=<optimized out>, newsp=<optimized out>, clone_flags=<optimized out>) at kernel/fork.c:2586
+#6  __se_sys_clone (tls=<optimized out>, child_tidptr=<optimized out>, parent_tidptr=<optimized out>, newsp=<optimized out>, clone_flags=<optimized out>) at kernel/fork.c:2567
+#7  __x64_sys_clone (regs=<optimized out>) at kernel/fork.c:2567
+#8  0xffffffff8100499f in do_syscall_64 (nr=<optimized out>, regs=0xffffc9000063bf58) at arch/x86/entry/common.c:294
+#9  0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+#10 0x0000000000000000 in ?? ()
+[Switching to Thread 6]
+
+Thread 6 hit Breakpoint 32, trace_buffer_unlock_commit_regs (tr=0xffffffff8275e3e0 <global_trace>, buffer=0xffff888139c16c00, event=0xffff88812336ad94, flags=582, pc=1, regs=0x0 <fixed_percpu_data>) at kernel/trace/trace.c:2725
+2725	{
+#0  trace_buffer_unlock_commit_regs (tr=0xffffffff8275e3e0 <global_trace>, buffer=0xffff888139c16c00, event=0xffff88812336ad94, flags=582, pc=1, regs=0x0 <fixed_percpu_data>) at kernel/trace/trace.c:2725
+#1  0xffffffff811da2a2 in event_trigger_unlock_commit_regs (regs=<optimized out>, pc=<optimized out>, irq_flags=<optimized out>, entry=<optimized out>, event=<optimized out>, buffer=<optimized out>, file=<optimized out>) at kernel/trace/trace.h:1530
+#2  trace_event_buffer_commit (fbuffer=<optimized out>) at kernel/trace/trace.c:2705
+#3  0xffffffff8109745b in trace_event_raw_event_task_rename (__data=0xffffffff8275e3e0 <global_trace>, task=0xffff888139c16c00, comm=0xffff88812336ad94 "^\222\036\361\071") at ./include/trace/events/task.h:34
+#4  0xffffffff81344ead in trace_task_rename (comm=<optimized out>, task=<optimized out>) at ./include/trace/events/task.h:34
+#5  __set_task_comm (tsk=0xffff8881396a2300, buf=0xffff88807e44d025 "cat", exec=true) at fs/exec.c:1250
+#6  0xffffffff8134514c in setup_new_exec (bprm=<optimized out>) at fs/exec.c:1388
+#7  0xffffffff813d2480 in load_elf_binary (bprm=0xffff888137fbf800) at fs/binfmt_elf.c:861
+#8  0xffffffff81342a1d in search_binary_handler (bprm=0xffff888137fbf800) at fs/exec.c:1671
+#9  0xffffffff81343e35 in exec_binprm (bprm=<optimized out>) at fs/exec.c:1714
+#10 __do_execve_file (fd=<optimized out>, filename=0xffff88807e44d000, flags=<optimized out>, file=<optimized out>, argv=..., envp=...) at fs/exec.c:1834
+#11 0xffffffff81344269 in do_execveat_common (flags=<optimized out>, filename=<optimized out>, fd=<optimized out>, argv=..., envp=...) at fs/exec.c:1880
+#12 do_execve (__envp=<optimized out>, __argv=<optimized out>, filename=<optimized out>) at fs/exec.c:1897
+#13 __do_sys_execve (envp=<optimized out>, argv=<optimized out>, filename=<optimized out>) at fs/exec.c:1973
+#14 __se_sys_execve (envp=<optimized out>, argv=<optimized out>, filename=<optimized out>) at fs/exec.c:1968
+#15 __x64_sys_execve (regs=<optimized out>) at fs/exec.c:1968
+#16 0xffffffff8100499f in do_syscall_64 (nr=<optimized out>, regs=0xffffc900007e3f58) at arch/x86/entry/common.c:294
+#17 0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+#18 0x0000000000000000 in ?? ()
+
+Thread 6 hit Breakpoint 33, trace_save_cmdline (tsk=0xffff8881396a2300) at kernel/trace/trace.c:2239
+2239		if (!tsk->pid)
+$2178 = 661
+$2179 = "cat\000\000)\000\000\000\000\000\000\000\000\000"
+#0  trace_save_cmdline (tsk=0xffff8881396a2300) at kernel/trace/trace.c:2239
+#1  0xffffffff811d9bbb in tracing_record_taskinfo_sched_switch (prev=0xffff8881396a2300, next=0xffff888139e80000, flags=1) at kernel/trace/trace.c:2404
+#2  0xffffffff811e3847 in probe_sched_switch (ignore=<optimized out>, preempt=<optimized out>, prev=<optimized out>, next=<optimized out>) at kernel/trace/trace_sched_switch.c:34
+#3  0xffffffff81bd6067 in trace_sched_switch (next=<optimized out>, prev=<optimized out>, preempt=<optimized out>) at ./include/trace/events/sched.h:138
+#4  __schedule (preempt=<optimized out>) at kernel/sched/core.c:4077
+#5  0xffffffff81bd6620 in schedule () at kernel/sched/core.c:4154
+#6  0xffffffff811d385a in ring_buffer_wait (buffer=0xffff8881396a2300, cpu=971505664, full=0) at kernel/trace/ring_buffer.c:660
+#7  0xffffffff811d53f4 in wait_on_pipe (iter=<optimized out>, full=<optimized out>) at kernel/trace/trace.c:1731
+#8  0xffffffff811db55c in tracing_wait_pipe (filp=<optimized out>, filp=<optimized out>) at kernel/trace/trace.c:6128
+#9  0xffffffff811dc2ec in tracing_read_pipe (filp=0xffff888137c10480, ubuf=<optimized out>, cnt=131072, ppos=0xffffc900007e3ee8) at kernel/trace/trace.c:6170
+#10 0xffffffff8133b43b in __vfs_read (file=<optimized out>, buf=<optimized out>, count=<optimized out>, pos=<optimized out>) at fs/read_write.c:425
+#11 0xffffffff8133b503 in vfs_read (file=0xffff888137c10480, buf=0x7f460d0c3000 ' ' <repeats 12 times>, "bash-571   [004] ....  2096.856485: task_newtask: pid=661 comm=bash clone_flags=1200000 oom_score_adj=0\n", ' ' <repeats 11 times>, "<...>-661   [005] ...1  2096.953160: task_rename: pid=661 oldcomm=bash ne"..., count=<optimized out>, pos=0xffffc900007e3ee8) at fs/read_write.c:461
+#12 0xffffffff8133b8fd in ksys_read (fd=<optimized out>, buf=0x7f460d0c3000 ' ' <repeats 12 times>, "bash-571   [004] ....  2096.856485: task_newtask: pid=661 comm=bash clone_flags=1200000 oom_score_adj=0\n", ' ' <repeats 11 times>, "<...>-661   [005] ...1  2096.953160: task_rename: pid=661 oldcomm=bash ne"..., count=131072) at fs/read_write.c:587
+#13 0xffffffff8133b95a in __do_sys_read (count=<optimized out>, buf=<optimized out>, fd=<optimized out>) at fs/read_write.c:597
+#14 __se_sys_read (count=<optimized out>, buf=<optimized out>, fd=<optimized out>) at fs/read_write.c:595
+#15 __x64_sys_read (regs=<optimized out>) at fs/read_write.c:595
+#16 0xffffffff8100499f in do_syscall_64 (nr=<optimized out>, regs=0xffffc900007e3f58) at arch/x86/entry/common.c:294
+#17 0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+Backtrace stopped: Cannot access memory at address 0x19dc0
+
+Thread 6 hit Breakpoint 33, trace_save_cmdline (tsk=0xffff888139e80000) at kernel/trace/trace.c:2239
+2239		if (!tsk->pid)
+$2180 = 0
+$2181 = "swapper/5\000\000\000\000\000\000"
+#0  trace_save_cmdline (tsk=0xffff888139e80000) at kernel/trace/trace.c:2239
+#1  0xffffffff811d9bc6 in tracing_record_taskinfo_sched_switch (prev=0xffff8881396a2300, next=0xffff888139e80000, flags=1) at kernel/trace/trace.c:2405
+#2  0xffffffff811e3847 in probe_sched_switch (ignore=<optimized out>, preempt=<optimized out>, prev=<optimized out>, next=<optimized out>) at kernel/trace/trace_sched_switch.c:34
+#3  0xffffffff81bd6067 in trace_sched_switch (next=<optimized out>, prev=<optimized out>, preempt=<optimized out>) at ./include/trace/events/sched.h:138
+#4  __schedule (preempt=<optimized out>) at kernel/sched/core.c:4077
+#5  0xffffffff81bd6620 in schedule () at kernel/sched/core.c:4154
+#6  0xffffffff811d385a in ring_buffer_wait (buffer=0xffff888139e80000, cpu=963259851, full=0) at kernel/trace/ring_buffer.c:660
+#7  0xffffffff811d53f4 in wait_on_pipe (iter=<optimized out>, full=<optimized out>) at kernel/trace/trace.c:1731
+#8  0xffffffff811db55c in tracing_wait_pipe (filp=<optimized out>, filp=<optimized out>) at kernel/trace/trace.c:6128
+#9  0xffffffff811dc2ec in tracing_read_pipe (filp=0xffff888137c10480, ubuf=<optimized out>, cnt=131072, ppos=0xffffc900007e3ee8) at kernel/trace/trace.c:6170
+#10 0xffffffff8133b43b in __vfs_read (file=<optimized out>, buf=<optimized out>, count=<optimized out>, pos=<optimized out>) at fs/read_write.c:425
+#11 0xffffffff8133b503 in vfs_read (file=0xffff888137c10480, buf=0x7f460d0c3000 ' ' <repeats 12 times>, "bash-571   [004] ....  2096.856485: task_newtask: pid=661 comm=bash clone_flags=1200000 oom_score_adj=0\n", ' ' <repeats 11 times>, "<...>-661   [005] ...1  2096.953160: task_rename: pid=661 oldcomm=bash ne"..., count=<optimized out>, pos=0xffffc900007e3ee8) at fs/read_write.c:461
+#12 0xffffffff8133b8fd in ksys_read (fd=<optimized out>, buf=0x7f460d0c3000 ' ' <repeats 12 times>, "bash-571   [004] ....  2096.856485: task_newtask: pid=661 comm=bash clone_flags=1200000 oom_score_adj=0\n", ' ' <repeats 11 times>, "<...>-661   [005] ...1  2096.953160: task_rename: pid=661 oldcomm=bash ne"..., count=131072) at fs/read_write.c:587
+#13 0xffffffff8133b95a in __do_sys_read (count=<optimized out>, buf=<optimized out>, fd=<optimized out>) at fs/read_write.c:597
+#14 __se_sys_read (count=<optimized out>, buf=<optimized out>, fd=<optimized out>) at fs/read_write.c:595
+#15 __x64_sys_read (regs=<optimized out>) at fs/read_write.c:595
+#16 0xffffffff8100499f in do_syscall_64 (nr=<optimized out>, regs=0xffffc900007e3f58) at arch/x86/entry/common.c:294
+#17 0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+Backtrace stopped: Cannot access memory at address 0x19dc0
+
+Thread 6 hit Breakpoint 31, tracing_record_taskinfo_sched_switch (prev=0xffff8881396a2300, next=0xffff888139e80000, flags=0) at kernel/trace/trace.c:2417
+2417		__this_cpu_write(trace_taskinfo_save, false);
+#0  tracing_record_taskinfo_sched_switch (prev=0xffff8881396a2300, next=0xffff888139e80000, flags=0) at kernel/trace/trace.c:2417
+#1  0xffffffff811e3847 in probe_sched_switch (ignore=<optimized out>, preempt=<optimized out>, prev=<optimized out>, next=<optimized out>) at kernel/trace/trace_sched_switch.c:34
+#2  0xffffffff81bd6067 in trace_sched_switch (next=<optimized out>, prev=<optimized out>, preempt=<optimized out>) at ./include/trace/events/sched.h:138
+#3  __schedule (preempt=<optimized out>) at kernel/sched/core.c:4077
+#4  0xffffffff81bd6620 in schedule () at kernel/sched/core.c:4154
+#5  0xffffffff811d385a in ring_buffer_wait (buffer=0xffff888139e80000, cpu=963259851, full=0) at kernel/trace/ring_buffer.c:660
+#6  0xffffffff811d53f4 in wait_on_pipe (iter=<optimized out>, full=<optimized out>) at kernel/trace/trace.c:1731
+#7  0xffffffff811db55c in tracing_wait_pipe (filp=<optimized out>, filp=<optimized out>) at kernel/trace/trace.c:6128
+#8  0xffffffff811dc2ec in tracing_read_pipe (filp=0xffff888137c10480, ubuf=<optimized out>, cnt=131072, ppos=0xffffc900007e3ee8) at kernel/trace/trace.c:6170
+#9  0xffffffff8133b43b in __vfs_read (file=<optimized out>, buf=<optimized out>, count=<optimized out>, pos=<optimized out>) at fs/read_write.c:425
+#10 0xffffffff8133b503 in vfs_read (file=0xffff888137c10480, buf=0x7f460d0c3000 ' ' <repeats 12 times>, "bash-571   [004] ....  2096.856485: task_newtask: pid=661 comm=bash clone_flags=1200000 oom_score_adj=0\n", ' ' <repeats 11 times>, "<...>-661   [005] ...1  2096.953160: task_rename: pid=661 oldcomm=bash ne"..., count=<optimized out>, pos=0xffffc900007e3ee8) at fs/read_write.c:461
+#11 0xffffffff8133b8fd in ksys_read (fd=<optimized out>, buf=0x7f460d0c3000 ' ' <repeats 12 times>, "bash-571   [004] ....  2096.856485: task_newtask: pid=661 comm=bash clone_flags=1200000 oom_score_adj=0\n", ' ' <repeats 11 times>, "<...>-661   [005] ...1  2096.953160: task_rename: pid=661 oldcomm=bash ne"..., count=131072) at fs/read_write.c:587
+#12 0xffffffff8133b95a in __do_sys_read (count=<optimized out>, buf=<optimized out>, fd=<optimized out>) at fs/read_write.c:597
+#13 __se_sys_read (count=<optimized out>, buf=<optimized out>, fd=<optimized out>) at fs/read_write.c:595
+#14 __x64_sys_read (regs=<optimized out>) at fs/read_write.c:595
+#15 0xffffffff8100499f in do_syscall_64 (nr=<optimized out>, regs=0xffffc900007e3f58) at arch/x86/entry/common.c:294
+#16 0xffffffff81c00091 in entry_SYSCALL_64 () at arch/x86/entry/entry_64.S:175
+Backtrace stopped: Cannot access memory at address 0x19dc0
+^C
+Thread 6 received signal SIGINT, Interrupt.
+native_safe_halt () at ./arch/x86/include/asm/irqflags.h:61
+61	}
+(gdb) 
+Continuing.
