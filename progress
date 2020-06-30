@@ -11,8 +11,23 @@ coz在非CPU资源优化上的应用
 如何评估一个工具的overhead
 memcached
 并发火焰图
+binderbinder
 
 {
 	cache命中率，到具体的文件
 	关键文件识别
+}
+
+如何捕获新进程的所有thread? {
+	ftrace的set_event_pid作为参考
+	task_newtask(根据clone_flag做进一步筛选)(构建tid bitmap)
+}
+
+lockstat
+lockdep
+
+ftrace {
+	each time a trace is added, record comm is enabled, record happens when switch/record
+	while trace is added, cat trace_pipe might be actived and comm is not record yet
+	a more resonable solution should record comm before trace is commited, and disable current task record during a schedule slice
 }

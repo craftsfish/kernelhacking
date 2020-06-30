@@ -1,6 +1,6 @@
 #!/bin/sh
 
-func="do_execve"
+func="trace_save_cmdline"
 cd /sys/kernel/debug/tracing/
 echo "p:$func $func" >> kprobe_events
 echo 'stacktrace' > events/kprobes/$func/trigger
