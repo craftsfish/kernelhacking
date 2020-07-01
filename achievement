@@ -1,0 +1,98 @@
+2020.06.16)https://www.linaro.org/blog/kprobes-event-tracing-armv8/
+2020.06.13)Operating System Concepts, 10th Edition, P148
+2020.06.02)https://easyperf.net/blog/2019/10/05/Performance-Analysis-Of-MT-apps#profiling-multithreaded-apps
+2020.05.28)Operating System Concepts, 10th Edition, P132, http://www.brendangregg.com/ebpf.html, https://android.googlesource.com/platform/system/extras/+/master/simpleperf/doc/README.md
+2020.05.27)http://www.brendangregg.com/perf.html, https://software.intel.com/content/www/us/en/develop/blogs/pipeline-speak-learning-more-about-intel-microarchitecture-codename-sandy-bridge.html, https://software.intel.com/content/www/us/en/develop/blogs/pipeline-speak-part-2-the-second-part-of-the-sandy-bridge-pipeline.html, https://software.intel.com/content/www/us/en/develop/documentation/vtune-cookbook/top/methodologies/top-down-microarchitecture-analysis-method.html
+2020.05.26)https://perf.wiki.kernel.org/index.php/Tutorial
+2020.05.23)Operating System Concepts, 10th Edition, P121
+2020.05.14)https://mirrors.edge.kernel.org/pub/linux/kernel/people/rusty/kernel-locking/
+2020.04.30)Linux Driver Development for Embedded Processors, P83
+2020.04.29)Linux Driver Development for Embedded Processors, P80
+2020.04.15)Operating System Concepts, 10th Edition, P55
+2020.04.13)Operating System Concepts, 10th Edition, P27
+2020.04.09)Operating System Concepts, P24
+2020.04.08)Operating System Concepts, P11
+2020.04.05)Operating Systems, Internals and Design Principles, P57
+2020.03.09)Operating System Concepts, Pvii
+2020.03.12)linux/Documentation/trace/ftrace.rst, linux/Documentation/trace/kprobetrace.rst
+2020.03.09)Professional Linux Kernel Architecture, P1223
+2020.03.06)Professional Linux Kernel Architecture, P1223
+2020.03.05)Professional Linux Kernel Architecture, P1175
+2020.03.04)Professional Linux Kernel Architecture, P1048
+2020.03.03)Professional Linux Kernel Architecture, P1034
+2020.03.02)Professional Linux Kernel Architecture, P989
+2020.02.28)Professional Linux Kernel Architecture, P984
+2020.02.27)Professional Linux Kernel Architecture, P952
+2020.02.26)Professional Linux Kernel Architecture, P937
+2020.02.25)Professional Linux Kernel Architecture, P893
+2020.02.24)Professional Linux Kernel Architecture, P893
+2020.02.22)Professional Linux Kernel Architecture, P847
+2020.02.21)Professional Linux Kernel Architecture, P796
+2020.02.20)Professional Linux Kernel Architecture, P753
+2020.02.18)Professional Linux Kernel Architecture, P721
+2020.02.16)Professional Linux Kernel Architecture, P669
+2020.02.13)Professional Linux Kernel Architecture, P616
+2020.02.11)Professional Linux Kernel Architecture, P605
+2020.02.10)Professional Linux Kernel Architecture, P571
+2020.02.07)Professional Linux Kernel Architecture, P565
+2020.01.15)https://www.kernel.org/doc/html/latest/admin-guide/security-bugs.html, https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures, http://kroah.com/log/blog/2018/02/05/linux-kernel-release-model/, https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html, https://lwn.net/Articles/771974/
+2020.01.09)https://www.kernel.org/doc/html/latest/locking/spinlocks.html
+2020.01.04)https://www.kernel.org/doc/html/latest/RCU/rcu.html, https://www.kernel.org/doc/html/latest/RCU/listRCU.html
+2020.01.03)https://en.wikipedia.org/wiki/Read-copy-update
+2020.01.02)http://kernel.meizu.com/linux-workqueue.html
+2019.12.31)Documentation/core-api/workqueue.rst
+2019.12.30)ftrace.sched脚本开发(参数检查), ftrace.sched.event日志分析(firefox启动)
+2019.12.28)ftrace.sched脚本开发
+2019.12.27)kernel/Documentation/filesystems/sharedsubtree.txt
+2019.12.24)kernel/Documentation/trace/kprobetrace.rst
+2019.12.23)kernel/Documentation/trace/events-kmem.rst, kernel/Documentation/trace/events-msr.rst
+2019.12.19)Modern Microprocessors A 90-Minute Guide, http://www.lighterra.com/papers/modernmicroprocessors/
+2019.12.18)Professional Linux Kernel Architecture, P556
+2019.12.17)Professional Linux Kernel Architecture, P541
+2019.10.23)Leetcode, 352. Data Stream as Disjoint Intervals
+2019.10.22)scheduler
+2019.10.21)Leetcode, 336. Palindrome Pairs ; Professional.Linux.Kernel.Architecture, P136, Documentation/scheduler/sched-design-CFS.txt
+2019.10.18)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, Done
+2019.10.17)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P592
+2019.10.16)ebpf, Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P522
+2019.10.11)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P461
+2019.10.10)Professional.Linux.Kernel.Architecture, P133
+2019.10.09)Professional.Linux.Kernel.Architecture, P119
+2019.10.08)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P376
+2019.09.28)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P343
+2019.09.25)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P278
+2019.09.24)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P229
+2019.09.23)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P225
+2019.09.21)Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P221
+2019.09.19)Leetcode, 335. Self Crossing ; ptrace ; ftrace ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P177
+2019.09.18)Documentation/trace/tracepoints.txt ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P170
+2019.09.17)Leetcode, 330. Patching Array ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P120
+2019.09.16)Leetcode, 329. Longest Increasing Path in a Matrix ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P95
+2019.09.12)Leetcode, 327. Count of Range Sum ; Leetcode, 321. Create Maximum Number
+2019.09.10)Leetcode, 316. Remove Duplicate Letters ; Systems.Performance.Enterprise.and.the.Cloud.by.Gregg.Brendan, P60
+2019.09.09)Professional Linux Kernel Architecture, P243
+2019.09.07)Leetcode, 315. Count of Smaller Numbers After Self ; Professional Linux Kernel Architecture, P229 ; https://medium.com/netflix-techblog/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
+2019.09.06)Leetcode, 312. Burst Balloons ; ARM.Cortex.A.Series.Programming.Guide, P421
+2019.09.05)Leetcode, 301. Remove Invalid Parentheses ; ARM.Cortex.A.Series.Programming.Guide, P312
+2019.09.04)ARM.Cortex.A.Series.Programming.Guide, P274 ; Leetcode, 297. Serialize and Deserialize Binary Tree
+2019.09.03)Leetcode, 295. Find Median from Data Stream ; ARM.Cortex.A.Series.Programming.Guide P240
+2019.09.02)Leetcode, 282. Expression Add Operators ; ARM.Cortex.A.Series.Programming.Guide, P157 ; linux/Documentation/memory-barriers.txt, L525
+2019.08.30)ARM.Cortex.A.Series.Programming.Guide, P152
+2019.08.29)Leetcode, 239. Sliding Window Maximum ; ARM.Cortex.A.Series.Programming.Guide, P117
+2019.08.28)ARM.Cortex.A.Series.Programming.Guide, P82
+2019.08.27)Leetcode, 233. Number of Digit One ; Understanding.the.Linux.Virtual.Memory.Manager, P95
+2019.08.26)Understanding.the.Linux.Virtual.Memory.Manager, P69 ; Leetcode, 224. Basic Calculator
+2019.08.23)Understanding.the.Linux.Virtual.Memory.Manager P27
+2019.08.22)ptrace: https://www.linuxjournal.com/article/6100, https://www.linuxjournal.com/article/6210
+2019.08.21)https://www.youtube.com/watch?v=4XpnKHJAok8 ; https://google.github.io/kunit-docs/third_party/kernel/docs/api/test.html# ; Leetcode, 218. The Skyline Problem
+2019.08.20)Leetcode, 214. Shortest Palindrome; https://www.youtube.com/watch?v=4XpnKHJAok8 44:39
+2019.08.19)Leetcode, 212. Word Search II; Samsung U: Coaching for Growth, Samsung Brand Strategy, Must-know of Samsung Marketing(who, what&how), Must-know of Samsung Sales, All about Insight at Samsung, Must-Know of Samsung B2B; kunit: https://google.github.io/kunit-docs/third_party/kernel/docs/ ; https://martinfowler.com/bliki/UnitTest.html ; https://www.youtube.com/watch?v=4XpnKHJAok8 16:59
+2019.08.18)Leetcode, 164. Maximum Gap; Leetcode, 174. Dungeon Game; Leetcode, 188. Best Time to Buy and Sell Stock IV
+2019.08.16)Leetcode, 154. Find Minimum in Rotated Sorted Array II; Professional Linux Kernel Architecture, P220
+2019.08.15)Leetcode, 149. Max Points on a Line; PSI investigation, MEMSTALL_FULL计算方式有误？; https://developer.android.com/studio/profile/systrace
+2019.08.13)Leetcode, 140. Word Break II; PSI调查报告
+2019.08.12)Leetcode, 135. Candy; Professional Linux Kernel Architecture, P193
+2019.08.09)Leetcode, 132. Palindrome Partitioning II
+2017.10.17)Post another errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
+2017.10.13)Post an errata to Understanding the Linux Kernel, 3rd Edition. http://www.oreilly.com/catalog/errataunconfirmed.csp?isbn=9780596005658
+2017.06.17)Post my first kernel patch titled as: "mm/slab: trivial change to replace round-up code with ALIGN". https://marc.info/?l=linux-kernel&m=149759816912173
