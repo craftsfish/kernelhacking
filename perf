@@ -13,6 +13,10 @@ perf_event_init_task在copy_process的时候继承event
 
 查看probe点可访问的变量(一行源代码可能对应多个probe点)
 ./perf probe -k /home/lcj/work/pi/linux/vmlinux -V 'do_sys_open@/home/lcj/work/pi/linux/fs/open.c:9'
+./perf probe -k /home/lcj/work/pi/linux/vmlinux -D 'do_sys_open+228 tmp dfd flags op'
+./perf probe -k /home/lcj/work/pi/linux/vmlinux -V 'do_sys_open+228@/home/lcj/work/pi/linux/fs/open.c'
 
 查看probe对应的定义
 ./perf probe -k /home/lcj/work/pi/linux/vmlinux -D 'do_sys_open@/home/lcj/work/pi/linux/fs/open.c:9'
+./perf probe -k /home/lcj/work/pi/linux/vmlinux -D 'do_sys_open+228@/home/lcj/work/pi/linux/fs/open.c dfd flags tmp op'
+./perf probe -k /home/lcj/work/pi/linux/vmlinux -D 'do_sys_open+228 dfd flags tmp op'
