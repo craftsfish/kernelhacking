@@ -1,1 +1,2 @@
 /sys/bus/event_source/devices
+perf_event_init_task在copy_process的时候继承event

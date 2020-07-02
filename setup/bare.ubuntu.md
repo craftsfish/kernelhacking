@@ -7,7 +7,7 @@ yes '' | make oldconfig
 make menuconfig
 make clean
 make -j $(getconf _NPROCESSORS_ONLN) LOCALVERSION=-custom
-sudo make modules_install
+sudo make -j $(getconf _NPROCESSORS_ONLN) INSTALL_MOD_STRIP=1 modules_install
 sudo make install
 
 #make -j $(getconf _NPROCESSORS_ONLN) deb-pkg LOCALVERSION=-custom
