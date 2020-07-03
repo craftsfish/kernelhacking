@@ -1,3 +1,15 @@
 service logcat /system/bin/logcat -f /dev/kmsg -f dmesg -r 20000  -f /data/aplog
 
 
+logcat -s ActivityTaskManager:I | grep android.intent.category.LAUNCHER
+
+
+logcat -s ActivityTaskManager:I | grep Displayed
+--------------------------------------------------------------------------------
+02-14 17:24:15.612  1770  2108 I ActivityTaskManager: Displayed com.autonavi.minimap/com.autonavi.map.activity.SplashActivity: +1s371ms
+02-14 17:24:16.298  1770  2108 I ActivityTaskManager: Displayed com.autonavi.minimap/com.autonavi.map.activity.NewMapActivity: +666ms
+--------------------------------------------------------------------------------
+高德地图启动的时候有两个activity，am start的时候不管指定哪个都会执行完整流程，但是am start的wait time始终是第一个SplashActivity的时间
+
+
+am start -S -W com.autonavi.minimap/com.autonavi.map.activity.SplashActivity
