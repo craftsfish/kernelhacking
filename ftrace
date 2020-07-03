@@ -37,3 +37,8 @@ echo 'r:myretprobe process_one_work' >> /sys/kernel/debug/tracing/kprobe_events
 echo 'enable_event:kmem:kfree' > /sys/kernel/debug/tracing/events/kprobes/myprobe/trigger
 echo 'disable_event:kmem:kfree' > /sys/kernel/debug/tracing/events/kprobes/myretprobe/trigger
 echo 'stacktrace' > /sys/kernel/debug/tracing/events/kmem/kfree/trigger
+
+
+
+
+trace_printk

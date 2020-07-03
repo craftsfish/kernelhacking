@@ -33,6 +33,12 @@ patch {
 		while trace is added, cat trace_pipe might be actived and comm is not record yet
 		a more resonable solution should record comm before trace is commited, and disable current task record during a schedule slice
 	}
+	Documentation/trace/histogram.rst {
+		1030, 字符串filter要加""
+		确认代码解析逻辑
+		1155, 需要改成>>
+		1171, 应该是disable_event
+	}
 }
 --------------------------------------------------------------------------------
 其他 {
