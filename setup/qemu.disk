@@ -1,0 +1,4 @@
+qemu-img create home.img 32G
+sudo losetup -f --show ./home.img
+sudo mkfs.ext4 /dev/loop0
+sudo mount /dev/loop0 /media/lcj/

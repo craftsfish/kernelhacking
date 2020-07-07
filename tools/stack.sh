@@ -1,6 +1,6 @@
 #!/bin/sh
 
-func="trace_save_cmdline"
+func="do_sys_open"
 cd /sys/kernel/debug/tracing/
 echo "p:$func $func" >> kprobe_events
 echo 'stacktrace' > events/kprobes/$func/trigger
@@ -9,7 +9,7 @@ echo $func > set_graph_function
 echo function_graph > current_tracer
 echo > trace
 echo 1 > tracing_on
-sleep 5
+sleep 10
 echo 0 > tracing_on
 cat trace
 echo nop > current_tracer

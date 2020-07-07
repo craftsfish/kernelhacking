@@ -1,0 +1,2 @@
+sudo apt-get install linux-source libncurses5-dev
+http://sysprogs.com/VBoxGDB/
