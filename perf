@@ -20,3 +20,20 @@ perf_event_init_task在copy_process的时候继承event
 ./perf probe -k /home/lcj/work/pi/linux/vmlinux -D 'do_sys_open@/home/lcj/work/pi/linux/fs/open.c:9'
 ./perf probe -k /home/lcj/work/pi/linux/vmlinux -D 'do_sys_open+228@/home/lcj/work/pi/linux/fs/open.c dfd flags tmp op'
 ./perf probe -k /home/lcj/work/pi/linux/vmlinux -D 'do_sys_open+228 dfd flags tmp op'
+
+
+
+(gdb) p vmlinux_path[0]
+$4 = 0x555555e91250 "vmlinux"
+(gdb) p vmlinux_path[1]
+$5 = 0x555555e90c00 "/boot/vmlinux"
+(gdb) p vmlinux_path[2]
+$6 = 0x555555e90e90 "/boot/vmlinux-5.6.0-rc6-custom"
+(gdb) p vmlinux_path[3]
+$7 = 0x555555e912f0 "/usr/lib/debug/boot/vmlinux-5.6.0-rc6-custom"
+(gdb) p vmlinux_path[4]
+$8 = 0x555555e91330 "/lib/modules/5.6.0-rc6-custom/build/vmlinux"
+(gdb) p vmlinux_path[5]
+$9 = 0x555555e91370 "/usr/lib/debug/lib/modules/5.6.0-rc6-custom/vmlinux"
+(gdb) p vmlinux_path[6]
+$10 = 0x555555e913b0 "/usr/lib/debug/boot/vmlinux-5.6.0-rc6-custom.debug"
