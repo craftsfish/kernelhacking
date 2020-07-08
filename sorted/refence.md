@@ -22,3 +22,4 @@
 - [Vlukan-Tutorial](https://vulkan-tutorial.com/)
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
 - [Network Configuration](https://help.ubuntu.com/community/NetworkConfigurationCommandLine/Automatic)
+- [KGDB](https://mirrors.edge.kernel.org/pub/linux/kernel/people/jwessel/kgdb/index.html)
