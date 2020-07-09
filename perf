@@ -37,3 +37,7 @@ $8 = 0x555555e91330 "/lib/modules/5.6.0-rc6-custom/build/vmlinux"
 $9 = 0x555555e91370 "/usr/lib/debug/lib/modules/5.6.0-rc6-custom/vmlinux"
 (gdb) p vmlinux_path[6]
 $10 = 0x555555e913b0 "/usr/lib/debug/boot/vmlinux-5.6.0-rc6-custom.debug"
+
+
+perf_event_task_sched_in
+perf_event_task_sched_out

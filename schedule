@@ -29,6 +29,7 @@
 	perf代码如何调试？
 	kgdb使用
 	buildid原理
+	uprobe如何使用
 }
 --------------------------------------------------------------------------------
 patch {
@@ -71,4 +72,22 @@ patch {
 	M: Operating Systems, Internals and Design Principles
 	O: Linux Driver Development for Embedded Processors
 	tools for kernel stack and function graph
+}
+
+strace {
+	无埋点获取几乎任何内核代码执行信息
+	只能追踪系统调用，而文件的打开不仅仅通过系统调用，内核可以直接打开文件
+	strace只能追踪特定的应用信息，不能追踪系统的整体信息
+	strace + command才能分析具体的应用或者attach到pid，使用am命令行启动应用时，分析的是am的系统调用，而attach到pid则要求应用必须已经起来，无法抓到完整的信息
+	strace只能分析用户空间的信息，我们关注的是内核态的信息，cache是否命中无法通过strace获取
+	inode是否命中
+	https://en.wikipedia.org/wiki/Heisenbug
+	https://www.kernel.org/doc/html/latest/dev-tools/kunit/index.html#why-kunit
+	KUnit is fast. Excluding build time, from invocation to completion KUnit can run several dozen tests in only 10 to 20 seconds; this might not sound like a big deal to some people, but having such fast and easy to run tests fundamentally changes the way you go about testing and even writing code in the first place. Linus himself said in his git talk at Google:
+
+“… a lot of people seem to think that performance is about doing the same thing, just doing it faster, and that is not true. That is not what performance is all about. If you can do something really fast, really well, people will start using it differently.”
+
+https://source.android.com/devices/tech/debug/ftrace#dftrace	
+When systrace and standard ftrace are insufficient, there is one last recourse available: dynamic ftrace. Dynamic ftrace involves rewriting of kernel code after boot, and as a result it is not available in production kernels for security reasons.
+However, every single difficult performance bug in 2015 and 2016 was ultimately root-caused using dynamic ftrace. It is especially powerful for debugging uninterruptible sleeps because you can get a stack trace in the kernel every time you hit the function triggering uninterruptible sleep. You can also debug sections with interrupts and preemptions disabled, which can be very useful for proving issues.
 }
