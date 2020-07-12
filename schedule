@@ -32,6 +32,7 @@
 	kgdb使用
 	buildid原理
 	uprobe如何使用
+	tracing_on默认值谁设定的？
 }
 --------------------------------------------------------------------------------
 patch {
@@ -45,9 +46,6 @@ patch {
 		确认代码解析逻辑
 		1155, 需要改成>>
 		1171, 应该是disable_event
-	}
-	ftrace {
-		enable/disable trace written from user space
 	}
 	drivers/devfreq/devfreq.c {
 		如果devfreq必须有governor的话，卸载成功的前提必须是当前governor已经无人使用

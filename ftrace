@@ -42,3 +42,11 @@ echo 'stacktrace' > /sys/kernel/debug/tracing/events/kmem/kfree/trigger
 
 
 trace_printk
+--------------------------------------------------------------------------------
+tracing_on
+tracer_init_tracefs
+early_trace_init
+tracer_tracing_off
+trace_set_options
+--------------------------------------------------------------------------------
+Android platform's default tracing_on value differs from ubuntu?
