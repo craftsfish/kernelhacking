@@ -1,0 +1,14 @@
+https://cfig.github.io/2019/03/17/Android-boot-up-performance-systrace/
+
+/system/etc/init/atrace.rc {
+	write /sys/kernel/debug/tracing/tracing_on 1
+	property:sys.boot_completed=1
+    	write /d/tracing/tracing_on 0
+    	write /d/tracing/events/ext4/enable 0
+    	write /d/tracing/events/block/enable 0
+}
+
+
+/system/etc/prop.default {
+	debug.atrace.tags.enableflags=802922
+}
