@@ -50,6 +50,7 @@ patch {
 	drivers/devfreq/devfreq.c {
 		如果devfreq必须有governor的话，卸载成功的前提必须是当前governor已经无人使用
 	}
+	kernel parameter enable kprobe parameter
 }
 --------------------------------------------------------------------------------
 其他 {

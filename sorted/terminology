@@ -28,3 +28,4 @@ Qualcomm.mDSP: is the Modem DSP, which allows the modem to outsource processing.
 Qualcomm.RPM: Resource Power Manager
 Qualcomm.sDSP: sensor
 swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
+Qualcomm.APO: always-on processor
