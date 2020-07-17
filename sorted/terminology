@@ -29,3 +29,5 @@ Qualcomm.RPM: Resource Power Manager
 Qualcomm.sDSP: sensor
 swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
 Qualcomm.APO: always-on processor
+Qualcomm.PMU: instructions per L2 miss?
+Qualcomm.BIMC: Bus integrated memory controller
