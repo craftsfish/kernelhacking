@@ -51,6 +51,8 @@ patch {
 		如果devfreq必须有governor的话，卸载成功的前提必须是当前governor已经无人使用
 	}
 	kernel parameter enable kprobe parameter
+	remove unnecessary irq_save
+	kthread_work中是否需要irq_save?
 }
 --------------------------------------------------------------------------------
 其他 {
