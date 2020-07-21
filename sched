@@ -1,0 +1,126 @@
+猜测 {
+	util_raw: 某个CPU上的原始使用率，不考虑频率因素
+	util: util_raw * (curr_freq / max_freq)，根据当前频率和CPU的最大频率换算出来的使用率
+	schedutil中预测频率公式：next_freq = C * max_freq * util / max
+	为什么要除以max？猜测：每个CPU的能力不一样，用不同的max来表示各CPU的最大算力，由于内核没有浮点计算，所以util表示的使用率百分比*max得出来的整形数值。
+}
+cpu使用率怎么计算出来的
+
+cpu capacity {
+	每一个CPU的运算能力不一样，通过时钟频率和每周期指令数来衡量
+	第一步，忽略时钟频率差异 {
+		为了统一算力的计算，为每个CPU定义了一个raw_capacity，用来衡量某个CPU每个时钟周期内能够执行的指令数
+		capacity_scale用来表示raw_capacity的刻度范围(量程)，取最大的raw_capacity即可
+		将算力最高的CPU的cpu_capacity定义为1024，每个CPU的算力可以相应的按比例计算出来
+	}
+	第二步，引入时钟频率 {
+		raw_capacity = cpu_capacity * freq / 1000，用来表示1秒内可以执行的千条指令数
+		raw_capacity[7] = 2361600 * 1024 / 1000 = 2418278
+		raw_capacity[0] = 1728000 * 602 / 1000 = 1040256
+		cpu_capacity[0] = raw_capacity[0] * 1024 / raw_capacity[7] = 1040256 * 1024 / 2418278 = 440
+	}
+[    0.146937] (0)[1:swapper/0]by lcj, cpu_capacity: capacity_scale=1740
+[    0.153834] (0)[1:swapper/0]CPU: 0 PID: 1 Comm: swapper/0 Not tainted 4.19.81+ #10
+[    0.161721] (0)[1:swapper/0]Hardware name: Qualcomm Technologies, Inc. Lito MTP (DT)
+[    0.169784] (0)[1:swapper/0]Call trace:
+[    0.173848] (0)[1:swapper/0] dump_backtrace+0x0/0x1a0
+[    0.179143] (0)[1:swapper/0] show_stack+0x20/0x30
+[    0.184095] (0)[1:swapper/0] dump_stack+0xd8/0x12c
+[    0.189132] (0)[1:swapper/0] topology_normalize_cpu_scale+0x60/0x138
+[    0.195767] (0)[1:swapper/0] init_cpu_topology+0x18c/0x1f8
+[    0.201513] (0)[1:swapper/0] smp_prepare_cpus+0x28/0x10c
+[    0.207086] (0)[1:swapper/0] kernel_init_freeable+0xf4/0x37c
+[    0.213014] (0)[1:swapper/0] kernel_init+0x18/0x2b0
+[    0.218141] (0)[1:swapper/0] ret_from_fork+0x10/0x1c
+[    0.223480] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=0 raw_capacity=1024
+[    0.230675] (0)[1:swapper/0]by lcj, cpu_capacity: CPU0 cpu_capacity=602
+[    0.237647] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=1 raw_capacity=1024
+[    0.244786] (0)[1:swapper/0]by lcj, cpu_capacity: CPU1 cpu_capacity=602
+[    0.251791] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=2 raw_capacity=1024
+[    0.258929] (0)[1:swapper/0]by lcj, cpu_capacity: CPU2 cpu_capacity=602
+[    0.265897] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=3 raw_capacity=1024
+[    0.273072] (0)[1:swapper/0]by lcj, cpu_capacity: CPU3 cpu_capacity=602
+[    0.280041] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=4 raw_capacity=1024
+[    0.287177] (0)[1:swapper/0]by lcj, cpu_capacity: CPU4 cpu_capacity=602
+[    0.294182] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=5 raw_capacity=1024
+[    0.301319] (0)[1:swapper/0]by lcj, cpu_capacity: CPU5 cpu_capacity=602
+[    0.308285] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=6 raw_capacity=1740
+[    0.315459] (0)[1:swapper/0]by lcj, cpu_capacity: CPU6 cpu_capacity=1024
+[    0.322508] (0)[1:swapper/0]by lcj, cpu_capacity: cpu=7 raw_capacity=1740
+[    0.329643] (0)[1:swapper/0]by lcj, cpu_capacity: CPU7 cpu_capacity=1024
+
+================================================================================
+
+[    5.209393] (6)[1:swapper/0]by lcj, cpu_capacity: capacity_scale=2418278
+[    5.216455] (6)[1:swapper/0]CPU: 6 PID: 1 Comm: swapper/0 Tainted: G S                4.19.81+ #10
+[    5.225743] (6)[1:swapper/0]Hardware name: Qualcomm Technologies, Inc. Lito MTP (DT)
+[    5.233794] (6)[1:swapper/0]Call trace:
+[    5.237837] (6)[1:swapper/0] dump_backtrace+0x0/0x1a0
+[    5.243128] (6)[1:swapper/0] show_stack+0x20/0x30
+[    5.248066] (6)[1:swapper/0] dump_stack+0xd8/0x12c
+[    5.253085] (6)[1:swapper/0] topology_normalize_cpu_scale+0x60/0x138
+[    5.259705] (6)[1:swapper/0] init_cpu_capacity_callback+0xfc/0x1b0
+[    5.266145] (6)[1:swapper/0] notifier_call_chain+0x250/0x288
+[    5.272060] (6)[1:swapper/0] blocking_notifier_call_chain+0x4c/0x78
+[    5.278597] (6)[1:swapper/0] cpufreq_set_policy+0xf8/0x920
+[    5.284329] (6)[1:swapper/0] cpufreq_online+0x75c/0xa10
+[    5.289798] (6)[1:swapper/0] cpufreq_add_dev+0x5c/0xc0
+[    5.295175] (6)[1:swapper/0] subsys_interface_register+0xb8/0x130
+[    5.301529] (6)[1:swapper/0] cpufreq_register_driver+0x13c/0x288
+[    5.307798] (6)[1:swapper/0] qcom_cpufreq_hw_driver_probe+0x784/0x918
+[    5.314511] (6)[1:swapper/0] platform_drv_probe+0x80/0xb8
+[    5.320159] (6)[1:swapper/0] really_probe+0x4ec/0x6d8
+[    5.325449] (6)[1:swapper/0] driver_probe_device+0x74/0x148
+[    5.331267] (6)[1:swapper/0] __driver_attach+0x128/0x1e0
+[    5.336818] (6)[1:swapper/0] bus_for_each_dev+0x84/0xd0
+[    5.342286] (6)[1:swapper/0] driver_attach+0x2c/0x38
+[    5.347483] (6)[1:swapper/0] bus_add_driver+0x150/0x288
+[    5.352952] (6)[1:swapper/0] driver_register+0x78/0x110
+[    5.358411] (6)[1:swapper/0] __platform_driver_register+0x4c/0x58
+[    5.364767] (6)[1:swapper/0] qcom_cpufreq_hw_init+0x1c/0x24
+[    5.370586] (6)[1:swapper/0] do_one_initcall+0x1fc/0x400
+[    5.376140] (6)[1:swapper/0] do_initcalls+0x20c/0x23c
+[    5.381427] (6)[1:swapper/0] kernel_init_freeable+0x2b0/0x37c
+[    5.387421] (6)[1:swapper/0] kernel_init+0x18/0x2b0
+[    5.392530] (6)[1:swapper/0] ret_from_fork+0x10/0x1c
+[    5.397947] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=0 raw_capacity=1040256
+[    5.405318] (6)[1:swapper/0]by lcj, cpu_capacity: CPU0 cpu_capacity=440
+[    5.412253] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=1 raw_capacity=1040256
+[    5.419608] (6)[1:swapper/0]by lcj, cpu_capacity: CPU1 cpu_capacity=440
+[    5.426519] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=2 raw_capacity=1040256
+[    5.433890] (6)[1:swapper/0]by lcj, cpu_capacity: CPU2 cpu_capacity=440
+[    5.440802] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=3 raw_capacity=1040256
+[    5.448155] (6)[1:swapper/0]by lcj, cpu_capacity: CPU3 cpu_capacity=440
+[    5.455081] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=4 raw_capacity=1040256
+[    5.462436] (6)[1:swapper/0]by lcj, cpu_capacity: CPU4 cpu_capacity=440
+[    5.469345] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=5 raw_capacity=1040256
+[    5.476720] (6)[1:swapper/0]by lcj, cpu_capacity: CPU5 cpu_capacity=440
+[    5.483632] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=6 raw_capacity=2182348
+[    5.491001] (6)[1:swapper/0]by lcj, cpu_capacity: CPU6 cpu_capacity=924
+[    5.497980] (6)[1:swapper/0]by lcj, cpu_capacity: cpu=7 raw_capacity=2418278
+[    5.505346] (6)[1:swapper/0]by lcj, cpu_capacity: CPU7 cpu_capacity=1024
+
+================================================================================
+
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_available_frequencies
+300000 576000 672000 940800 1228800 1459200 1612800 1728000 
+300000 576000 672000 940800 1228800 1459200 1612800 1728000 
+300000 576000 672000 940800 1228800 1459200 1612800 1728000 
+300000 576000 672000 940800 1228800 1459200 1612800 1728000 
+300000 576000 672000 940800 1228800 1459200 1612800 1728000 
+300000 576000 672000 940800 1228800 1459200 1612800 1728000 
+672000 940800 1228800 1478400 1708800 1900800 2131200 
+672000 921600 1228800 1516800 1708800 1900800 2131200 2227200 2361600 
+
+================================================================================
+
+cat /sys/devices/system/cpu/cpu*/cpu_capacity
+440
+440
+440
+440
+440
+440
+924
+1024
+}
