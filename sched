@@ -1,12 +1,20 @@
-猜测 {
-	util_raw: 某个CPU上的原始使用率，不考虑频率因素
-	util: util_raw * (curr_freq / max_freq)，根据当前频率和CPU的最大频率换算出来的使用率
-	schedutil中预测频率公式：next_freq = C * max_freq * util / max
-	为什么要除以max？猜测：每个CPU的能力不一样，用不同的max来表示各CPU的最大算力，由于内核没有浮点计算，所以util表示的使用率百分比*max得出来的整形数值。
+CPU使用率 {
+	P(原始使用率): CPU工作时间与总时间的百分比
+	util_raw(原始使用率的整型表示)：P * cpu_capacity
+	util(实际使用率的整型表示): util_raw * (curr_freq / max_freq) = P * curr_freq / max_freq * cpu_capacity，根据当前频率和CPU的最大频率换算出来的使用率
 }
-cpu使用率怎么计算出来的
 
-cpu capacity {
+schedutil中预测频率公式：next_freq = C * max_freq * util / max {
+	为什么要除以max？
+	这里的max是cpu_capacity(参考下面的详细解释)，表示当前CPU最大频率运行时的算力
+	每个CPU的能力不一样，用cpu_capacity来表示各CPU的最大算力
+	由于内核没有浮点计算，所以util表示：使用率百分比*cpu_capacity得出来的整形数值，简单理解为当前使用的算力。
+	单个CPU的使用率 = util / cpu_capacity = util / max
+	percent * capacity = util = util_raw * (curr_freq / max_freq)
+	util_raw = percent * max_freq / curr_freq * capacity
+}
+
+cpu_capacity {
 	每一个CPU的运算能力不一样，通过时钟频率和每周期指令数来衡量
 	第一步，忽略时钟频率差异 {
 		为了统一算力的计算，为每个CPU定义了一个raw_capacity，用来衡量某个CPU每个时钟周期内能够执行的指令数
