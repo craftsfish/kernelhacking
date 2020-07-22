@@ -12,13 +12,13 @@ function run {
 }
 #parameters
 timeout=5
-func="do_sys_open"
+func="sugov_init sugov_exit sugov_start sugov_stop sugov_limits sugov_update_shared sugov_update_single"
 notrace="printk"
 rand="$BASHPID-$RANDOM"
 
 #disable trace_prink & markers
 run 'echo 0 > /sys/kernel/debug/tracing/options/trace_printk'
-run 'echo 0 > /sys/kernel/debug/tracing/options/markers
+run 'echo 0 > /sys/kernel/debug/tracing/options/markers'
 
 #initialize
 for f in $func; do
@@ -39,7 +39,6 @@ run 'echo 0 > /sys/kernel/debug/tracing/tracing_on'
 #finalize
 run "echo > /sys/kernel/debug/tracing/set_graph_function"
 run 'cat /sys/kernel/debug/tracing/trace' > /tmp/$rand
-exit
-run 'echo nop > /sys/kernel/debug/tracing/current_tracer'
 cp /tmp/$rand /tmp/l
 vim /tmp/l
+run 'echo nop > /sys/kernel/debug/tracing/current_tracer'

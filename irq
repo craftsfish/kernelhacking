@@ -1,1 +1,6 @@
 softirq和具体的CPU的关系是什么
+__do_softirq工作在hardirq上下文 {
+	进入时调用local_irq_enable
+	退出时调用local_irq_disable
+	这样处理softirq的时候硬中断可以被响应
+}
