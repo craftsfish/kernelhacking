@@ -14,6 +14,7 @@ adb shell 'echo 0 > /sys/kernel/debug/tracing/options/trace_printk'
 adb shell 'echo 0 > /sys/kernel/debug/tracing/options/markers'
 
 #enable devfreq events
+adb shell "echo 1 > /sys/kernel/debug/tracing/options/stacktrace"
 for i in $events; do
 	adb shell "echo 1 > /sys/kernel/debug/tracing/events/power/$i/enable"
 done
@@ -26,6 +27,7 @@ adb shell 'echo 0 > /sys/kernel/debug/tracing/tracing_on'
 for i in $events; do
 	adb shell "echo 0 > /sys/kernel/debug/tracing/events/power/$i/enable"
 done
+adb shell "echo 0 > /sys/kernel/debug/tracing/options/stacktrace"
 
 adb shell 'cat /sys/kernel/debug/tracing/trace_pipe' > /tmp/a
 cat /tmp/a

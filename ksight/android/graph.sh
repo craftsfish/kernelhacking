@@ -2,7 +2,7 @@
 
 #parameters
 timeout=5
-func="sugov_init sugov_exit sugov_start sugov_stop sugov_limits sugov_update_shared sugov_update_single"
+func="update_bw_hwmon"
 notrace="printk"
 rand="$BASHPID-$RANDOM"
 

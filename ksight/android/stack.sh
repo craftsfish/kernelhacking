@@ -2,8 +2,12 @@
 
 #parameters
 timeout=5
-func="scheduler_tick"
+func="devfreq_bw_hwmon_get_freq"
 rand="$BASHPID-$RANDOM"
+model=$(adb shell 'getprop ro.product.name')
+if [ $? != 0 ]; then
+	exit
+fi
 
 #disable trace_prink & markers
 adb shell 'echo 0 > /sys/kernel/debug/tracing/options/trace_printk'

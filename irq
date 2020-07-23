@@ -4,3 +4,6 @@ __do_softirq工作在hardirq上下文 {
 	退出时调用local_irq_disable
 	这样处理softirq的时候硬中断可以被响应
 }
+
+irqs_disabled
+irqs_disabled_flags
