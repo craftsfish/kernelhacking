@@ -2,9 +2,9 @@
 
 model=$(adb shell 'getprop ro.product.name')
 
-events="cpu_frequency"
+#events="cpu_frequency"
 if [ $model == PCRM00 ]; then
-	events="$events sugov_next_freq_lcj sugov_util_update"
+	events="$events sugov_next_freq_lcj"
 else
 	events="$events sugov_next_freq sugov_util_update"
 fi
@@ -19,6 +19,7 @@ for i in $events; do
 	adb shell "echo 1 > /sys/kernel/debug/tracing/events/power/$i/enable"
 done
 
+adb shell 'echo > /sys/kernel/debug/tracing/trace'
 adb shell 'echo 1 > /sys/kernel/debug/tracing/tracing_on'
 sleep 5
 adb shell 'echo 0 > /sys/kernel/debug/tracing/tracing_on'
