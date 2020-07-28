@@ -1,0 +1,112 @@
+# tracer: nop
+#
+# entries-in-buffer/entries-written: 32/32   #P:6
+#
+#                              _-----=> irqs-off
+#                             / _----=> need-resched
+#                            | / _---=> hardirq/softirq
+#                            || / _--=> preempt-depth
+#                            ||| /     delay
+#           TASK-PID   CPU#  ||||    TIMESTAMP  FUNCTION
+#              | |       |   ||||       |         |
+           sleep-829   [001] .... 114418.871965: func_do_filp_open: (do_filp_open+0x0/0x110)
+           sleep-829   [001] .... 114418.871969: <stack trace>
+ => do_filp_open
+ => __do_execve_file.isra.37
+ => __x64_sys_execve
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+           sleep-829   [001] .... 114418.872012: func_do_filp_open: (do_filp_open+0x0/0x110)
+           sleep-829   [001] .... 114418.872013: <stack trace>
+ => do_filp_open
+ => open_exec
+ => load_elf_binary
+ => search_binary_handler
+ => __do_execve_file.isra.37
+ => __x64_sys_execve
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+           sleep-829   [001] .... 114418.872200: func_do_filp_open: (do_filp_open+0x0/0x110)
+           sleep-829   [001] .... 114418.872201: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+           sleep-829   [001] .... 114418.872225: func_do_filp_open: (do_filp_open+0x0/0x110)
+           sleep-829   [001] .... 114418.872225: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+           sleep-829   [001] .... 114418.872545: func_do_filp_open: (do_filp_open+0x0/0x110)
+           sleep-829   [001] .... 114418.872546: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+          vminfo-1268  [001] .... 114419.241366: func_do_filp_open: (do_filp_open+0x0/0x110)
+          vminfo-1268  [001] .... 114419.241373: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     dbus-daemon-791   [001] .... 114419.241697: func_do_filp_open: (do_filp_open+0x0/0x110)
+     dbus-daemon-791   [001] .... 114419.241700: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     dbus-daemon-791   [001] .... 114419.241731: func_do_filp_open: (do_filp_open+0x0/0x110)
+     dbus-daemon-791   [001] .... 114419.241732: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     dbus-daemon-791   [001] .... 114419.242183: func_do_filp_open: (do_filp_open+0x0/0x110)
+     dbus-daemon-791   [001] .... 114419.242185: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     device poll-10207 [003] .... 114419.878258: func_do_filp_open: (do_filp_open+0x0/0x110)
+     device poll-10207 [003] .... 114419.878266: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     device poll-10207 [003] .... 114419.878312: func_do_filp_open: (do_filp_open+0x0/0x110)
+     device poll-10207 [003] .... 114419.878313: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     device poll-10207 [003] .... 114419.878334: func_do_filp_open: (do_filp_open+0x0/0x110)
+     device poll-10207 [003] .... 114419.878335: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     device poll-10207 [003] .... 114419.878425: func_do_filp_open: (do_filp_open+0x0/0x110)
+     device poll-10207 [003] .... 114419.878427: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     device poll-10207 [003] .... 114419.878464: func_do_filp_open: (do_filp_open+0x0/0x110)
+     device poll-10207 [003] .... 114419.878465: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+     device poll-10207 [003] .... 114419.878484: func_do_filp_open: (do_filp_open+0x0/0x110)
+     device poll-10207 [003] .... 114419.878484: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
+      __probe.sh-826   [003] .... 114419.878976: func_do_filp_open: (do_filp_open+0x0/0x110)
+      __probe.sh-826   [003] .... 114419.878980: <stack trace>
+ => do_filp_open
+ => __x64_sys_openat
+ => do_syscall_64
+ => entry_SYSCALL_64_after_hwframe
