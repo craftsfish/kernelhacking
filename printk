@@ -4,3 +4,8 @@ cat /dev/kmsg
 sudo cat /proc/kmsg
 init/main.c:static int __init loglevel(char *str)
 arch/arm/kernel/early_printk.c:early_param("earlyprintk", setup_early_printk);
+
+%pF
+
+
+Documentation/core-api/printk-formats.rst

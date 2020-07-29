@@ -1,0 +1,1 @@
+CPU初始化policy的时候，会通过驱动查看被相同clock驱动的所有CPU，这些CPU共享policy

@@ -1,0 +1,4 @@
+cat /proc/sys/kernel/core_pattern
+fs/coredump.c: do_coredump
+
+android's debuggerd uses ptrace to capture the execution context
