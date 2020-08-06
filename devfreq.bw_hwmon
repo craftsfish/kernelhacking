@@ -1,0 +1,3 @@
+mbps_zones: available_frequencies的一个子集，该governor运行的时候，测量出来的freq向上round到最近的一个频率
+devbw设备提供回调函数get_dev_status，governor通过该回调获取保存ab(average bandwidth)的地址，governor运行时负责将最新的ab保存到该地址。
+devfreq框架设定devbw设备的目标频率时，devbw_target直接将最新的ab设置下去, ib(instand bandwidth)则是由ab/io_percent计算得出的

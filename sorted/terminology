@@ -31,3 +31,4 @@ swapping/paging: The kernel enables seldom-used parts of memory to be swapped ou
 Qualcomm.APO: always-on processor
 Qualcomm.PMU: instructions per L2 miss?
 Qualcomm.BIMC: Bus integrated memory controller
+PM.QoS: Power Manager Quality of Service
