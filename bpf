@@ -1,0 +1,2 @@
+sudo apt install llvm clang
+make M=samples/bpf
