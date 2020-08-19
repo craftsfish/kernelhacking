@@ -13,6 +13,7 @@ BIMC: Bus-integrated memory controller
 DAC: discretionary access control
 DCVS: Differential cascodevoltage switch
 DDR: Double data rate
+EBI: External Bus Interface
 EEPROM: electrically erasable programmable read-only memory
 IB: Instantaneousbandwidth
 Linux.OPP: DVFS operating point; The majority of modern processors are capable of operating in a number of different clock frequency and voltage configurations, often referred to as Operating Performance Points or P-states (in ACPI terminology).
@@ -22,13 +23,13 @@ MAC: mandatory access control
 MLS: multilevel security
 NPU: Network processing unit
 PCL: Performance Counters for Linux
+PM.QoS: Power Manager Quality of Service
 Qualcomm.aDSP: is the Application DSP, which allows the device to process simple sets of data on low power, without having to wake up the Application processor (AP). The aDSP can run custom applications to perform simple tasks, like hotword detection for voice recognition, sensor data aggregation from accelerometer, gyroscope etc. and is also utilized for low power music playback nowadays.
+Qualcomm.APO: always-on processor
+Qualcomm.BIMC: Bus integrated memory controller
 Qualcomm.cDSP: compute
 Qualcomm.mDSP: is the Modem DSP, which allows the modem to outsource processing.
+Qualcomm.PMU: instructions per L2 miss?
 Qualcomm.RPM: Resource Power Manager
 Qualcomm.sDSP: sensor
 swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
-Qualcomm.APO: always-on processor
-Qualcomm.PMU: instructions per L2 miss?
-Qualcomm.BIMC: Bus integrated memory controller
-PM.QoS: Power Manager Quality of Service
