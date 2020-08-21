@@ -43,6 +43,7 @@ perf_event_task_sched_in
 perf_event_task_sched_out
 
 
+
 抓取调用栈
 PERF_SAMPLE_CALLCHAIN
 #0  __perf_evsel__config_callchain (evsel=0x555555e94570, opts=0x555555d08e38 <record+280>, param=0x555555cd7300 <callchain_param>) at util/evsel.c:692
@@ -56,3 +57,7 @@ PERF_SAMPLE_CALLCHAIN
 #8  0x0000555555795f6e in handle_internal_command (argc=5, argv=0x7fffffffdf00) at perf.c:364
 #9  0x000055555570c601 in run_argv (argcp=<synthetic pointer>, argv=<synthetic pointer>) at perf.c:408
 #10 main (argc=<optimized out>, argv=0x7fffffffdf00) at perf.c:538
+
+
+重要函数
+perf_event_create_kernel_counter
