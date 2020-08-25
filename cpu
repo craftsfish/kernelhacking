@@ -3,3 +3,11 @@ struct thread_struct
 struct thread_info
 
 /sys/kernel/debug/tracing/events/power/cpu_idle
+
+
+cpuidle_enter_state
+
+
+cpufreq_notify_transition
+cpufreq_stats_record_transition
+cpufreq_stats_update

@@ -1,0 +1,7 @@
+workload profile {
+	cpu: usage
+	ddr: bw
+}
+performance first
+down limit: for performance
+up limit: for power
