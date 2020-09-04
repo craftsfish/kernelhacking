@@ -28,3 +28,8 @@
 - [VBoxGDB](http://sysprogs.com/VBoxGDB/)
 - [Vlukan-Tutorial](https://vulkan-tutorial.com/)
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
+- [Marketing Strategies We Used to Bootstrap Visme to over 4M users.](https://visme.co/marketing-ebook.pdf)
+- [A Non-Designer's Guide to Creating Memorable Visual Presentations from Visme](https://www.visme.co/ebook/A%20Non-Designer%20s%20Guide%20to%20Creating%20Memorable%20Visual%20Slides%20by%20Visme.pdf)
+- [How to Make an Infographic: A Visual Guide for Beginners from Visme](https://www.visme.co/wp-content/uploads/2017/03/How%20to%20Make%20an%20Infographic%20-%20A%20Visual%20Guide%20for%20Beginners%20By%20Visme.pdf)
+- [How to Build a Powerful Visual Brand Identity in 10 Steps from Visme](https://www.visme.co/ebook/Brand-Guide-visme.pdf)
+- [24 Essential Tools and Resources for Entrepreneurs from Visme](http://blog.visme.co/wp-content/uploads/24-Essential-Tools-and-Resources-for-Entrepreneurs-by-Visme.pdf)

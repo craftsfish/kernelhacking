@@ -6,6 +6,7 @@ struct thread_info
 
 
 cpuidle_enter_state
+/sys/devices/system/cpu/cpu0/cpuidle/state0/time以us为单位，参考show_state_time
 
 
 cpufreq_notify_transition
