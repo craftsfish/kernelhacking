@@ -34,3 +34,5 @@
 - [VBoxGDB](http://sysprogs.com/VBoxGDB/)
 - [Vlukan-Tutorial](https://vulkan-tutorial.com/)
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
+- [OpenCV](https://www.geeksforgeeks.org/opencv-python-tutorial/)
+- [tesseract OCR](https://github.com/tesseract-ocr/tesseract)
