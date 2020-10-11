@@ -10,3 +10,7 @@ irqs_disabled_flags
 
 softirq在中断返回用户空间是执行？
 同一个中断处理函数不需要考虑重入，因为调用时把对应的中断信号屏蔽了，但是softirq就不一样了，同样的softirq可以在不同的CPU上同时执行，所以softirq要考虑重入问题。tasklet状态变量用于同步，确保一个tasklet某个时刻只能在一个CPU上面。因此tasklet也不需要考虑重入问题。
+
+一个具体的interrupt handler执行的时候，本地中断是什么状态？ {
+	取决于handler注册的时候的设置
+}

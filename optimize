@@ -1,0 +1,8 @@
+reduce workload {
+	eliminate existing
+	shedoff new request
+}
+
+profile cpu/memory usgae with max capacity
+check the distribution of next usage
+make sure 90% of the distribution is included within our estimation
