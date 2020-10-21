@@ -1,5 +1,5 @@
 slab {
-	cache limit
+	cache limit 每个cache能包含的空闲object上限
 }
 
 performance first
