@@ -37,3 +37,5 @@
 - [VBoxGDB](http://sysprogs.com/VBoxGDB/)
 - [Vlukan-Tutorial](https://vulkan-tutorial.com/)
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
+- [Systrace.1](https://source.android.com/devices/tech/debug/systrace)
+- [Systrace.2](https://developer.android.com/topic/performance/tracing)
