@@ -6,3 +6,12 @@ reduce workload {
 profile cpu/memory usgae with max capacity
 check the distribution of next usage
 make sure 90% of the distribution is included within our estimation
+
+{
+	屏幕亮度
+	声音
+	应用设置
+	环境温度
+	散热环境
+	CPU温度
+}
