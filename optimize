@@ -8,6 +8,7 @@ check the distribution of next usage
 make sure 90% of the distribution is included within our estimation
 
 {
+	持续自动化测试的可持续性，温度是否恒定
 	屏幕亮度
 	声音
 	应用设置
