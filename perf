@@ -2,6 +2,11 @@
 perf_event_init_task在copy_process的时候继承event
 
 
+./perf probe -f -x /home/lcj/work/template/a.out -F
+./perf probe -f -x /home/lcj/work/template/a.out my_func
+./perf probe -x /home/lcj/work/template/a.out -s /home/lcj/work/template -L 'main.c'
+perf record -e probe_a:my_func -g --call-graph=dwarf -aR sleep 5
+
 查看可以probe的代码位置
 ./perf probe -k /home/lcj/work/pi/linux/vmlinux -L 'do_sys_open@/home/lcj/work/pi/linux/fs/open.c'
 ./perf probe -k /home/lcj/work/pi/linux/vmlinux -L 'do_sys_open@/home/lcj/work/pi/linux/fs/open.c:9+5'
