@@ -39,3 +39,4 @@
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
 - [Systrace.1](https://source.android.com/devices/tech/debug/systrace)
 - [Systrace.2](https://developer.android.com/topic/performance/tracing)
+- [...](https://www.zhihu.com/column/c_1108400140804726784)
