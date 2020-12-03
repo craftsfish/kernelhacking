@@ -34,9 +34,14 @@ IDT {
 	trap gate (do not modify the IF flag)
 }
 
+一个page table entry控制的范围
 #define PAGE_SHIFT	12
 #define PAGE_SIZE	(1UL << PAGE_SHIFT)
 #define PAGE_MASK	(~(PAGE_SIZE-1))
+
+一个page middle directory entry控制的范围
+PMD_SHIFT
+PMD_SIZE = LARGE_PAGE_SIZE
 
 
 cache {
