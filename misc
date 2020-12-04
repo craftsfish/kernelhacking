@@ -34,6 +34,8 @@ IDT {
 	trap gate (do not modify the IF flag)
 }
 
+
+PAGE_OFFSET 0xc0000000分割用户空间与内核空间
 一个page table entry控制的范围
 #define PAGE_SHIFT	12
 #define PAGE_SIZE	(1UL << PAGE_SHIFT)

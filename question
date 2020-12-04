@@ -2,3 +2,13 @@ SE policy是如何实现钩子机制让上层决定访问权限的
 uevent是怎么通知到用户空间的
 什么情况下设置page table entry的present为0, page size为1
 free_pmd_range的时候为什么不考虑是否为large页
+内核页表是如何更新的
+
+tlb cache是否每cpu?是, Page Global Enable(PGE)设置时，最低一级page table的entry可以包含Global flag，用来标识指向的page经常使用，防止该entry从TLB cache中flush掉
+	In a multiprocessor system, each CPU has its own TLB, called the local TLB of the
+	CPU. Contrary to the hardware cache, the corresponding entries of the TLB need not
+	be synchronized, because processes running on the existing CPUs may associate the
+	same linear address with different physical ones.
+	When the cr3 control register of a CPU is modified, the hardware automatically
+	invalidates all entries of the local TLB, because a new set of page tables is in use and
+	the TLBs are pointing to old data.
