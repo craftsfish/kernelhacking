@@ -4,7 +4,10 @@ uevent是怎么通知到用户空间的
 free_pmd_range的时候为什么不考虑是否为large页
 内核页表是如何更新的
 
-tlb cache是否每cpu?是, Page Global Enable(PGE)设置时，最低一级page table的entry可以包含Global flag，用来标识指向的page经常使用，防止该entry从TLB cache中flush掉
+tlb cache是否每cpu?是
+	Page Global Enable(PGE)设置时，最低一级page table的entry可以包含Global flag，用来标识指向的page经常使用，防止该entry从TLB cache中flush掉
+	修改cr3寄存器只会flush该CPU对应的local TLB中的非Global entry
+	----------------------------------------------------------------------------
 	In a multiprocessor system, each CPU has its own TLB, called the local TLB of the
 	CPU. Contrary to the hardware cache, the corresponding entries of the TLB need not
 	be synchronized, because processes running on the existing CPUs may associate the
@@ -12,3 +15,6 @@ tlb cache是否每cpu?是, Page Global Enable(PGE)设置时，最低一级page t
 	When the cr3 control register of a CPU is modified, the hardware automatically
 	invalidates all entries of the local TLB, because a new set of page tables is in use and
 	the TLBs are pointing to old data.
+
+P76: flush_tlb_pgtables为什么不需要更新TLB cache
+P76: flush_tlb的时候通过IPI通知其他CPU，如何确保同步
