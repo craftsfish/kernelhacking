@@ -66,4 +66,10 @@ block & char设备只是所有设备中的一部分
 #define EXP_1       1884        /* 1/exp(5sec/1min) as fixed-point */
 (1/math.exp(5/60.0)) * (2**11)
 
-process中的threads共享thread_info, mm_struct, tty_struct, fs_struct, files_struct, signal_struct
+
+thread_struct存储hardware context
+thread_info和kernel mode stack组合成8k page
+
+clone, fork, vfork都是系统调用。do_fork是内核的实际实现
+
+exit_signal为-1的task最后terminate时，怎么通知parent

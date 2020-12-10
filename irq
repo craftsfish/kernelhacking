@@ -12,5 +12,64 @@ softirq在中断返回用户空间是执行？
 同一个中断处理函数不需要考虑重入，因为调用时把对应的中断信号屏蔽了，但是softirq就不一样了，同样的softirq可以在不同的CPU上同时执行，所以softirq要考虑重入问题。tasklet状态变量用于同步，确保一个tasklet某个时刻只能在一个CPU上面。因此tasklet也不需要考虑重入问题。
 
 一个具体的interrupt handler执行的时候，本地中断是什么状态？ {
-	取决于handler注册的时候的设置
+	取决于handler注册的时候的设置，所以中断可以嵌套
 }
+
+
+
+中断的硬件处理
+stack {
+	oldss
+	oldesp
+	eflags
+	cs
+	eip
+	error_code	-> -1	(esp+36) (orig_eax)
+	&do_handler_name	(esp+32) (es)
+	saved registers {
+		ds
+		eax
+		ebp
+		edi
+		esi
+		edx
+		ecx
+		ebx
+	}
+}
+
+instruction {
+	cs + eip = interrupt handler
+}
+
+registers {
+	edx = error_code
+	edi = &do_handler_name
+	eax = esp
+	ds = user_ds
+	es = user_es
+}
+
+error_code:
+	pushl %ds
+	pushl %eax
+	xorl %eax, %eax
+	pushl %ebp
+	pushl %edi
+	pushl %esi
+	pushl %edx
+	decl %eax			# eax = -1
+	pushl %ecx
+	pushl %ebx
+	cld
+	movl %es, %ecx
+	movl ES(%esp), %edi		# get the function address
+	movl ORIG_EAX(%esp), %edx	# get the error code
+	movl %eax, ORIG_EAX(%esp)
+	movl %ecx, ES(%esp)
+	movl $(__USER_DS), %ecx
+	movl %ecx, %ds
+	movl %ecx, %es
+	movl %esp,%eax			# pt_regs pointer
+	call *%edi
+	jmp ret_from_exception
