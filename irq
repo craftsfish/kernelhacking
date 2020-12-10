@@ -13,8 +13,10 @@ softirq在中断返回用户空间是执行？
 
 一个具体的interrupt handler执行的时候，本地中断是什么状态？ {
 	取决于handler注册的时候的设置，所以中断可以嵌套
+	critical (irq disable)
+	noncritial (irq enable)
+	noncritical deferrable (softirqs and tasklets)
 }
-
 
 
 中断的硬件处理
@@ -73,3 +75,8 @@ error_code:
 	movl %esp,%eax			# pt_regs pointer
 	call *%edi
 	jmp ret_from_exception
+
+
+/proc/interrupts
+/proc/irq/n
+/proc/irq/n/smp_affinity
