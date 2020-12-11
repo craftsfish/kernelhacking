@@ -80,3 +80,5 @@ error_code:
 /proc/interrupts
 /proc/irq/n
 /proc/irq/n/smp_affinity
+
+interrupt context: the kernel is currently executing either an interrupt handler or a deferrable function
