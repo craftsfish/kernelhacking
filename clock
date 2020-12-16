@@ -4,3 +4,19 @@ tick device: a wrapper of clock event device, provide periodic tick event
 
 clock source device and clock event device can be one particular hardware
 tick device和HZ的关系?
+
+IRQ8:				Real Time Clock(RTC)
+IRQ0:				Time Stamp Counter(TSC) (based on CPU frequency, may dynamically changed)
+					Programmable Interval Timer(PIT)
+vector 0xef:		local APIC timers(based on common bus clock signal)
+IRQ0:				High Precision Event Timer(HPET)
+					ACPI Power Management Timer(ACPI PMT) (3.58MHz)
+
+global timer interrupt: update_times -> calc_load
+local timer interrupt: profile_tick -> update_process_times
+
+dynamic timers
+interval timers
+
+jiffies由中断更新，如果有丢失，在中断处理程序里面处理
+wall_jiffiies上次记录的jiffies
