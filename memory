@@ -6,7 +6,6 @@
 		FIX_KMAP_END = FIX_KMAP_BEGIN+(KM_TYPE_NR*NR_CPUS)-1,
 	}
 }
-
 Permanent kernel mappings, kmap, 将high memory映射到persist map空间,might_sleep
 Temporary kernel mappings, kmap_atomic, 将high memory映射到fixed_addresses空间,固定用途，比如user_1，可用于中断环境
 3e4d3af501cccdc8a8cca41bdbe57d54ad7e7e73将原来的固定用途改为栈，不再区分具体用途
