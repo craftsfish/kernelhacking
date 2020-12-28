@@ -60,3 +60,9 @@ wq_unbound_cpumask
 unbound workqueue包含default_pwq和每node pwq
 
 unbound workqueue的max_active是如何保证的？
+
+flush_color < work_color ?
+
+pool {
+	cpu, per_cpu_pool -> default cpu, unbound pool -> -1
+}
