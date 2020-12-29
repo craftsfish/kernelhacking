@@ -68,3 +68,11 @@ pool {
 }
 
 work被queue之后会优先放到对应的pool里面，如果pool里面包含的work数量大于等于pwd的max_active数，work会被缓存在pwd的delayed_works中
+
+unbound_pwq install的时候值为1
+unbound_pwq uninstall的时候值为-1
+unbound_workqueue更新属性时会uninstall old_pwq
+insert_work时get_pwq
+work完成时调用pwq_dec_nr_in_flight -> put_pwq
+
+unbound pwq对pool的引用计数在pwq_unbound_release_workfn -> put_unbound_pool释放
