@@ -1,0 +1,29 @@
+pushl %ecx
+pushl %edx
+pushl %ebp
+movl %esp, %ebp
+
+sysenter {
+	switch stack
+	movl -508(%esp), %esp	#set up kernel stack
+	pushl $(__USER_DS)		#ss
+	pushl %ebp				#esp
+	pushfl					#eflags
+	pushl $(__USER_CS)		#cs
+	pushl $SYSENTER_RETURN 	#eip
+	movl (%ebp), %ebp		#recovery user ebp
+}
+
+{
+	movl 40(%esp), %edx #SYSENTER_RETURN
+	movl 52(%esp), %ecx #user mode esp
+	xorl %ebp, %ebp
+	sti
+	sysexit (using edx & ecx)
+}
+
+SYSENTER_RETURN:
+	popl %ebp
+	popl %edx
+	popl %ecx
+	ret
