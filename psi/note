@@ -1,3 +1,11 @@
 missed_periods全部当作负载0来处理？如果是的，这样是否会带来问题
 计算负载的时候，没有完全按照取样周期来计算，这样预设的EXP_XXX是否不合理？参考CPU负载的计算时间点再看看
 当前task进入mem_stall状态之后的时间
+
+record_times负责更新(截至到now的指定cpu上各状态{state_mask}的持续时间)到psi_group_cpu->times
+psi_group_change {
+	以now为时间点
+	1. 更新老状态的持续时间
+	2. 记录新状态的开始时间
+	3. 切换状态
+}
