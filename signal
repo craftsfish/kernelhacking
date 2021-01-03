@@ -1,0 +1,5 @@
+signal处理函数被调用的时间点 {
+	return to user space
+	switch to? 如果之前没有运行?本质上可以理解为return to user space
+	系统调用返回的时候，必须修改blocked signal
+}
