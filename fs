@@ -16,3 +16,7 @@ file->f_path.dentry.d_name
 dentry->d_parent
 f_inode->i_sb->s_id
 dentry->d_sb
+
+superblock用于描述一个特定的文件系统实例
+
+inode->i_dentry 1->* dentry->d_alias
