@@ -1,0 +1,1 @@
+symbollink路径不对时，先用realpath .查看当前目录的真实路径，然后再做转换
