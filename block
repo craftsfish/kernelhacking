@@ -2,3 +2,8 @@ bio和buffer的关系?目前看buffer read底层也是调用的bio，bio可以�
 bio负责读取IO设备物理上面连续的block，将内容存储到多个bio_vec，每个bio_vec元素是物理上连续的内存?
 
 per_cpu buffer_head lru array
+
+vfs:		block, physically adjacent sectors in hard disk, raw block device file (4096 bytes)
+block buffer, buffer head
+hard disk: sector, default 512 bytes
+hard disk可以一次读取多个连续的sector，存储到不同page内的连续区域，这些连续区域称之为segment，和block无关，多个segment如果连续，可以合并为更大的physical segment

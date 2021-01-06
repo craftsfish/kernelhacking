@@ -1,2 +1,3 @@
 misc_register
-cdev_add
+cdev_add用于将一组char设备添加到系统，可以跨多个MAJOR，通过kobj_map管理对应关系，vfs通过该关系为字符设备找到对应的驱动
+chrdevs管理系统中的设备编号使用情况并处理动态编号申请

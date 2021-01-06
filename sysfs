@@ -1,1 +1,5 @@
 symbollink路径不对时，先用realpath .查看当前目录的真实路径，然后再做转换
+
+kset包含一组具有相同kobj_type属性的kobj
+subsystem通过内置kset管理一组kset
+subsystem可以管理一组subsystem(本质上时通过kset管理kobj_type为kset的一组kobj)
