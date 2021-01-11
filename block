@@ -6,4 +6,15 @@ per_cpu buffer_head lru array
 vfs:		block, physically adjacent sectors in hard disk, raw block device file (4096 bytes)
 block buffer, buffer head
 hard disk: sector, default 512 bytes
-hard disk可以一次读取多个连续的sector，存储到不同page内的连续区域，这些连续区域称之为segment，和block无关，多个segment如果连续，可以合并为更大的physical segment
+hard disk可以一次读取多个连续的sector，存储到不同page内的连续区域，这些连续区域称之为segment，和block无关，多个segment如果在物理内存连续，可以合并为更大的physical segment
+CPU透过MMU查看physical memory (virtual address -> physical memory)
+IO设备可以通过IOMMU查看physical memory (hardware address -> physical memory)，猜测：采用IOMMU时，physical segment需要进一步转换为IO设备可见的hardware segment (physical memory -> hardware address)，这样IO设备读取时写入目标是hardware segment
+
+/sys/block/hda/queue/scheduler
+
+
+block device file与bdev fs的inode一一对应，多个普通的inode可以关联到该设备
+
+page -> block(buffer head) -> bio -> request
+
+page是何时被标记为dirty的? memory mapped，普通的通过write函数可以知道
