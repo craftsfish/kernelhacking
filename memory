@@ -42,3 +42,8 @@ shrink_zone -> 回收单个zone，补充inactive page list
 shrink_cache -> 计算出inactive page candidate list
 shrink_list -> 从收集的inactive page candidate list中回收
 
+一个page是否被share取决于mapcount
+mapping非空并且最低位位0,page映射到文件
+mapping非空并且最低位位1,page是匿名页，mapping指向anon_vma
+mapping为空，page位于swap cache中
+
