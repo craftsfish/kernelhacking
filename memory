@@ -46,4 +46,6 @@ shrink_list -> 从收集的inactive page candidate list中回收
 mapping非空并且最低位位0,page映射到文件
 mapping非空并且最低位位1,page是匿名页，mapping指向anon_vma
 mapping为空，page位于swap cache中
+所以page无法同时属于匿名页和swap cache?
 
+swap in的时候，除了将对应的pte指向新的page，还把对应的vma加入到反向匿名页的表里面
