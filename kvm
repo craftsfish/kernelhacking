@@ -1,0 +1,5 @@
+Node，节点，指物理机器，上面运行多个虚拟机，hypervisor和Domain都运行在节点上。
+hypervisor, VMM
+Domain, instance, guest OS, virtual machine
+
+guest在真实CPU上运行，可以做用户/内核态切换，运行在VM non ROOT模式，vCPU通过两层地址转换访问内存，这样就把实际的物理内存分割，给多个guest复用
