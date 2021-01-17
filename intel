@@ -1,0 +1,5 @@
+调用者(calling procedure)负责保护自己关注的寄存器，给被调用者(called procedure)创造一个干净的环境。
+
+寄存器组合比如EDX:EAX可以用于表示一个64位的操作数
+
+CPUID.(EAX=07H, ECX=0H):EBX[bit 9] is 1这句话怎么理解?
