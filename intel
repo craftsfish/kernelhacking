@@ -2,5 +2,14 @@
 
 寄存器组合比如EDX:EAX可以用于表示一个64位的操作数
 
-CPUID.(EAX=07H, ECX=0H):EBX[bit 9] is 1这句话怎么理解?
-CPUID.01H:ECX.RDRAND[bit 30] = 1
+CPUID.(EAX=07H, ECX=0H):EBX[bit 9] is 1这句话怎么理解? {
+	EAX=07H, ECX=0H用于指定执行CPUID时的参数
+	:分隔输入和输出
+	EBX[bit 9]表示输出结果中的EBX寄存器的第9个bit
+}
+	
+CPUID.01H:ECX.RDRAND[bit 30] = 1 {
+	01H表示执行CPUID时默认的EAX寄存器参数
+	:分隔输入和输出
+	ECX.RDRAND[bit 30]表示输出结果中的ECX寄存器的第30个bit，这个比特位也称之为RDRAND
+}
