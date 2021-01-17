@@ -3,3 +3,4 @@
 寄存器组合比如EDX:EAX可以用于表示一个64位的操作数
 
 CPUID.(EAX=07H, ECX=0H):EBX[bit 9] is 1这句话怎么理解?
+CPUID.01H:ECX.RDRAND[bit 30] = 1
