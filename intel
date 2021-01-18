@@ -13,3 +13,7 @@ CPUID.01H:ECX.RDRAND[bit 30] = 1 {
 	:分隔输入和输出
 	ECX.RDRAND[bit 30]表示输出结果中的ECX寄存器的第30个bit，这个比特位也称之为RDRAND
 }
+
+instruction prefix 66H?
+
+Process-context identifiers (PCIDs) are a facility by which a logical processor may cache information for multiple linear-address spaces.
