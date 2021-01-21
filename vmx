@@ -1,0 +1,4 @@
+VMCS pointer per logical processor {
+	VMPTRST
+	VMPTRLD
+}
