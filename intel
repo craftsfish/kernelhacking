@@ -17,3 +17,11 @@ CPUID.01H:ECX.RDRAND[bit 30] = 1 {
 instruction prefix 66H?
 
 Process-context identifiers (PCIDs) are a facility by which a logical processor may cache information for multiple linear-address spaces.
+
+local APIC {
+	IA32_APIC_BASE MSR {
+		APIC Base field: Specifies the physical base address of the APIC registers {
+			Local APIC Version Register
+		}
+	}
+}

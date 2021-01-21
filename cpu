@@ -12,3 +12,5 @@ cpuidle_enter_state
 cpufreq_notify_transition
 cpufreq_stats_record_transition
 cpufreq_stats_update
+
+MP System 1->* physical packages
