@@ -25,3 +25,7 @@ local APIC {
 		}
 	}
 }
+
+memory type (type of caching) {
+	Strong Uncacheable
+}
