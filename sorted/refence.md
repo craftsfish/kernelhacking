@@ -42,3 +42,4 @@
 - [...](https://www.zhihu.com/column/c_1108400140804726784)
 - [Kernel Bug](https://bugzilla.kernel.org/)
 - [perfbook](git://git.kernel.org/pub/scm/linux/kernel/git/paulmck/perfbook.git)
+- [paulmck](https://mirrors.edge.kernel.org/pub/linux/kernel/people/paulmck/)
