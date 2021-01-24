@@ -1,0 +1,10 @@
+local apic是集成到CPU里面的，LINT0和LINT1如何被转发给core是由LVT控制的，local interrupt还包括
+
+processor’s LINT0 and LINT1 pins, the APIC timer, the performance-monitoring counters, the thermal sensor, and the internal APIC error detector are referred to as local interrupt sources.
+Upon receiving a signal from a local interrupt source, the local APIC delivers the interrupt to the processor core
+using an interrupt delivery protocol that has been set up through a group of APIC registers called the local vector
+table or LVT
+
+
+The local APIC handles interrupts from the other two interrupt sources (externally connected I/O devices and IPIs)
+through its IPI message handling facilities.
