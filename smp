@@ -1,0 +1,71 @@
+LFENCE—Load Fence
+Serializes load operations.
+Performs a serializing operation on all load-from-memory instructions that were issued prior the LFENCE instruction.
+Specifically, LFENCE does not execute until all prior instructions have completed locally, and no later instruction
+begins execution until LFENCE completes. In particular, an instruction that loads from memory and that
+precedes an LFENCE receives data from memory prior to completion of the LFENCE. (An LFENCE that follows an
+instruction that stores to memory might complete before the data being stored have become globally visible.)
+Instructions following an LFENCE may be fetched from memory before the LFENCE, but they will not execute (even
+speculatively) until the LFENCE completes.
+Weakly ordered memory types can be used to achieve higher processor performance through such techniques as
+out-of-order issue and speculative reads. The degree to which a consumer of data recognizes or knows that the
+data is weakly ordered varies among applications and may be unknown to the producer of this data. The LFENCE
+instruction provides a performance-efficient way of ensuring load ordering between routines that produce weaklyordered
+results and routines that consume that data.
+Processors are free to fetch and cache data speculatively from regions of system memory that use the WB, WC, and
+WT memory types. This speculative fetching can occur at any time and is not tied to instruction execution. Thus, it
+is not ordered with respect to executions of the LFENCE instruction; data can be brought into the caches speculatively
+just before, during, or after the execution of an LFENCE instruction.
+This instruction’s operation is the same in non-64-bit modes and 64-bit mode.
+Specification of the instruction's opcode above indicates a ModR/M byte of E8. For this instruction, the processor
+ignores the r/m field of the ModR/M byte. Thus, LFENCE is encoded by any opcode of the form 0F AE Ex, where x is
+in the range 8-F.
+Operation
+Wait_On_Following_Instructions_Until(preceding_instructions_complete);
+
+
+SFENCE—Store Fence
+Serializes store operations.
+Description
+Orders processor execution relative to all memory stores prior to the SFENCE instruction. The processor ensures
+that every store prior to SFENCE is globally visible before any store after SFENCE becomes globally visible. The
+SFENCE instruction is ordered with respect to memory stores, other SFENCE instructions, MFENCE instructions,
+and any serializing instructions (such as the CPUID instruction). It is not ordered with respect to memory loads or
+the LFENCE instruction.
+Weakly ordered memory types can be used to achieve higher processor performance through such techniques as
+out-of-order issue, write-combining, and write-collapsing. The degree to which a consumer of data recognizes or
+knows that the data is weakly ordered varies among applications and may be unknown to the producer of this data.
+The SFENCE instruction provides a performance-efficient way of ensuring store ordering between routines that
+produce weakly-ordered results and routines that consume this data.
+This instruction’s operation is the same in non-64-bit modes and 64-bit mode.
+Specification of the instruction's opcode above indicates a ModR/M byte of F8. For this instruction, the processor
+ignores the r/m field of the ModR/M byte. Thus, SFENCE is encoded by any opcode of the form 0F AE Fx, where x
+is in the range 8-F.
+Operation
+Wait_On_Following_Stores_Until(preceding_stores_globally_visible);
+
+
+MFENCE—Memory Fence
+Serializes load and store operations.
+Description
+Performs a serializing operation on all load-from-memory and store-to-memory instructions that were issued prior
+the MFENCE instruction. This serializing operation guarantees that every load and store instruction that precedes
+the MFENCE instruction in program order becomes globally visible before any load or store instruction that follows
+the MFENCE instruction.1 The MFENCE instruction is ordered with respect to all load and store instructions, other
+MFENCE instructions, any LFENCE and SFENCE instructions, and any serializing instructions (such as the CPUID
+instruction). MFENCE does not serialize the instruction stream.
+Weakly ordered memory types can be used to achieve higher processor performance through such techniques as
+out-of-order issue, speculative reads, write-combining, and write-collapsing. The degree to which a consumer of
+data recognizes or knows that the data is weakly ordered varies among applications and may be unknown to the
+producer of this data. The MFENCE instruction provides a performance-efficient way of ensuring load and store
+ordering between routines that produce weakly-ordered results and routines that consume that data.
+Processors are free to fetch and cache data speculatively from regions of system memory that use the WB, WC, and
+WT memory types. This speculative fetching can occur at any time and is not tied to instruction execution. Thus, it
+is not ordered with respect to executions of the MFENCE instruction; data can be brought into the caches speculatively
+just before, during, or after the execution of an MFENCE instruction.
+This instruction’s operation is the same in non-64-bit modes and 64-bit mode.
+Specification of the instruction's opcode above indicates a ModR/M byte of F0. For this instruction, the processor
+ignores the r/m field of the ModR/M byte. Thus, MFENCE is encoded by any opcode of the form 0F AE Fx, where x
+is in the range 0-7.
+Operation
+Wait_On_Following_Loads_And_Stores_Until(preceding_loads_and_stores_globally_visible);
