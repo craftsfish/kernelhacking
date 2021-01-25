@@ -40,3 +40,11 @@ INTEL.WC: Write Combining
 INTEL.WT: Write Through
 INTEL.WB: Write Back
 INTEL.WP: Write Protected
+INTEL.SMM: system management mode
+INTEL.SMI: system management interrupt
+INTEL.MTF: Monitor Trap Flag
+INTEL.VPID: VIRTUAL PROCESSOR IDENTIFIERS
+INTEL.PCID: Process-Context Identifiers
+INTEL.EPT: EXTENDED PAGE TABLE MECHANISM
+INTEL.CR0.PG: paging
+INTEL.CR3:

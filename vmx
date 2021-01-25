@@ -2,3 +2,11 @@ VMCS pointer per logical processor {
 	VMPTRST
 	VMPTRLD
 }
+
+logical processor 1->1 VMXON region *->1? VMXCS
+
+VMCS中的bitmap一般将需要出发VM exit的情况置为1 {
+	MSR bitmaps
+	I/O bitmaps
+	exception bitmap
+}
