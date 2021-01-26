@@ -2,3 +2,4 @@ VBoxManage modifyvm target --nested-hw-virt on
 sudo usermod -aG kvm lcj
 sudo usermod -aG dialout lcj
 qemu-system-x86_64 -enable-kvm
+quiet splash earlyprintk loglevel=10 console=ttyS0,115200 kgdboc=ttyS0,115200 nokaslr

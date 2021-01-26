@@ -1,0 +1,7 @@
+kgdboc=ttyS0,115200 nokaslr kgbwait
+
+enable serial console of vbox guest {
+	\\.\pipe\mypipe
+}
+
+echo g > /proc/sysrq-trigger
