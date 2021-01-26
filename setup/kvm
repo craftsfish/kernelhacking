@@ -1,2 +1,4 @@
-sudo usermod -aG kvm
+VBoxManage modifyvm target --nested-hw-virt on
+sudo usermod -aG kvm lcj
+sudo usermod -aG dialout lcj
 qemu-system-x86_64 -enable-kvm

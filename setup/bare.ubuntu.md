@@ -4,8 +4,7 @@ git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 cd linux
 cp /boot/config-`uname -r` .config
 yes '' | make oldconfig
-make olddefconfig #old + default for new
-make localmodconfig #remove unnecessary ones
+yes '' | make localmodconfig #remove unnecessary ones
 make menuconfig
 make clean
 make -j $(getconf _NPROCESSORS_ONLN) LOCALVERSION=-custom
