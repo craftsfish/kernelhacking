@@ -3,3 +3,10 @@ hypervisor, VMM
 Domain, instance, guest OS, virtual machine
 
 guest在真实CPU上运行，可以做用户/内核态切换，运行在VM non ROOT模式，vCPU通过两层地址转换访问内存，这样就把实际的物理内存分割，给多个guest复用
+
+
+functions {
+	vmx_init -> kvm_init -> kvm_arch_init
+	                     -> kvm_arch_hardware_setup
+	                     -> misc_register(&kvm_dev)
+}
