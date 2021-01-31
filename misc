@@ -73,3 +73,5 @@ thread_info和kernel mode stack组合成8k page
 clone, fork, vfork都是系统调用。do_fork是内核的实际实现
 
 exit_signal为-1的task最后terminate时，怎么通知parent
+
+APIC-access address和Virtual-APIC address区别是什么
