@@ -51,3 +51,5 @@ INTEL.CR3:
 INTEL.VMX.interrupt-window exiting: guest允许中断，意味着一个可中断窗口的开启，这个时候切换到host状态允许host把之前pending的virtual interrupt投递给guest
 INTEL.VMX.NMI-window exiting: If the “virtual NMIs” VM-execution is set, the processor tracks virtual-NMI blocking. The “NMI-window exiting” VM-execution control (Section 24.6.2) causes VM exits when there is no virtual-NMI blocking.
 INTEL.STI: Set Interrupt Flag
+INTEL.CLTS: Clear Task-Switched Flag
+INTEL.LMSW: Load Machine Status Word
