@@ -69,3 +69,7 @@ ignores the r/m field of the ModR/M byte. Thus, MFENCE is encoded by any opcode 
 is in the range 0-7.
 Operation
 Wait_On_Following_Loads_And_Stores_Until(preceding_loads_and_stores_globally_visible);
+
+what is data races?
+
+READ_ONCE/WRITE_ONCE通过volatile关键字确保编译器不会对变量的值做任何假设，同时消除tearing(仅针对machine-sized & properly aligned)，编译器级别

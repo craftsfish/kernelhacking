@@ -16,10 +16,33 @@ DDR: Double data rate
 EBI: External Bus Interface
 EEPROM: electrically erasable programmable read-only memory
 IB: Instantaneousbandwidth
+INTEL.address size prefix:
+INTEL.Canonical Addressing: In 64-bit mode, an address is considered to be in canonical form if address bits 63 through to the most-significant implemented bit by the microarchitecture are set to either all ones or all zeros. Intel 64 architecture defines a 64-bit linear address. Implementations can support less. The first implementation of IA-32 processors with Intel 64 architecture supports a 48-bit linear address. This means a canonical address must have bits 63 through 48 set to zeros or ones (depending on whether bit 47 is a zero or one).
+INTEL.CLTS: Clear Task-Switched Flag
+INTEL.CR0.PG: paging
+INTEL.CR3:
+INTEL.EPT: EXTENDED PAGE TABLE MECHANISM
+INTEL.ICR: interrupt command register
+INTEL.LMSW: Load Machine Status Word
+INTEL.MCE: 
+INTEL.MTF: Monitor Trap Flag
+INTEL.PCID: Process-Context Identifiers
+INTEL.SMI: system management interrupt
+INTEL.SMM: system management mode
+INTEL.STI: Set Interrupt Flag
+INTEL.store buffer: 当cache不存在的时候直接缓存store指令，不用等待cache load
+INTEL.VMX.interrupt-window exiting: guest允许中断，意味着一个可中断窗口的开启，这个时候切换到host状态允许host把之前pending的virtual interrupt投递给guest
+INTEL.VMX.NMI-window exiting: If the “virtual NMIs” VM-execution is set, the processor tracks virtual-NMI blocking. The “NMI-window exiting” VM-execution control (Section 24.6.2) causes VM exits when there is no virtual-NMI blocking.
+INTEL.VPID: VIRTUAL PROCESSOR IDENTIFIERS
+INTEL.WB: Write Back
+INTEL.WC: Write Combining
+INTEL.WP: Write Protected
+INTEL.WT: Write Through
 Linux.OPP: DVFS operating point; The majority of modern processors are capable of operating in a number of different clock frequency and voltage configurations, often referred to as Operating Performance Points or P-states (in ACPI terminology).
 Linux.PELT: Per-Entity Load Tracking
 LLCC: last level cache controller
 MAC: mandatory access control
+MISC.(non)blind CAS: blind CAS不需要获取memory中的原始值，nonblind CAS需要首先读取memory中的原始值作为old value。获取spin_lock时调用CAS需要指定old value为0，new value为1，这就是一个典型的blind CAS。
 MLS: multilevel security
 NPU: Network processing unit
 PCL: Performance Counters for Linux
@@ -33,23 +56,3 @@ Qualcomm.PMU: instructions per L2 miss?
 Qualcomm.RPM: Resource Power Manager
 Qualcomm.sDSP: sensor
 swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
-INTEL.address size prefix:
-INTEL.Canonical Addressing: In 64-bit mode, an address is considered to be in canonical form if address bits 63 through to the most-significant implemented bit by the microarchitecture are set to either all ones or all zeros. Intel 64 architecture defines a 64-bit linear address. Implementations can support less. The first implementation of IA-32 processors with Intel 64 architecture supports a 48-bit linear address. This means a canonical address must have bits 63 through 48 set to zeros or ones (depending on whether bit 47 is a zero or one).
-INTEL.ICR: interrupt command register
-INTEL.WC: Write Combining
-INTEL.WT: Write Through
-INTEL.WB: Write Back
-INTEL.WP: Write Protected
-INTEL.SMM: system management mode
-INTEL.SMI: system management interrupt
-INTEL.MTF: Monitor Trap Flag
-INTEL.VPID: VIRTUAL PROCESSOR IDENTIFIERS
-INTEL.PCID: Process-Context Identifiers
-INTEL.EPT: EXTENDED PAGE TABLE MECHANISM
-INTEL.CR0.PG: paging
-INTEL.CR3:
-INTEL.VMX.interrupt-window exiting: guest允许中断，意味着一个可中断窗口的开启，这个时候切换到host状态允许host把之前pending的virtual interrupt投递给guest
-INTEL.VMX.NMI-window exiting: If the “virtual NMIs” VM-execution is set, the processor tracks virtual-NMI blocking. The “NMI-window exiting” VM-execution control (Section 24.6.2) causes VM exits when there is no virtual-NMI blocking.
-INTEL.STI: Set Interrupt Flag
-INTEL.CLTS: Clear Task-Switched Flag
-INTEL.LMSW: Load Machine Status Word
