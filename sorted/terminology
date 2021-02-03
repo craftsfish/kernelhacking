@@ -56,3 +56,5 @@ Qualcomm.PMU: instructions per L2 miss?
 Qualcomm.RPM: Resource Power Manager
 Qualcomm.sDSP: sensor
 swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
+Android.AVB:  Android Verified Boot
+Android.TEE:  Trusted Execution Environment
