@@ -1,0 +1,36 @@
+labeled process & object: user:role:type:level
+domain: process type
+allow domains types:classes permissions
+
+getenforce, setenforce
+ls -Z, ps -Z
+dmesg | grep avc
+cat /proc/last_kmsg | grep avc
+
+
+Labeling decisions, also referred to as transition decisions, specify the default security attributes to use for a new subject or a new object.
+
+SELINUX.RBAC: Role-Based Access Control
+SELINUX.TE: Type Enforcement
+SELINUX.MLS: Multi-Level Security
+SELINUX.Security Context: Every subject (process) and object (e.g. file, socket, IPC object, etc) in the system is assigned a collection of security attributes, known as a security context
+SELINUX.SID: A SID is an integer that is mapped by the security server to a security context at runtime. SIDs are nonpersistent and local identifiers, and must be translated to security contexts for labeling persistent objects such as files or for labeled networking.
+
+Each object class has a set of associated permissions defined to control operations on objects with that class. These permission sets are represented by a bitmap called an access vector.
+AVC: Access Vector Cache
+
+A TE access vector rule specifies an access vector based on the type pair and object security class.
+
+transition { source_types target_types : classes -> new_type } {
+	type_transition sshd_t tmp_t:notdevfile_class_set sshd_tmp_t;
+	type_transition cardmgr_t tmp_t:devfile_class_set cardmgr_dev_t;
+}
+
+change { source_types target_types : classes -> new_type } { current domain, current type & class -> trget type } {
+	type_change user_t tty_device_t:chr_file user_tty_device_t;
+	type_change sysadm_t tty_device_t:chr_file sysadm_tty_device_t;
+	type_change user_t sshd_devpts_t:chr_file user_devpts_t;
+	type_change sysadm_t sshd_devpts_t:chr_file sysadm_devpts_t;
+}
+
+role -> domains

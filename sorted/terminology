@@ -58,3 +58,5 @@ Qualcomm.sDSP: sensor
 swapping/paging: The kernel enables seldom-used parts of memory to be swapped out to block devices, effectively providing more main memory.
 Android.AVB:  Android Verified Boot
 Android.TEE:  Trusted Execution Environment
+INTEL.MTF: Monitor Trap Flag
+INTEL.PT: Processor Trace
