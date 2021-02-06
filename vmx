@@ -10,3 +10,24 @@ VMCS中的bitmap一般将需要出发VM exit的情况置为1 {
 	I/O bitmaps
 	exception bitmap
 }
+
+(not) vectoring VM entry?
+
+VM entry {
+	event injection
+	NMI window exiting
+	NMI interrupt
+	Interrupt-Window Exiting
+	Pending MTF VM Exits
+	...
+}
+
+event caused vm exit分为direct和indirect
+
+NMI exiting: If this control is 1, non-maskable interrupts (NMIs) cause VM exits. Otherwise, they are delivered normally using descriptor 2 of the IDT. This control also determines interactions between IRET and blocking by NMI
+Virtual NMIs: If this control is 1, NMIs are never blocked and the “blocking by NMI” bit (bit 3) in the interruptibility-state field indicates “virtual-NMI blocking” (see Table 24-3). This control also interacts with the “NMI-window exiting” VM-execution control (see Section 24.6.2).
+NMI-window exiting: If this control is 1, a VM exit occurs at the beginning of any instruction if there is no virtual-NMI blocking (see Section 24.4.2).
+
+NMI的处理分为两种，一种直接由guest处理，另一种触发VM exit，然后由host提供Virtual NMIs?
+
+event delivery是指通过IDT处理event的完整过程？因此中间可能会触发异常?
