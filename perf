@@ -66,3 +66,6 @@ PERF_SAMPLE_CALLCHAIN
 
 重要函数
 perf_event_create_kernel_counter
+
+
+perf_sched__replay
