@@ -1,2 +1,6 @@
 smp_wmb是为了刷新store buffer，可以确保前后的写顺序，否则后面的写入可能因为cache hit直接体现在cache中，前面的反而因为cache miss缓存在sotre buffer中，导致其他CPU看到的写入顺序和实际编程的顺序不一致。
 smp_rmb是为了刷新invalidate queue，本质是为了确保其他CPU的写入正确的反映到当前CPU，这样本地CPU看到的内容才是正确的值，invalidate queue的存在，会导致本地cache中本应被清楚的数据在其他CPU写入后依然存在（脏数据）。通过smp_rmb可以刷新掉这部分数据，重新读入。其他CPU后写入的数据，因为本地不存在cache，直接读取到了最新的修改，而之前的写入数据，由于本地cache的存在，invalide消息缓存在invalidate queue中，这样本地CPU看到的还是老的数据，通过smp_rmb可以刷新invalidate queue，确保可以看到两次刷新之后的最新结果。
+
+control dependency
+data dependency
+multicopy atomicity
