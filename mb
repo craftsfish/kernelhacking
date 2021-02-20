@@ -4,3 +4,9 @@ smp_rmb是为了刷新invalidate queue，本质是为了确保其他CPU的写入
 control dependency
 data dependency
 multicopy atomicity
+
+
+Sequential consistency(SC)
+Total store ordering (TSO)
+A popular memory model that allows store buffering is called total store ordering (TSO). TSO mostly preserves the same guarantees as SC, except that it allows the use of store buffers. These buffers hide write latency, making execution significantly faster.
+relaxed consistency model(XC)

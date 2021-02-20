@@ -46,3 +46,8 @@
 - [Yocto](https://wiki.yoctoproject.org/wiki/Main_Page)
 - [SELINUX](https://github.com/SELinuxProject/selinux-notebook/blob/main/src/toc.md)
 - [FreeTechBooks](https://www.freetechbooks.com/)
+- [A Primer on Memory Consistency and Cache Coherence](https://www.morganclaypool.com/doi/10.2200/S00962ED2V01Y201910CAC049)
+- [General-Purpose Graphics Processor Architectures](https://www.morganclaypool.com/doi/abs/10.2200/S00848ED1V01Y201804CAC044)
+- [memory models](https://www.cs.utexas.edu/~bornholt/post/memory-models.html)
+- [x86 reference](https://www.felixcloutier.com/x86/)
+- []()
