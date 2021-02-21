@@ -10,3 +10,15 @@ Sequential consistency(SC)
 Total store ordering (TSO)
 A popular memory model that allows store buffering is called total store ordering (TSO). TSO mostly preserves the same guarantees as SC, except that it allows the use of store buffers. These buffers hide write latency, making execution significantly faster.
 relaxed consistency model(XC)
+
+
+
+A memory consistency model, or, more simply, a memory model, is a specification of the allowed behavior of multithreaded programs executing with shared memory.
+For a multithreaded program executing with specific input data, it specifies what values dynamic loads may return.
+Unlike a single-threaded execution, multiple correct behaviors are usually allowed.
+
+In general, a memory consistency model MC gives rules that partition executions into those obeying MC (MC executions) and those disobeying MC (non-MC executions).
+This partitioning of executions, in turn, partitions implementations. An MC implementation is a system that permits only MC executions, while a non-MC implementation sometimes permits non-MC executions.
+
+
+We denote memory order using the operator <m, so op1 <m op2 implies that op1 precedes op2 in memory order. Similarly, we use the operator <p to denote program order for a given core, so op1 <p op2 implies that op1 precedes op2 in that core’s program order.
