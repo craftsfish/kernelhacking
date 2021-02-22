@@ -20,3 +20,6 @@ sudo reboot
 ```
 
 [link](https://wiki.ubuntu.com/KernelTeam/GitKernelBuild)
+
+
+make INSTALL_HDR_PATH='/tmp' headers_install

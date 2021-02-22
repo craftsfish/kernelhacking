@@ -76,3 +76,8 @@ insert_work时get_pwq
 work完成时调用pwq_dec_nr_in_flight -> put_pwq
 
 unbound pwq对pool的引用计数在pwq_unbound_release_workfn -> put_unbound_pool释放
+
+
+
+
+6d25be5782e48在wq_worker_sleeping中引入了spin_lock_irq
