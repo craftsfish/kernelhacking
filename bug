@@ -1,0 +1,65 @@
+[    7.995004] =============================
+[    7.995006] [ BUG: Invalid wait context ]
+[    7.995008] 5.11.0-rc4-custom #1 Not tainted
+[    7.995010] -----------------------------
+[    7.995011] kworker/1:1/94 is trying to lock:
+[    7.995013] ffff8e3e812ef918 (&n->list_lock){-.-.}-{3:3}, at: deactivate_slab.isra.80+0x59c/0x760
+[    7.995027] other info that might help us debug this:
+[    7.995028] context-{2:2}
+[    7.995030] 3 locks held by kworker/1:1/94:
+[    7.995032]  #0: ffff8e3e8004df48 ((wq_completion)events){+.+.}-{0:0}, at: process_one_work+0x247/0x630
+[    7.995039]  #1: ffffad9ec035be58 (init_free_wq){+.+.}-{0:0}, at: process_one_work+0x247/0x630
+[    7.995044]  #2: ffffffffb0e56e60 (fs_reclaim){+.+.}-{0:0}, at: fs_reclaim_acquire+0x7d/0xd0
+[    7.995051] stack backtrace:
+[    7.995053] CPU: 1 PID: 94 Comm: kworker/1:1 Not tainted 5.11.0-rc4-custom #1
+[    7.995055] Hardware name: LENOVO 68852F7/68852F7, BIOS HEET42WW (1.23 ) 01/27/2014
+[    7.995058] Workqueue: events do_free_init
+[    7.995062] Call Trace:
+[    7.995064]  <IRQ>
+[    7.995066]  dump_stack+0x93/0xbd
+[    7.995072]  __lock_acquire+0x66c/0x1ae0
+[    7.995076]  ? rcu_read_lock_sched_held+0x4f/0x80
+[    7.995082]  ? drm_mode_parse_command_line_for_connector+0x6c8/0x930 [drm]
+[    7.995112]  lock_acquire+0x262/0x3c0
+[    7.995115]  ? deactivate_slab.isra.80+0x59c/0x760
+[    7.995119]  ? __enqueue_entity+0x6c/0x70
+[    7.995123]  _raw_spin_lock+0x34/0x70
+[    7.995126]  ? deactivate_slab.isra.80+0x59c/0x760
+[    7.995129]  deactivate_slab.isra.80+0x59c/0x760
+[    7.995133]  ? try_to_wake_up+0x612/0x810
+[    7.995138]  flush_cpu_slab+0x3b/0x60
+[    7.995141]  ? flush_cpu_slab+0x3b/0x60
+[    7.995144]  flush_smp_call_function_queue+0x139/0x220
+[    7.995147]  generic_smp_call_function_single_interrupt+0x13/0x20
+[    7.995151]  __sysvec_call_function+0x47/0x190
+[    7.995156]  asm_call_irq_on_stack+0x12/0x20
+[    7.995160]  </IRQ>
+[    7.995161]  sysvec_call_function+0x75/0xb0
+[    7.995164]  asm_sysvec_call_function+0x12/0x20
+[    7.995167] RIP: 0010:lock_acquire+0x27e/0x3c0
+[    7.995170] Code: 89 ee 48 89 df 41 83 e1 01 e8 4e 08 00 00 b8 ff ff ff ff 48 83 c4 20 65 0f c1 05 c5 43 cc 50 83 f8 01 75 5c 48 8b 7d 90 57 9d <0f> 1f 44 00 00 e9 bc fe ff ff 48 8b 7d 90 4c 89 5d 88 e8 eb fb ff
+[    7.995173] RSP: 0018:ffffad9ec035bae0 EFLAGS: 00000246
+[    7.995176] RAX: 0000000000000001 RBX: ffffffffb0e56e60 RCX: ba163e7f00000000
+[    7.995178] RDX: ffff8e3e81000d58 RSI: 000000003de09d37 RDI: 0000000000000246
+[    7.995179] RBP: ffffad9ec035bb58 R08: ffff8e3e81000dc8 R09: 00000000fffffffe
+[    7.995181] R10: 00000000a2008a43 R11: 00000000e3826035 R12: 0000000000000001
+[    7.995183] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[    7.995189]  fs_reclaim_acquire+0x9d/0xd0
+[    7.995191]  ? fs_reclaim_acquire+0x7d/0xd0
+[    7.995194]  __alloc_pages_nodemask+0xd0/0x3c0
+[    7.995198]  alloc_pages_current+0x6a/0xe0
+[    7.995202]  __change_page_attr_set_clr+0x108/0x12d0
+[    7.995208]  ? free_vmap_area_noflush+0xeb/0x300
+[    7.995214]  set_direct_map_invalid_noflush+0x6a/0x80
+[    7.995218]  __vunmap+0x128/0x220
+[    7.995221]  __vfree+0x22/0x60
+[    7.995223]  vfree+0x2f/0x50
+[    7.995225]  module_memfree+0x1c/0x30
+[    7.995228]  do_free_init+0x2b/0x50
+[    7.995230]  process_one_work+0x2c7/0x630
+[    7.995234]  worker_thread+0x3c/0x3f0
+[    7.995236]  ? __kthread_parkme+0x6f/0xa0
+[    7.995240]  ? process_one_work+0x630/0x630
+[    7.995242]  kthread+0x148/0x160
+[    7.995245]  ? kthread_park+0x90/0x90
+[    7.995249]  ret_from_fork+0x22/0x30

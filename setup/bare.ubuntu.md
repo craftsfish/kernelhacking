@@ -3,7 +3,7 @@ sudo apt-get install git build-essential kernel-package fakeroot libncurses5-dev
 git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 cd linux
 cp /boot/config-`uname -r` .config
-yes '' | make oldconfig
+yes '' | make oldconfig #old + default for new #optionally use(yes '' | make oldconfig)
 yes '' | make localmodconfig #remove unnecessary ones
 make menuconfig
 make clean

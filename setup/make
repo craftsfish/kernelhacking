@@ -1,0 +1,19 @@
+make olddefconfig #old + default for new
+make menuconfig
+make -j $(getconf _NPROCESSORS_ONLN) LOCALVERSION=-custom
+#make -j $(getconf _NPROCESSORS_ONLN) deb-pkg LOCALVERSION=-custom
+#make ARCH=x86_64 -j $(getconf _NPROCESSORS_ONLN) bindeb-pkg LOCALVERSION=-custom
+make ARCH=arm menuconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j $(getconf _NPROCESSORS_ONLN) zImage modules dtbs
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j $(getconf _NPROCESSORS_ONLN) bcm2709_defconfig
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j $(getconf _NPROCESSORS_ONLN) zImage modules dtbs
+//smdaudhilbe.wordpress.com/2013/04/11/how-to-install-ubuntu-inside-qemu-emulator-and-make-a-virtual-machine/
+
+
+yes '' | make oldconfig
+yes '' | make localmodconfig #remove unnecessary ones
+make clean
+make EXTRA_CFLAGS="-Werror -Wframe-larger-than=2048 -Wno-unused-parameter -Wno-missing-field-initializers" -j $(getconf _NPROCESSORS_ONLN) LOCALVERSION=-custom
+
+sudo make -j $(getconf _NPROCESSORS_ONLN) INSTALL_MOD_STRIP=1 modules_install
+sudo make install
