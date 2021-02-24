@@ -81,3 +81,12 @@ unbound pwq对pool的引用计数在pwq_unbound_release_workfn -> put_unbound_po
 
 
 6d25be5782e48在wq_worker_sleeping中引入了spin_lock_irq
+ida_simple_remove -> ida_free
+
+
+flush的时候，flusher的flush_color设置为当前的wq->work_color，wq->work_color循环进一，wq->flush_color表示下一个需要被flush的序列，一旦work完成，wq->flush_color循环进一
+如果wq->work_color无法进一的时候，flusher被缓存到overflow队列，当flush_color进位时，所有的flusher的flush_color都设置为最新的work_color，然后wq->work_color进一
+flush_workqueue_prep_pwqs调用时如果flush_color>=0，可以确定pwq中的nr_in_flight[flush_color]一定时work color队列的head
+
+cpu_bound类型的pwq默认ref_cnt = 1，workqueue删除的时候直接释放，pwq引用的cpu_pool
+alloc_unbound_pwq时需要获取unbound_pool并增加引用计数
