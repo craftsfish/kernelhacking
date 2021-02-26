@@ -7,7 +7,7 @@ yes '' | make oldconfig #old + default for new #optionally use(yes '' | make old
 yes '' | make localmodconfig #remove unnecessary ones
 make menuconfig
 make clean
-make -j $(getconf _NPROCESSORS_ONLN) LOCALVERSION=-custom
+make EXTRA_CFLAGS="-Werror -Wframe-larger-than=2048 -Wno-unused-parameter -Wno-missing-field-initializers" -j $(getconf _NPROCESSORS_ONLN) LOCALVERSION=-custom
 sudo make -j $(getconf _NPROCESSORS_ONLN) INSTALL_MOD_STRIP=1 modules_install
 sudo make install
 
