@@ -1,0 +1,4 @@
+A package is defined as a directory containing a file named Android.bp, residing beneath the top-level directory in the build and its name is its path relative to the top-level directory. A package includes all files in its directory, plus all subdirectories beneath it, except those which themselves contain an Android.bp file.
+A presense of the soong_namespace {..} in an Android.bp file defines a namespace. 
+Note that the name of the namespace for a module may be different from module’s package name: libfoo belongs to device/my/display namespace but is contained in device/my/display/lib package.
+The imports attribute of the soong_namespaces allows to specify where to look for modules.

@@ -90,3 +90,5 @@ flush_workqueue_prep_pwqs调用时如果flush_color>=0，可以确定pwq中的nr
 
 cpu_bound类型的pwq默认ref_cnt = 1，workqueue删除的时候直接释放，pwq引用的cpu_pool
 alloc_unbound_pwq时需要获取unbound_pool并增加引用计数
+
+在work可以存在于pwq或者pool中，在pool选中work准备执行时状态切换为off queue
