@@ -10,7 +10,7 @@ Sequential consistency(SC)
 Total store ordering (TSO)
 A popular memory model that allows store buffering is called total store ordering (TSO). TSO mostly preserves the same guarantees as SC, except that it allows the use of store buffers. These buffers hide write latency, making execution significantly faster.
 relaxed consistency model(XC)
-
+release consistency (RC)
 
 
 A memory consistency model, or, more simply, a memory model, is a specification of the allowed behavior of multithreaded programs executing with shared memory.
@@ -22,3 +22,6 @@ This partitioning of executions, in turn, partitions implementations. An MC impl
 
 
 We denote memory order using the operator <m, so op1 <m op2 implies that op1 precedes op2 in memory order. Similarly, we use the operator <p to denote program order for a given core, so op1 <p op2 implies that op1 precedes op2 in that core’s program order.
+
+
+Recall that in Section 2.3 we discussed two classes of coherence interfaces: consistencyagnostic and consistency-directed. A consistency-agnostic coherence interface enforces SWMR by propagating writes to other threads synchronously before the write returns. Given the cost of enforcing SWMR in the GPU setting, can we explore consistency-directed coherence? That is, instead of making writes visible to other threads synchronously, can we make them visible asynchronously without violating consistency? Specifically, a relaxed consistency model such as Chapter 5’s XC7 mandates only the memory orderings indicated by the programmer via FENCE instructions. Such a model allows for writes to propagate to other threads asynchronously. 
