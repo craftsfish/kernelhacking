@@ -25,3 +25,10 @@ We denote memory order using the operator <m, so op1 <m op2 implies that op1 pre
 
 
 Recall that in Section 2.3 we discussed two classes of coherence interfaces: consistencyagnostic and consistency-directed. A consistency-agnostic coherence interface enforces SWMR by propagating writes to other threads synchronously before the write returns. Given the cost of enforcing SWMR in the GPU setting, can we explore consistency-directed coherence? That is, instead of making writes visible to other threads synchronously, can we make them visible asynchronously without violating consistency? Specifically, a relaxed consistency model such as Chapter 5’s XC7 mandates only the memory orderings indicated by the programmer via FENCE instructions. Such a model allows for writes to propagate to other threads asynchronously. 
+
+
+
+Note well that the ordering provided by a control dependency is local to the CPU containing it.  See the section on "Multicopy atomicity" for more information.
+(*) Control dependencies do -not- provide multicopy atomicity.  If you need all the CPUs to see a given store at the same time, use smp_mb().
+
+是否对于任何系统都存在一个唯一的global memory order?
