@@ -1,2 +1,29 @@
 lock_class_key分为static和dynamic两种
 lock_keys_hash用来管理dynamic类型的lock_class_key
+
+enum lock_usage_bit {
+	LOCK_USED_IN_HARDIRQ, //在hardirq中使用过
+	LOCK_USED_IN_HARDIRQ_READ,
+	LOCK_ENABLED_HARDIRQ, //使用时hardirq开启
+	LOCK_ENABLED_HARDIRQ_READ,
+	LOCK_USED_IN_SOFTIRQ,
+	LOCK_USED_IN_SOFTIRQ_READ,
+	LOCK_ENABLED_SOFTIRQ,
+	LOCK_ENABLED_SOFTIRQ_READ,
+	LOCK_USED,
+	LOCK_USED_READ,
+	LOCK_USAGE_STATES,
+};
+
+void get_usage_chars(struct lock_class *class, char usage[(2*2 + 1)])
+{
+	int i = 0;
+	usage[i++] = get_usage_char(class, LOCK_USED_IN_HARDIRQ);
+	usage[i++] = get_usage_char(class, LOCK_USED_IN_HARDIRQ_READ);
+	usage[i++] = get_usage_char(class, LOCK_USED_IN_SOFTIRQ);
+	usage[i++] = get_usage_char(class, LOCK_USED_IN_SOFTIRQ_READ);
+	usage[i] = '\0';
+}
+
+mark_usage
+
