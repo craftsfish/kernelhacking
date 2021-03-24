@@ -51,4 +51,6 @@
 - [memory models](https://www.cs.utexas.edu/~bornholt/post/memory-models.html)
 - [x86 reference](https://www.felixcloutier.com/x86/)
 - [litmus](http://diy.inria.fr/tst/doc/index.html)
+- [kernel mail list archive](https://marc.info/?l=linux-kernel)
 - []()
+
