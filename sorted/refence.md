@@ -52,5 +52,7 @@
 - [x86 reference](https://www.felixcloutier.com/x86/)
 - [litmus](http://diy.inria.fr/tst/doc/index.html)
 - [kernel mail list archive](https://marc.info/?l=linux-kernel)
+- [Raspberry Pi](https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf)
 - []()
+
 
