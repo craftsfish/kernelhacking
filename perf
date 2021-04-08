@@ -68,6 +68,6 @@ PERF_SAMPLE_CALLCHAIN
 
 重要函数
 perf_event_create_kernel_counter
-
-
+__perf_event_overflow
+register_user_hw_breakpoint
 perf_sched__replay
