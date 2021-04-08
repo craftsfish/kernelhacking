@@ -53,6 +53,6 @@
 - [litmus](http://diy.inria.fr/tst/doc/index.html)
 - [kernel mail list archive](https://marc.info/?l=linux-kernel)
 - [Raspberry Pi](https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf)
+- [dynamic memory watch](https://stackoverflow.com/questions/19725900/watch-a-variable-memory-address-change-in-linux-kernel-and-print-stack-trace/19755213)
+- [Hardware Breakpoint (or watchpoint) usage in Linux Kernel](https://www.kernel.org/doc/ols/2009/ols2009-pages-149-158.pdf)
 - []()
-
-
