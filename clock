@@ -20,3 +20,7 @@ interval timers
 
 jiffies由中断更新，如果有丢失，在中断处理程序里面处理
 wall_jiffiies上次记录的jiffies
+
+
+unsigned long long sched_clock(void)
+u64 sched_clock_cpu(int cpu)
