@@ -1,5 +1,4 @@
 /sys/bus/event_source/devices
-perf_event_init_task在copy_process的时候继承event
 
 
 ./perf probe -f -x /home/lcj/work/template/a.out -F
@@ -71,3 +70,4 @@ perf_event_create_kernel_counter
 __perf_event_overflow
 register_user_hw_breakpoint
 perf_sched__replay
+perf_event_init_task在copy_process的时候继承event
