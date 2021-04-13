@@ -15,7 +15,7 @@ struct cfs_rq {
 	struct sched_avg	avg; {
 		u64				load_sum; /* 5: 汇集了runnable & blocked的se_weight(se) * se->avg.load_sum */
 		u64				runnable_load_sum; /* 3: 同2 */
-		u32				util_sum;
+		u32				util_sum; /* running? */
 		unsigned long			load_avg; /* 6: 同5, se->avg.load_avg */
 		unsigned long			runnable_load_avg; /* 4: 同2 */
 		unsigned long			util_avg;

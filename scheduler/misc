@@ -1,1 +1,6 @@
 https://lwn.net/Articles/639543/
+
+为什么se计算load_sum的时候不考虑se的weight，而计算load_avg的时候考虑se的weight?为什么计算cfs_rq的时候又恰恰相反?
+两个不同的group如何在多核系统上取得fair的效果? group本身的share值表示其权重，通过计算分配到各cpu上的se
+
+
