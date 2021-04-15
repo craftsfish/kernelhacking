@@ -1,6 +1,31 @@
 https://lwn.net/Articles/639543/
 
-为什么se计算load_sum的时候不考虑se的weight，而计算load_avg的时候考虑se的weight?为什么计算cfs_rq的时候又恰恰相反?
-两个不同的group如何在多核系统上取得fair的效果? group本身的share值表示其权重，通过计算分配到各cpu上的se
+为什么se计算load_sum的时候不考虑se的weight，而计算load_avg的时候考虑se的weight，计算cfs_rq的时候又恰恰相反? {
+	目前看所有的代码逻辑均遵从此原则，se的load_sum不考虑weight，但是计算se的load_avg的时候需要将weight应用上，对于se来说load_avg = load_sum / divider * weight
+	而对于cfs_rq来说load_avg和load_sum存储的都是weight应用之后的结果
+}
+
+两个不同的group如何在多核系统上取得fair的效果? {
+	group本身的share值表示其权重，通过计算分配到各cpu上的se
+}
+
+weight
+runnable_weight
+
+load_(sum/avg) {load, (weight)} (on_rq的时候计算，否则不算)
+runnable_(sum/avg) {可运行的task数量, (0,n)}
+util_(sum/avg) {可运行的时间, (0,1)}
 
 
+cfs_rq->load.weight是所有on_rq的se的load汇总
+cfs_rq->avg对于非on_rq的负载也会统计，因为存在于cfs_rq上的load都需要逐步decay到0，虽然某个se因为dequeue导致!on_rq，但是cfs_rq上关于该se的load的影响仍在(避免负载跳变？)，对于SMP，如果这个时候我们要把se迁移到另一个CPU，那么需要从原先的cfs_rq上将该se贡献的负载剔除，然后在新的CPU上面将该se的负载加上，这样对于多个CPU的负载总和没有跳变。
+另一个要处理的case是se在cgroup之间迁移
+
+__update_load_avg_blocked_se
+
+fork
+migrate
+wakeup
+sleep
+
+cgroup change

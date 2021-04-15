@@ -24,8 +24,14 @@ struct cfs_rq {
 
 struct sched_entity {
 	struct load_weight		load;
+
+#ifdef CONFIG_FAIR_GROUP_SCHED
 	unsigned long			runnable_weight;
+#endif
+
+#ifdef CONFIG_SMP
 	struct sched_avg		avg;
+#endif
 }
 
 struct task_group {
