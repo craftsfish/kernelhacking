@@ -21,6 +21,8 @@ cfs_rq->load.weight是所有on_rq的se的load汇总
 cfs_rq->avg对于非on_rq的负载也会统计，因为存在于cfs_rq上的load都需要逐步decay到0，虽然某个se因为dequeue导致!on_rq，但是cfs_rq上关于该se的load的影响仍在(避免负载跳变？)，对于SMP，如果这个时候我们要把se迁移到另一个CPU，那么需要从原先的cfs_rq上将该se贡献的负载剔除，然后在新的CPU上面将该se的负载加上，这样对于多个CPU的负载总和没有跳变。
 另一个要处理的case是se在cgroup之间迁移
 
+tg->load_avg = sum(cfs_rq->tg_load_avg_contrib)，其中cfs_rq->tg_load_avg_contrib由cfs_rq->avg.load_avg每次跳变超过一定的范围更新而来。
+
 __update_load_avg_blocked_se
 
 fork
@@ -29,3 +31,9 @@ wakeup
 sleep
 
 cgroup change
+
+
+
+activate_task, deactivate_task {
+	将task(加入/移除/迁出)runqueue
+}
