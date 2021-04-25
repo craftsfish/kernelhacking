@@ -21,3 +21,5 @@ P76: flush_tlb的时候通过IPI通知其他CPU，如何确保同步
 
 process中的threads共享thread_info, mm_struct, tty_struct, fs_struct, files_struct, signal_struct?
 thread_info和kernel stack组合，应该是per_task的?
+
+连续两次调用smp_call_on_cpu，会保证在对应CPU上的处理顺序吗？smp_call_on_cpu会等待func在目标cpu上面执行完成，所以连续两次调用是串行的
