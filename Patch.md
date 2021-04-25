@@ -158,6 +158,8 @@ index 2a31ee3..5033171 100644
 Once your change is accepted by community, you can monitor it with [patchwork](https://patchwork.kernel.org/project/LKML/list/).
 
 ## References
+- [development-process](https://www.kernel.org/doc/html/latest/process/development-process.html)
 - [Working with the kernel development community](https://www.kernel.org/doc/html/latest/process/index.html)
 - [Submitting patches: the essential guide to getting your code into the kernel](https://www.kernel.org/doc/html/latest/process/submitting-patches.html)
 - [Linux kernel patch format](http://linux.yyz.us/patch-format.html)
+- [git send-email use proxy](https://www.smitechow.com/2018/10/git-send-email-use-proxy.html)
