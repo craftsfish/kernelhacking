@@ -1,0 +1,6 @@
+hrtimer_interrupt
+HRTIMER_ACTIVE_HARD
+HRTIMER_ACTIVE_SOFT
+
+删除hrtimer的时候，如果base在当前CPU上的，需要reprogram时钟，如果不是当前CPU，那么目标CPU上的时钟已经armed，如果该hrtimer是最早的，到期不处理，重新reprogram时钟即可，如果不是最早的，无需处理。
+增加hrtimer的时候，默认base到当前CPU上，如果base在其他CPU，必须确保expire时间在对应的时钟事件之后，因为我们没有办法rearm其他CPU上的时钟。
