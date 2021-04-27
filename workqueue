@@ -92,3 +92,6 @@ cpu_bound类型的pwq默认ref_cnt = 1，workqueue删除的时候直接释放，
 alloc_unbound_pwq时需要获取unbound_pool并增加引用计数
 
 在work可以存在于pwq或者pool中，在pool选中work准备执行时状态切换为off queue
+
+pool有一个mayday timeout机制，如果超过一定时间都无法创建新的worker，就唤起worklist里面对应的wq包含rescuer线程的task
+rescuer_thread隶属于workqueue，在需要的时候attach到需要支援的pool里面，结束时从对应的pool中detach
