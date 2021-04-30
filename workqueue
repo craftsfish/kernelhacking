@@ -23,9 +23,6 @@ flush机制 {
 	如果target work本身已经在worker上面，那么直接把barrier work插入scheduled队列
 }
 
-cpu hotplug {
-}
-
 unbound_pool_hash管理所有的unbound pool，通过wq_pool_mutex同步，如果有重复的可以利用，直接pool->refcnt++
 
 wq->numa_pwq_tbl为什么要wq_pool_mutex和wq->mutex同时保护? {
@@ -91,7 +88,23 @@ flush_workqueue_prep_pwqs调用时如果flush_color>=0，可以确定pwq中的nr
 cpu_bound类型的pwq默认ref_cnt = 1，workqueue删除的时候直接释放，pwq引用的cpu_pool
 alloc_unbound_pwq时需要获取unbound_pool并增加引用计数
 
-在work可以存在于pwq或者pool中，在pool选中work准备执行时状态切换为off queue
+work的生命周期 {
+	WORK_STRUCT_PENDING，等待timeout触发之后将work入队
+-----------------------on queue-------------------------------------------------
+	WORK_STRUCT_PENDING，pwq的active work容量已满，放在pwq->delayed_works队列
+	WORK_STRUCT_PENDING，处于pool->worklist
+--------------------------------------------------------------------------------
+	执行中
+	WORK_STRUCT_PENDING，WORK_OFFQ_CANCELING，执行中&(同步)取消中，这个状态可能持续任意长时间，因为work的执行是允许sleep的
+}
+cancel work分为一般取消和同步取消，一般取消无需等待work执行完成，同步取消会等待work执行完成。
 
 pool有一个mayday timeout机制，如果超过一定时间都无法创建新的worker，就唤起worklist里面对应的wq包含rescuer线程的task
 rescuer_thread隶属于workqueue，在需要的时候attach到需要支援的pool里面，结束时从对应的pool中detach
+
+worker flag的同步机制是否完善？{
+	case 1: worker_set_flags和worker_clr_flags的调用context都是worker线程本身，持有pool->lock, worker_enter_idle和worker_leave_idle都持有pool->lock
+	case 2: unbind_workers, rebind_workers同时持有wq_pool_attach_mutext和pool->lock,修改确保WORKER_NOT_RUNNING这个状态不会变化？比如从unbound -> rebound，这样确保case4是安全的
+	case 3: worker_attach_to_pool，worker_detach_from_pool持有wq_pool_attach_mutext，对于非rescuer，分别在初始化和消亡的时候调用，无需考虑，对于rescuer，针对pool是associate的情况更新flag
+	case 4: wq_worker_running, wq_worker_sleeping无锁读，主要用于work中途sleep和worker自身的睡眠(这种情况flag设为prepara，肯定不会被考虑为running)，天然和case1, case3互斥
+}
