@@ -97,7 +97,7 @@ work的生命周期 {
 	执行中
 	WORK_STRUCT_PENDING，WORK_OFFQ_CANCELING，执行中&(同步)取消中，这个状态可能持续任意长时间，因为work的执行是允许sleep的
 }
-cancel work分为一般取消和同步取消，一般取消无需等待work执行完成，同步取消会等待work执行完成。
+cancel work分为一般取消和同步取消，一般取消无需等待work执行完成，同步取消会等待work执行完成(如果正在执行中)，并且在此期间标记WORK_STRUCT_PENDING。
 
 pool有一个mayday timeout机制，如果超过一定时间都无法创建新的worker，就唤起worklist里面对应的wq包含rescuer线程的task
 rescuer_thread隶属于workqueue，在需要的时候attach到需要支援的pool里面，结束时从对应的pool中detach
