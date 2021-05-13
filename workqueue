@@ -108,3 +108,6 @@ worker flag的同步机制是否完善？{
 	case 3: worker_attach_to_pool，worker_detach_from_pool持有wq_pool_attach_mutext，对于非rescuer，分别在初始化和消亡的时候调用，无需考虑，对于rescuer，针对pool是associate的情况更新flag
 	case 4: wq_worker_running, wq_worker_sleeping无锁读，主要用于work中途sleep和worker自身的睡眠(这种情况flag设为prepara，肯定不会被考虑为running)，天然和case1, case3互斥
 }
+
+pwq的max_active特性收到用户调整和freeze的同时管控，所以需要同时持有wq_pool_mutex和wq->mutex，但是workqueue_set_max_active只持有了wq->mutex，没有获取wq_pool_mutex
+rescuer free了两次
