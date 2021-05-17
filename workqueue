@@ -112,3 +112,10 @@ worker flag的同步机制是否完善？{
 pwq的max_active特性收到用户调整和freeze的同时管控，所以需要同时持有wq_pool_mutex和wq->mutex，但是workqueue_set_max_active只持有了wq->mutex，没有获取wq_pool_mutex
 rescuer free了两次
 sysfs应该增加对workqueue结构的引用，否则destroy_workqueue的时候，没法确保sysfs已经不再应用workqueue，比如强制open一个workqueue的sysfs节点，然后等到workqueue销毁之后再操作，是否会有问题？
+
+unbound_workers中的schedule到底有什么用? {
+	unbound_workers调用的时候，per_cpu的worker是否已经migrate到了其他cpu，如果是的话，那么就存在并发的可能性了
+	但是目前看cpu关闭的时候先调用的workqueu_offline_cpu，然后才是调用sched_cpu_dying->migrate_tasks, so what to do?
+
+	确保WORKER_UNBOUND和nr_running的操作顺序?
+}
