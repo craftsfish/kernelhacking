@@ -116,6 +116,8 @@ sysfs应该增加对workqueue结构的引用，否则destroy_workqueue的时候�
 unbound_workers中的schedule到底有什么用? {
 	unbound_workers调用的时候，per_cpu的worker是否已经migrate到了其他cpu，如果是的话，那么就存在并发的可能性了
 	但是目前看cpu关闭的时候先调用的workqueu_offline_cpu，然后才是调用sched_cpu_dying->migrate_tasks, so what to do?
+	sched_cpu_deactivate之后，task再次被调度的时候，会被migrate到其他cpu么？
+	有没有这样的可能性，cpu offline导致了task在其他cpu上运行，online触发，但是task还没有完全迁移过来，这时候再度触发offline，task还是有可能没有迁移到local cpu
 
 	确保WORKER_UNBOUND和nr_running的操作顺序?
 }
