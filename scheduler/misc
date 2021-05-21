@@ -9,8 +9,20 @@ https://lwn.net/Articles/639543/
 	group本身的share值表示其权重，通过计算分配到各cpu上的se
 }
 
-weight
-runnable_weight
+sched_entity (task) {
+                               se->on_rq           !se->on_rq
+	weight                     weight              0
+	runnable = weight          weight              0
+    runnable_sum                     不考虑weight，根据pelt算法能够得出的最大sum按比例换算，percent% * LOAD_AVG_MAX?
+    runnable_avg                     不考虑weight，percent% * scale
+    load_sum                         = runnable_sum
+    load_avg                         考虑weight，= weight * runnable_avg
+}
+
+sched_entity (group) {
+}
+cfs_rq {
+}
 
 load_(sum/avg) {load, (weight)} (on_rq的时候计算，否则不算)
 runnable_(sum/avg) {可运行的task数量, (0,n)}
