@@ -1,0 +1,1 @@
+cfs_rq->curr可能为空，比如调度到一个rt task的时候
