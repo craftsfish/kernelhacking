@@ -75,3 +75,5 @@ clone, fork, vfork都是系统调用。do_fork是内核的实际实现
 exit_signal为-1的task最后terminate时，怎么通知parent
 
 APIC-access address和Virtual-APIC address区别是什么
+
+interruptible sleep被signal唤醒是什么流程
