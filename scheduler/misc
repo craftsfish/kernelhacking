@@ -1,3 +1,57 @@
+The RT class supports the SCHED_RR and SCHED_FIFO policies, and the CFS class supports SCHED_NORMAL and SCHED_BATCH.
+
+
+一个task隶属于一个特定的scheduler class
+一个scheduler class可以同时支持多种scheduling policy，所以在task结构中存储了具体的scheduling policy
+
+
+一个rq如何管理多个scheduler class
+每个CPU有一个rq, DECLARE_PER_CPU_SHARED_ALIGNED(struct rq, runqueues);
+一个rq里面包含了rt, cfs, dl三个特定的rq
+scheduler_tick函数只负责更新状态，并检查当前task是否需要被抢占, 实际的切换在schedule中执行
+schedule函数调用pick_next_task，依次执行各scheduler class，选出下一个需要执行的task
+
+
+vruntime = 具体的执行时间 / 优先级权重
+
+
+cfs调度要在一个sysctl_sched_latency周期内确保每个active task至少被调度到一次
+cfs里面的leftmost task指的是当前vruntime最小的task，可能是current或者rb_leftmost
+wakeup_preempt_entity(struct sched_entity *curr, struct sched_entity *se) se是否需要抢占curr {
+	curr->vruntime < se->vruntime, 返回-1，让curr运行
+	curr->vruntime - se->vruntime <= wakeup_gran, 返回0，curr比se多运行的时间没有超过1个gran身位，让curr运行
+	curr->vruntime - se->vruntime >  wakeup_gran, 返回1，curr比se多运行的时间超过1个gran身位，让se运行
+}
+
+
+struct task_group通过 {
+	task_group *parent;
+	list_head siblings;
+	list_head children;
+}维护了一个树状结构，为了支持CONFIG_FAIR_GROUP_SCHED，每个task_group在每个CPU上面维护了一个sched_entity和cfs_rq，sched_entity负责管理对应的cfs_rq并将其保存在自身的my_q里面
+当cfs_rq里面有具体的task的时候，cfs_rq会被加入到对应rq的leaf_cfs_rq_list里面，并一直存在，直到对应的task_group被unregister
+
+sched_stat_sleep: interruptible -> 入队
+sched_stat_blocked: uninterruptible -> 入队 {
+	sched_stat_iowait: 其中的io等待时间
+}
+sched_stat_wait: 入队 -> 执行的等待时间
+sched_stat_runtime: 执行 -> switch的时间
+
+NICE_0_LOAD默认task的load值,标准为1024,在64位机器上为了提高精度扩展了10位,通过scale_load和scale_load_down实现转换,struct load_weight结构中存储的weight都是scale之后的值
+load = time * scale_frequency * weight
+load_avg = load_sum * weight / divider?
+runnable_load
+util = time * scale_frequency * scale_cpu (util不考虑权重，但是考虑CPU之间的差异)
+LOAD_AVG_MAX计算平均值的时间长度ns，由于该时间无法完整的分割成n个取样周期，因此计算平均值的时候，除以(LOAD_AVG_MAX - 1024 + sa->period_contrib)
+只要进入rq就计算为load，计算util的时候要看是否running
+
+不同CPU在不同的frequency下的capacity如何校准？
+
+struct sched_cluster用来描述一组具有相同能效的CPU
+
+
+
 https://lwn.net/Articles/639543/
 
 为什么se计算load_sum的时候不考虑se的weight，而计算load_avg的时候考虑se的weight，计算cfs_rq的时候又恰恰相反? {
