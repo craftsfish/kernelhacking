@@ -38,7 +38,14 @@ sched_stat_blocked: uninterruptible -> 入队 {
 sched_stat_wait: 入队 -> 执行的等待时间
 sched_stat_runtime: 执行 -> switch的时间
 
-NICE_0_LOAD默认task的load值,标准为1024,在64位机器上为了提高精度扩展了10位,通过scale_load和scale_load_down实现转换,struct load_weight结构中存储的weight都是scale之后的值
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+weight与load的概念 {
+	task的优先级(nice/priority)通过sched_prio_to_weight转化为weight，nice=0的weight是1024
+	对应的load在32位机器上和weight一致，在64位机器上则scale_up以提高精度(<<10)
+	NICE_0_LOAD为默认task的load值
+	struct load_weight结构中存储的weight都是scale之后的值
+}
 load = time * scale_frequency * weight
 load_avg = load_sum * weight / divider?
 runnable_load
