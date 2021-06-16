@@ -1,1 +1,6 @@
 cfs_rq->curr可能为空，比如调度到一个rt task的时候
+什么时候sched_entity = cfs_rq->curr，但是同时sched_entity !on_rq? {
+	dequeue_entity的时候只设置sched_entity->on_rq = 0，并不会清除cfs_rq->curr
+	sched_core的调用一般是先dequeue_task然后put_prev_task，导致了先sched_entity->on_rq = 0后cfs_rq->curr = NULL;
+}
+在一个rq上面，通过树状结构组织group，sched_slice计算的时候只考虑最底层的cfs_rq的nr_running?
