@@ -126,9 +126,6 @@ cfs_rq->load.weight是所有on_rq的se的load汇总
 cfs_rq->avg对于非on_rq的负载也会统计，因为存在于cfs_rq上的load都需要逐步decay到0，虽然某个se因为dequeue导致!on_rq，但是cfs_rq上关于该se的load的影响仍在(避免负载跳变？)，对于SMP，如果这个时候我们要把se迁移到另一个CPU，那么需要从原先的cfs_rq上将该se贡献的负载剔除，然后在新的CPU上面将该se的负载加上，这样对于多个CPU的负载总和没有跳变。
 另一个要处理的case是se在cgroup之间迁移
 
-update_tg_load_avg: 更新一个group的load_avg，tg是由分布在各cpu上的cfs_rq构成的，所以其load_avg必须由各cpu上的对应cfs_rq的avg.load_avg汇总而来，为了避免每次锁住所有的cpu，cfs_rq->tg_load_avg_contrib用于记录当前cpu对于group的load_avg的贡献值，更新的时候将最新的load_avg与历史贡献的差值更新到group的load_avg即可，与此同时更新cfs_rq->tg_load_avg_contrib。
-propagate_entity_load_avg: 针对非task的sched_entity(tg分布在cpu上的se)，将其管理的cfs_rq的avg数据更新到上一级(se->cfs_rq)。采用差值更新法，se->avg记录了历史贡献值，每次更新的时候将gcfs_rq与se的avg计算差值，然后更新到上一级cfs_rq。与此同时更新se->avg为gcfs_rq的avg值。
-
 __update_load_avg_blocked_se
 
 fork
@@ -143,3 +140,13 @@ cgroup change
 activate_task, deactivate_task {
 	将task(加入/移除/迁出)runqueue
 }
+API=============================================================================
+================================================================================
+update_tg_load_avg: 更新一个group的load_avg，tg是由分布在各cpu上的cfs_rq构成的，所以其load_avg必须由各cpu上的对应cfs_rq的avg.load_avg汇总而来，为了避免每次锁住所有的cpu，cfs_rq->tg_load_avg_contrib用于记录当前cpu对于group的load_avg的贡献值，更新的时候将最新的load_avg与历史贡献的差值更新到group的load_avg即可，与此同时更新cfs_rq->tg_load_avg_contrib。
+propagate_entity_load_avg: 针对非task的sched_entity(tg分布在cpu上的se)，将其管理的cfs_rq的avg数据更新到上一级(se->cfs_rq)。采用差值更新法，se->avg记录了历史贡献值，每次更新的时候将gcfs_rq与se的avg计算差值，然后更新到上一级cfs_rq。与此同时更新se->avg为gcfs_rq的avg值。
+remove_entity_load_avg: 这个函数只针对task调用，所以可以判定cfs_rq->removed只对直接包含task的cfs_rq有效，所以cfs_rq->removed.runnable_avg可以认定为unweighted version of cfs_rq->removed.load_avg。这也是为什么update_cfs_rq_load_avg调用add_tg_cfs_propagate函数是传入的是(cfs_rq->removed.runnable_avg * divider) >> SCHED_CAPACITY_SHIFT。之所以要>> SCHED_CAPACITY_SHIFT是因为计算sched_avg是，runnable_sum和util_sum都<< SCHED_CAPACITY_SHIFT，所以对于task来说，(cfs_rq->removed.runnable_avg * divider) >> SCHED_CAPACITY_SHIFT = 对应的load_sum。
+
+
+Misc============================================================================
+================================================================================
+gcfs_rq->prop_runnable_sum其实不是runnable_sum，而是load_sum。attach_entity_load_avg和detach_entity_load_avg在调用add_tg_cfs_propagate时传入的都是se->avg.load_sum，对于update_cfs_rq_load_avg函数中的add_tg_cfs_propagate调用可以参考关于remove_entity_load_avg函数的注解。
