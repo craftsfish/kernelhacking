@@ -4,3 +4,5 @@ softirq is serialized on a CPU so as tasklet, softirq can run concurrently on mu
 tasklet cannot run concurrently on multiple CPUs.
 
 raw_spinlock_t真正的spin lock，有RT的时候spin lock可能会变成mutex?
+
+不需要RMW的情况下也可以使用READ_ONCE和WRITE_ONCE来同步？比如一个任务负责读取，计算，写入，另一个只负责读取？这个时候比使用atomic要轻量级？

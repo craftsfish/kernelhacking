@@ -24,4 +24,4 @@ wall_jiffiies上次记录的jiffies
 
 unsigned long long sched_clock(void)
 u64 sched_clock_cpu(int cpu)
-static inline u64 rq_clock_task(struct rq *rq) #仅包含task执行时间，过滤了中断?
+static inline u64 rq_clock_task(struct rq *rq) #在rq->clock的基础上根据配置剔除irq及虚拟化相关的时间

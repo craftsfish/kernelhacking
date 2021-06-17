@@ -1,0 +1,2 @@
+kernel/sched/fair.c中注释部分的update_cfs_share函数已经没有了
+kernel/sched/fair.c中post_init_entity_util_avg注释和代码不对与，应该使用avg.util_avg
