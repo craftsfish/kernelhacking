@@ -58,4 +58,5 @@
 - [LWN](https://lwn.net/Kernel/Index/)
 - [opengl.songho.ca](http://songho.ca/opengl/index.html)
 - [learnopengl](https://learnopengl.com)
+- [getting started with opengl](https://www.khronos.org/opengl/wiki/Getting_Started)
 - []()
