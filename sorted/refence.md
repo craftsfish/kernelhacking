@@ -56,4 +56,6 @@
 - [dynamic memory watch](https://stackoverflow.com/questions/19725900/watch-a-variable-memory-address-change-in-linux-kernel-and-print-stack-trace/19755213)
 - [Hardware Breakpoint (or watchpoint) usage in Linux Kernel](https://www.kernel.org/doc/ols/2009/ols2009-pages-149-158.pdf)
 - [LWN](https://lwn.net/Kernel/Index/)
+- [opengl.songho.ca](http://songho.ca/opengl/index.html)
+- [learnopengl](https://learnopengl.com)
 - []()
