@@ -63,26 +63,5 @@ patch {
 }
 --------------------------------------------------------------------------------
 其他 {
-	critical game file loader
 	https://medium.com/@copyconstruct/best-of-2019-in-tech-talks-bac697c3ee13
-	aosp工具梳理
-	aosp工具参与
-	内部项目
-	perf功能移植
-	bpf工具移植
-	man perf_event_open
-	workqueue, psi, scheduler, ftrace, debug object
-	Leetcode
-	modify comment of propagate_mnt, attach_recursive_mnt
-	perf, cgroup, bpf, flame grpah, Perfetto
-	redhat, microsoft, alibaba, opensuse, amazon
-	http://www.brendangregg.com/overview.html
-	The Art of Capacity Planning
-	[crash](https://people.redhat.com/anderson/)
-	Operating System Concepts, 10th Edition; Operating Systems, Internals and Design Principles
-	Linux Driver Development for Embedded Processors
-	H: Operating System Concepts, 10th Edition
-	M: Operating Systems, Internals and Design Principles
-	O: Linux Driver Development for Embedded Processors
-	tools for kernel stack and function graph
 }
