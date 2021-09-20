@@ -60,3 +60,6 @@ Android.AVB:  Android Verified Boot
 Android.TEE:  Trusted Execution Environment
 INTEL.MTF: Monitor Trap Flag
 INTEL.PT: Processor Trace
+Radiant Flux: W
+Irradiance: W/m2
+Radiance: W/m2-sr

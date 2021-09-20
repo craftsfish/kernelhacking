@@ -1,50 +1,3 @@
-rcu
---------------------------------------------------------------------------------
-文档 {
-	https://docs.fedoraproject.org/en-US/Fedora/20/html/Power_Management_Guide/index.html
-	https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/performance_tuning_guide/index
-}
---------------------------------------------------------------------------------
-源代码 {
-	psi
-	文件cache锁定方案
-	scheduler
-	watchdog
-	timer
-	cgroup
-	binder
-	debug栈 {
-		perf
-		ftrace
-		bpf
-		lockstat
-		lockdep
-	}
-}
---------------------------------------------------------------------------------
-调研 {
-	useless work detection
-	关键路径识别（非关键路径的并发线程）
-	coz在非CPU资源优化上的应用
-	如何评估一个工具的overhead
-	并发火焰图
-	memcached
-	{
-		cache命中率，到具体的文件
-		关键文件识别
-	}
-	如何捕获新进程的所有thread? {
-		ftrace的set_event_pid作为参考
-		task_newtask(根据clone_flag做进一步筛选)(构建tid bitmap)
-	}
-	perf数据都是什么时候写入的?
-	perf代码如何调试？
-	kgdb使用
-	buildid原理
-	uprobe如何使用
-	tracing_on默认值谁设定的？
-}
---------------------------------------------------------------------------------
 patch {
 	ftrace {
 		each time a trace is added, record comm is enabled, record happens when switch/record
@@ -60,8 +13,4 @@ patch {
 	drivers/devfreq/devfreq.c {
 		如果devfreq必须有governor的话，卸载成功的前提必须是当前governor已经无人使用
 	}
-}
---------------------------------------------------------------------------------
-其他 {
-	https://medium.com/@copyconstruct/best-of-2019-in-tech-talks-bac697c3ee13
 }
