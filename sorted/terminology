@@ -63,3 +63,4 @@ INTEL.PT: Processor Trace
 Radiant Flux: W
 Irradiance: W/m2
 Radiance: W/m2-sr
+OPENGL.BRDF: bidirectional reflective distribution function
